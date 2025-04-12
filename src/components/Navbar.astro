@@ -1,4 +1,7 @@
 ---
+import Icon from 'src/components/Icon.astro';
+import { iconPaths } from './IconPaths';
+
 /** Menu items */
 const textLinks: { label: string; href: string }[] = [
   { label: 'Home', href: '/' },
@@ -7,28 +10,32 @@ const textLinks: { label: string; href: string }[] = [
 ];
 
 /** Menu icons */
-const iconsLinks: { label: string; href: string; icon: string }[] = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastianolateh/', icon: 'fa-linkedin-square' },
-  { label: 'GitHub', href: 'https://github.com/sebasiohx', icon: 'fa-github' },
-  { label: 'CodePen', href: 'https://codepen.io/Solate', icon: 'fa-codepen' },
+const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastianolateh/', icon: 'linkedin' },
+  { label: 'GitHub', href: 'https://github.com/sebasiohx', icon: 'github' },
+  { label: 'CodePen', href: 'https://codepen.io/Solate', icon: 'codepen' },
 ];
+
+const iconThemeDark = iconPaths['moon'];
+const iconThemeLight = iconPaths['sun'];
 ---
 
 <script>
   const switchTheme: any = document.getElementById('btn-theme');
   const textSwitchTheme: any = document.querySelector('.btn-theme__text');
-  const iconSwitchTheme: any = document.querySelector('.btn-theme__icon');
+  const iconSwitchTheme1: any = document.querySelector('.btn-theme__icon--1');
+  const iconSwitchTheme2: any = document.querySelector('.btn-theme__icon--2');
 
   /** funcion para cambiar el contenido del boton de theme */
   function toggleContentBtnTheme(theme: string) {
     textSwitchTheme.innerText = theme === 'dark' ? 'Dark' : 'Light';
 
     if (theme === 'dark') {
-      iconSwitchTheme.classList.remove('fa-sun-o');
-      iconSwitchTheme.classList.add('fa-moon-o');
+      iconSwitchTheme1.classList.remove('hidden');
+      iconSwitchTheme2.classList.add('hidden');
     } else {
-      iconSwitchTheme.classList.remove('fa-moon-o');
-      iconSwitchTheme.classList.add('fa-sun-o');
+      iconSwitchTheme1.classList.add('hidden');
+      iconSwitchTheme2.classList.remove('hidden');
     }
   }
 
@@ -84,7 +91,7 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
             <span class="nav-icons__corner corner-1"></span>
             <span class="nav-icons__corner corner-2"></span>
             <span class="nav-icons__bg-blink"></span>
-            <i class:list={['nav-icons__icon fa fa-brands', icon]} />
+            <Icon icon={icon} size="20px" class="nav-icons__icon" style={'grid-area: stack; z-index: -1;'}/>
           </a>
         </li>
       ))
@@ -98,7 +105,21 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
     </span>
     <span class="btn-theme__color-content">
       <span class='btn-theme__text'></span>
-      <i class='btn-theme__icon fa' aria-hidden='true'></i>
+      <svg 
+        class='btn-theme__icon inline-block btn-theme__icon--1' 
+        xmlns='http://www.w3.org/2000/svg' 
+        aria-hidden='true' 
+        set:html={iconThemeDark[0]} 
+        viewBox={iconThemeDark[1]}
+      ></svg>
+      <svg
+        class='btn-theme__icon inline-block btn-theme__icon--2' 
+        xmlns='http://www.w3.org/2000/svg' 
+        aria-hidden='true' 
+        set:html={iconThemeLight[0]} 
+        viewBox={iconThemeLight[1]}
+      ></svg>
+      <!-- <i class='btn-theme__icon fa fa-moon-o' aria-hidden='true'></i> 14px * 14px -->
     </span>
   </button>
 
@@ -263,9 +284,6 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
           }
         }
       }
-      :is(.nav-icons__corner, .nav-icons__bg-blink, .nav-icons__icon){
-        grid-area: stack;
-      }
       &__corner{
         background-color: transparent;
         width: 20px;
@@ -290,6 +308,10 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
         width: 100%;
         height: 100%;
         visibility: hidden;
+        z-index: -1;
+      }
+      :is(.nav-icons__corner, .nav-icons__bg-blink, .nav-icons__icon){
+        grid-area: stack;
         z-index: -1;
       }
     }
@@ -326,6 +348,14 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
       &__color-content{
         font-size: var(--size-14px);
       }
+      &__icon{
+        width: 14px;
+        height: 14px;
+        transition: all 250ms;
+        line-height: 1;
+        vertical-align: sub;
+        fill: var(--color-main-3);
+      }
 
       &:hover{
         box-shadow: inset var(--color-main-3) 0 0 12px;
@@ -360,6 +390,10 @@ const iconsLinks: { label: string; href: string; icon: string }[] = [
       }
       .btn-theme{
         color: var(--color-text);
+
+        &__icon{
+          fill: var(--color-text);
+        }
       }
     }
   }
