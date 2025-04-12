@@ -1,6 +1,7 @@
 ---
+import { iconPaths } from './scripts/IconPaths';
 import Icon from 'src/components/Icon.astro';
-import { iconPaths } from './IconPaths';
+import MenuMobile from "./MenuMobile.astro";
 
 /** Menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -18,46 +19,44 @@ const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[
 
 const iconThemeDark = iconPaths['moon'];
 const iconThemeLight = iconPaths['sun'];
+const urlPath = Astro.url.pathname;
 ---
 
 <script>
-  const switchTheme: any = document.getElementById('btn-theme');
-  const textSwitchTheme: any = document.querySelector('.btn-theme__text');
-  const iconSwitchTheme1: any = document.querySelector('.btn-theme__icon--1');
-  const iconSwitchTheme2: any = document.querySelector('.btn-theme__icon--2');
+  const initThemeToggle = () => {
+    const switchTheme = document.getElementById('btn-theme');
+    if (!switchTheme) return;
 
-  /** funcion para cambiar el contenido del boton de theme */
-  function toggleContentBtnTheme(theme: string) {
-    textSwitchTheme.innerText = theme === 'dark' ? 'Dark' : 'Light';
+    const text = document.querySelector('.btn-theme__text');
+    const icon1 = document.querySelector('.btn-theme__icon--1');
+    const icon2 = document.querySelector('.btn-theme__icon--2');
 
-    if (theme === 'dark') {
-      iconSwitchTheme1.classList.remove('hidden');
-      iconSwitchTheme2.classList.add('hidden');
-    } else {
-      iconSwitchTheme1.classList.add('hidden');
-      iconSwitchTheme2.classList.remove('hidden');
-    }
-  }
+    const updateButton = (theme: string) => {
+      if (!text || !icon1 || !icon2) return;
+      text.textContent = theme === 'dark' ? 'Dark' : 'Light';
+      icon1.classList.toggle('hidden', theme !== 'dark');
+      icon2.classList.toggle('hidden', theme === 'dark');
+      switchTheme.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+    };
 
-  /** funcion para el boton de cambiar theme */
-  function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    toggleContentBtnTheme(newTheme);
-  }
+    const toggleTheme = () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+      updateButton(nextTheme);
+    };
 
-  switchTheme.addEventListener('click', toggleTheme);
+    switchTheme.addEventListener('click', toggleTheme);
 
-  /** funcion para guardar y cargar el tema en el local storage */
-  function loadTheme() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    toggleContentBtnTheme(savedTheme);
+    updateButton(savedTheme);
   }
 
-  loadTheme();
+  document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
+  });
 </script>
 
 <nav class='navbar flex items-center gap-4 lg:gap-6' aria-label="Menú principal">
@@ -68,8 +67,8 @@ const iconThemeLight = iconPaths['sun'];
           <span class="triangle triangle-1"></span>
           <a 
           href={href}
-          class:list={['nav-items__link', {'active': Astro.url.pathname === href ||
-          (href !== '/' && Astro.url.pathname.startsWith(href))}]}
+          class:list={['nav-items__link', {'active': urlPath === href ||
+          (href !== '/' && urlPath.startsWith(href))}]}
           >
             {label}
 
@@ -101,7 +100,7 @@ const iconThemeLight = iconPaths['sun'];
   <button id='btn-theme' class="btn-theme" aria-label="cambiar de color" role="switch" aria-checked="false" title="modo de color">
     <span class='btn-theme__title'>
       Color
-      <i class="btn-theme__kanji">色</i>
+      <i class="btn-theme__kanji">カラー</i>
     </span>
     <span class="btn-theme__color-content">
       <span class='btn-theme__text'></span>
@@ -119,15 +118,10 @@ const iconThemeLight = iconPaths['sun'];
         set:html={iconThemeLight[0]} 
         viewBox={iconThemeLight[1]}
       ></svg>
-      <!-- <i class='btn-theme__icon fa fa-moon-o' aria-hidden='true'></i> 14px * 14px -->
     </span>
   </button>
 
-  <button class='menu-burguer flex md:hidden' aria-expanded="false" aria-haspopup="true" aria-controls="menu-mobile-aside">
-    <div class='menu-line'></div>
-    <div class='menu-line'></div>
-    <div class='menu-line'></div>
-  </button>
+  <MenuMobile textLinks={textLinks} iconsLinks={iconsLinks} currentPath={urlPath}/>
 </nav>
 <!-- Navbar links -->
 <style lang='scss'>
@@ -341,12 +335,19 @@ const iconThemeLight = iconPaths['sun'];
         display: none;
       }
       &__kanji{
-        font-size: 12px;
+        font-size: 10px;
         font-weight: bolder;
         margin-left: 4px;
       }
       &__color-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.3rem;
+      }
+      &__text{
         font-size: var(--size-14px);
+        line-height: var(--size-20px);
       }
       &__icon{
         width: 14px;
@@ -371,7 +372,9 @@ const iconThemeLight = iconPaths['sun'];
         height: 50px;
 
         &__title{
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
     }
@@ -395,340 +398,6 @@ const iconThemeLight = iconPaths['sun'];
           fill: var(--color-text);
         }
       }
-    }
-  }
-</style>
-<!-- menu burguer -->
-<script>
-  const iconMenu: any = document.querySelector('.menu-burguer');
-  const menuMobile: any = document.getElementById('menu-mobile-aside');
-
-  iconMenu.addEventListener(
-    'click',
-    () => {
-      if (iconMenu.classList.contains('open')) {
-        iconMenu.classList.remove('open');
-        menuMobile.classList.remove('open');
-      } else {
-        iconMenu.classList.add('open');
-        menuMobile.classList.add('open');
-      }
-    },
-    false
-  );
-</script>
-<style>
-  .menu-burguer {
-    /* all: unset; */
-    /* display: flex; */
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 5px;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    clip-path: polygon(calc(0% + 10px) 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% calc(0% + 10px));
-    background-color: var(--color-main-1);
-  }
-
-  .menu-line {
-    height: 4px;
-    width: 24px;
-    background-color: var(--color-bg);
-    transition: all 250ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  }
-
-  .menu-line:first-child {
-    animation: firstLinetoClose 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
-  }
-
-  .open .menu-line:first-child {
-    animation: firstLinetoOpen 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes firstLinetoOpen {
-    0% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(12px);
-    }
-
-    100% {
-      transform: translateY(9px) rotate(45deg);
-    }
-  }
-
-  @keyframes firstLinetoClose {
-    0% {
-      transform: translateY(9px) rotate(0);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  .open .menu-line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-line:last-child {
-    animation: lastLinetoClose 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
-  }
-
-  .open .menu-line:last-child {
-    animation: lastLinetoOpen 240ms cubic-bezier(0.23, 0.95, 0.58, 1.37);
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes lastLinetoOpen {
-    0% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-12px);
-    }
-
-    100% {
-      transform: translateY(-10px) rotate(-45deg);
-    }
-  }
-
-  @keyframes lastLinetoClose {
-    0% {
-      transform: translateY(-10px);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-  }
-</style>
-<!-- aside menu mobile -->
-<aside id='menu-mobile-aside' class='menu-mobile'>
-  <div class='container mx-auto p-4'>
-    <h3 class='menu-mobile__title'>Menú</h3>
-    <nav class='menu-mobile__nav mb-8' aria-labelledby="menu-mobile-aside">
-      {
-        textLinks.map(({ label, href }) => (
-          <a
-            class:list={[
-              'menu-mobile__link',
-              {
-                active:
-                  Astro.url.pathname === href ||
-                  (href !== '/' && Astro.url.pathname.startsWith(href)),
-              },
-            ]}
-            href={href}
-          >
-            {label}
-          </a>
-        ))
-      }
-    </nav>
-    <ul class='flex gap-8 justify-between'>
-      {
-        iconsLinks.map(({ label, href, icon }) => (
-          <li class='grow'>
-            <a class='menu-mobile__link-icon' href={href} target="_blank" rel="noopener noreferrer">
-              <span class='sr-only'>{label}</span>
-              <i class:list={['fa', 'fa-brands', icon]} />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <svg
-      version='1.1'
-      id='Layer_1'
-      class='menu-mobile__svg'
-      xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
-      x='0px'
-      y='0px'
-      viewBox='0 0 100 100'
-      enable-background='new 0 0 100 100'
-      xml:space='preserve'
-    >
-      <rect
-        class='fill-color'
-        width='3'
-        height='100'
-        transform='translate(0) rotate(180 3 50)'
-      >
-        <animate
-          attributeName='height'
-          attributeType='XML'
-          dur='1s'
-          values='30; 100; 30'
-          repeatCount='indefinite'></animate>
-      </rect>
-      <rect
-        x='17'
-        class='fill-color'
-        width='3'
-        height='100'
-        transform='translate(0) rotate(180 20 50)'
-      >
-        <animate
-          attributeName='height'
-          attributeType='XML'
-          dur='1s'
-          values='30; 100; 30'
-          repeatCount='indefinite'
-          begin='0.1s'></animate>
-      </rect>
-      <rect
-        x='40'
-        class='fill-color'
-        width='3'
-        height='100'
-        transform='translate(0) rotate(180 40 50)'
-      >
-        <animate
-          attributeName='height'
-          attributeType='XML'
-          dur='1s'
-          values='30; 100; 30'
-          repeatCount='indefinite'
-          begin='0.3s'></animate>
-      </rect>
-      <rect
-        x='60'
-        class='fill-color'
-        width='3'
-        height='100'
-        transform='translate(0) rotate(180 58 50)'
-      >
-        <animate
-          attributeName='height'
-          attributeType='XML'
-          dur='1s'
-          values='30; 100; 30'
-          repeatCount='indefinite'
-          begin='0.5s'></animate>
-      </rect>
-      <rect
-        x='80'
-        class='fill-color'
-        width='3'
-        height='100'
-        transform='translate(0) rotate(180 76 50)'
-      >
-        <animate
-          attributeName='height'
-          attributeType='XML'
-          dur='1s'
-          values='30; 100; 30'
-          repeatCount='indefinite'
-          begin='0.1s'></animate>
-      </rect>
-    </svg>
-  </div>
-</aside>
-<style lang='scss'>
-  .menu-mobile {
-    position: absolute;
-    inset: 82px 0 0 0;
-    z-index: 11;
-    height: calc(100vh - 82px);
-    width: 100%;
-    clip-path: polygon(0 38px, 6px 38px, 20px 18px, calc(0% + 105px) calc(0% + 18px), calc(0% + 130px) 0px, 100% 0px, 100% 100%, 0px 100%);
-    transform: translateX(100%);
-    transition: all 250ms;
-    background-color: color-mix(in srgb, var(--color-bg) 30%, transparent 100%);
-    /* Glassmorphism */
-    -webkit-backdrop-filter: blur(30px);
-    backdrop-filter: blur(30px);
-
-    &.open {
-      transform: translateX(0%);
-    }
-
-    &__title {
-      text-align: right;
-      font-size: var(--size-24px);
-      font-weight: bold;
-      padding-right: 18px;
-      margin-bottom: 32px;
-      text-transform: uppercase;
-      font-family: var(--font-family-1);
-      transform: scaleY(1.2);
-      text-shadow: var(--color-main-1) 1px 0px 4px;
-    }
-
-    &__nav {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &__link {
-      text-align: right;
-      padding: 20px;
-      border-bottom: 2px solid var(--color-main-1);
-      position: relative;
-      font-size: var(--size-16px);
-      text-transform: uppercase;
-      font-family: var(--font-family-2);
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        display: block;
-        width: 15px;
-        height: 15px;
-        background-color: var(--color-main-1);
-        clip-path: polygon(66% 0, 100% 0, 100% 100%, 0% 100%);
-      }
-
-      &.active {
-        background-color: color-mix(
-          in srgb,
-          var(--color-main-2) 20%,
-          transparent 100%
-        );
-        border-bottom-color: var(--color-main-2);
-        box-shadow: var(--color-main-2) 1px 0px 1px;
-
-        &::after {
-          background-color: var(--color-main-2);
-        }
-      }
-    }
-
-    &__link-icon {
-      display: block;
-      text-align: center;
-      font-size: var(--size-26px);
-      height: 50px;
-      align-content: center;
-      border-top: 2px solid var(--color-main-2);
-      border-left: 2px solid var(--color-main-2);
-      border-right: 2px solid var(--color-main-1);
-      border-bottom: 2px solid var(--color-main-1);
-    }
-    &__svg {
-      width: 90px;
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
-      opacity: 0.5;
-    }
-  }
-
-  .fill-color {
-    fill: var(--color-main-1);
-  }
-
-  :global([data-theme='light']) {
-    .menu-mobile__title {
-      text-shadow: var(--color-main-1) 1px 0px 2px;
     }
   }
 </style>
