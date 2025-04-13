@@ -1,6 +1,24 @@
 ---
-const isIndex = Astro.url.pathname === '/';
 import Navbar from './Navbar.astro';
+import MenuMobile from "./MenuMobile.astro";
+import { iconPaths } from './scripts/IconPaths';
+
+const urlPath = Astro.url.pathname;
+const isIndex = urlPath === '/';
+
+/** Menu items */
+const textLinks: { label: string; href: string }[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Portafolio', href: '/portfolio/' },
+  { label: 'Acerca de mi', href: '/about/' },
+];
+
+/** Menu icons */
+const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastianolateh/', icon: 'linkedin' },
+  { label: 'GitHub', href: 'https://github.com/sebasiohx', icon: 'github' },
+  { label: 'CodePen', href: 'https://codepen.io/Solate', icon: 'codepen' },
+];
 ---
 
 <script>
@@ -26,7 +44,9 @@ import Navbar from './Navbar.astro';
     });
   };
 
-  headerClasses();
+  document.addEventListener('DOMContentLoaded', () => {
+    headerClasses();
+  });
 </script>
 
 <header
@@ -84,7 +104,9 @@ import Navbar from './Navbar.astro';
       </div>
     </div>
 
-    <Navbar />
+    <Navbar textLinks={textLinks} iconsLinks={iconsLinks} currentPath={urlPath}/>
+
+    <MenuMobile textLinks={textLinks} iconsLinks={iconsLinks} currentPath={urlPath}/>
 
     <div class='bar-right-decoration'></div>
   </div>

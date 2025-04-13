@@ -31,7 +31,7 @@ const { textLinks, iconsLinks, currentPath } = Astro.props;
 </script>
 
 <!-- menu hamburguesa -->
-<div class="menu-burguer__container md:hidden">
+<div class="menu-burguer__container md:hidden ml-2">
   <span class="menu-burguer__title">MENU</span>
   <button class='menu-burguer flex' aria-expanded="false" aria-haspopup="true" aria-controls="menu-mobile-aside">
     <div class='menu-line'></div>
@@ -359,6 +359,11 @@ const { textLinks, iconsLinks, currentPath } = Astro.props;
   }
 
   :global([data-theme='light']) {
+    .menu-burguer{
+      &__title {
+        color: var(--color-text);
+      }
+    }
     .menu-mobile__title {
       text-shadow: var(--color-main-1) 1px 0px 2px;
     }

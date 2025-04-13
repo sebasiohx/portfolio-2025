@@ -1,25 +1,17 @@
 ---
 import { iconPaths } from './scripts/IconPaths';
 import Icon from 'src/components/Icon.astro';
-import MenuMobile from "./MenuMobile.astro";
 
-/** Menu items */
-const textLinks: { label: string; href: string }[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Portafolio', href: '/portfolio/' },
-  { label: 'Acerca de mi', href: '/about/' },
-];
+interface Props {
+  textLinks: Array<{ label: string; href: string }>;
+  iconsLinks: Array<{ label: string; href: string; icon: keyof typeof iconPaths }>;
+  currentPath: string;
+}
 
-/** Menu icons */
-const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastianolateh/', icon: 'linkedin' },
-  { label: 'GitHub', href: 'https://github.com/sebasiohx', icon: 'github' },
-  { label: 'CodePen', href: 'https://codepen.io/Solate', icon: 'codepen' },
-];
+const { textLinks, iconsLinks, currentPath } = Astro.props;
 
 const iconThemeDark = iconPaths['moon'];
 const iconThemeLight = iconPaths['sun'];
-const urlPath = Astro.url.pathname;
 ---
 
 <script>
@@ -67,8 +59,8 @@ const urlPath = Astro.url.pathname;
           <span class="triangle triangle-1"></span>
           <a 
           href={href}
-          class:list={['nav-items__link', {'active': urlPath === href ||
-          (href !== '/' && urlPath.startsWith(href))}]}
+          class:list={['nav-items__link', {'active': currentPath === href ||
+          (href !== '/' && currentPath.startsWith(href))}]}
           >
             {label}
 
@@ -120,8 +112,6 @@ const urlPath = Astro.url.pathname;
       ></svg>
     </span>
   </button>
-
-  <MenuMobile textLinks={textLinks} iconsLinks={iconsLinks} currentPath={urlPath}/>
 </nav>
 <!-- Navbar links -->
 <style lang='scss'>
