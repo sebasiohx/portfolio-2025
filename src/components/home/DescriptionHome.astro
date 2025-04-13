@@ -1,6 +1,8 @@
 ---
 import Image from 'astro/components/Image.astro';
 import Ruler from '../Ruler.astro';
+import Noise from '../Noise';
+import Squares from '../Squares';
 
 import experienciaImg from '@images/reunion-nerv.jpg';
 import habilidadesImg from '@images/base-nerv.jpg';
@@ -9,6 +11,14 @@ const medidaRuler:number = 49;
 ---
 
 <section class='description'>
+  <Noise
+    client:load
+    patternSize={250}
+    patternScaleX={1}
+    patternScaleY={1}
+    patternRefreshInterval={2}
+    patternAlpha={25}
+  />
   <div class='caution-bar'>
     <div class='caution-bar__bg1'></div>
     <div class='caution-bar__bg2'></div>
@@ -197,6 +207,8 @@ const medidaRuler:number = 49;
       justify-content: center;
       align-items: center;
       height: 80px;
+      background-color: var(--color-bg);
+      position: relative;
 
       :is(.caution-bar__bg1, .caution-bar__bg2) {
         display: block;
@@ -204,7 +216,7 @@ const medidaRuler:number = 49;
         width: 50%;
         height: 80px;
         position: absolute;
-        z-index: -2;
+        z-index: 0;
         //filter: blur(1px);
         animation: pulse 2s linear infinite;
       }
@@ -242,6 +254,7 @@ const medidaRuler:number = 49;
       overflow: hidden;
       color: var(--color-main-2);
       background-color: var(--color-bg);
+      position: relative;
 
       &:hover .warning-slider__item {
         animation-play-state: paused;
@@ -289,7 +302,7 @@ const medidaRuler:number = 49;
 
     .ruler-deco {
       position: absolute;
-      z-index: -1;
+      z-index: 0;
       top: 84px;
       opacity: 0.4;
 
@@ -392,6 +405,7 @@ const medidaRuler:number = 49;
     gap: var(--size-8px);
     position: relative;
     box-shadow: var(--color-main-2) 0px 0px 10px;
+    background-color: var(--color-bg);
 
     &__title{
       position: absolute;
@@ -458,6 +472,7 @@ const medidaRuler:number = 49;
     gap: var(--size-8px);
     position: relative;
     box-shadow: var(--color-main-2) 0px 0px 10px;
+    background-color: var(--color-bg);
 
     &__title{
       position: absolute;
