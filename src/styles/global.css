@@ -98,6 +98,10 @@
   --color-main-3-rgb: 255, 170, 0;
   --color-bg-rgb: 228, 233, 243;
   --color-text-rgb: 9, 11, 17;
+
+  .title-evangelion{
+    text-shadow: 0 0 2px var(--color-main-1-d4),0 0 1.5px var(--color-main-1-d1);
+  }
 }
 html {
   background-color: var(--color-bg);
