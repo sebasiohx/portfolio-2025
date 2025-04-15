@@ -1,20 +1,28 @@
 ---
 import { Image } from 'astro:assets';
-import { Tranquiluxe } from 'uvcanvas';
-
 import mainImg from '@images/foto-seba-home.png';
+import Balatro from '../jsx/Balatro';
 ---
 
 <section class='hero-section'>
   <div class='hero-section__bg'>
     <div class='hero-section__bg-0'></div>
     <div class='hero-section__bg-1'>
-      <Tranquiluxe client:load />
+      <Balatro
+        client:load      
+        isRotate={true}
+        spinRotation={-0.5}
+        mouseInteraction={false}
+        pixelFilter={2000}
+        color1="#3AD937"
+        color2="#090b11"
+        color3="#3AD937"
+      />
     </div>
   </div>
   <div class='container mx-auto px-2 md:px-4'>
     <article class='hero-section__hero'>
-      <div class='eva-heading pt-14 pb-20 px-4 md:px-20 md:pt-20'>
+      <div class='eva-heading pt-14 pb-20 px-4 md:px-20 md:pt-10'>
         <hgroup>
           <h2 class='title-evangelion eva-heading__title--2'>
             Sebastián
@@ -52,7 +60,6 @@ import mainImg from '@images/foto-seba-home.png';
 <style lang='scss'>
   .hero-section {
     position: relative;
-    //height: min(100vh, 915px);
     height: auto;
     min-height: 100vh;
     width: 100%;
@@ -88,21 +95,18 @@ import mainImg from '@images/foto-seba-home.png';
         display: block;
         width: 100%;
         height: 100%;
-        filter: invert(1) brightness(0.5) contrast(1.5);
+        filter: invert(0) brightness(0.6) contrast(1.5);
       }
     }
     &__hero {
       padding-top: 120px;
-      //padding-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      //flex-direction: column;
     }
     .eva-heading {
       position: relative;
       flex-basis: 100%;
-      //padding-left: 12vw;
       background-color: rgba(var(--color-bg-rgb), 0.9);
       text-shadow:
         0 0 2px #e19a86,
@@ -126,7 +130,7 @@ import mainImg from '@images/foto-seba-home.png';
       &__title {
         &--1 {
           font-size: clamp(3rem, 4.4vw + 1rem, 5.5rem);
-          background: var(--linearSecondaryPrimary);
+          background: var(--linearPrimarySecondary);
           background-clip: text;
           color: transparent;
           text-shadow: none;
@@ -154,7 +158,6 @@ import mainImg from '@images/foto-seba-home.png';
       display: block;
       width: min(100%, 300px);
       height: 400px;
-      //background-color: var(--color-main-2);
       clip-path: polygon(
         calc(0% + 50px) 0%,
         100% 0%,
@@ -202,7 +205,7 @@ import mainImg from '@images/foto-seba-home.png';
       &__img-container {
         grid-area: stack;
         justify-self: end;
-        transform: translate(2%, 7%);
+        transform: translate(0.8vw,7vw);
       }
     }
 
@@ -244,7 +247,8 @@ import mainImg from '@images/foto-seba-home.png';
   :global([data-theme='light']) {
     .hero-section {
       &__bg-1 {
-        filter: invert(0) brightness(1.5) contrast(0.7) hue-rotate(-35deg);
+        //Balatro
+        filter: invert(1) brightness(1) contrast(0.7) hue-rotate(-35deg);
       }
       .eva-heading {
         text-shadow:
