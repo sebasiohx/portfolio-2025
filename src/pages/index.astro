@@ -2,16 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import HeroHome from "../components/home/HeroHome.astro";
 import DescriptionHome from "../components/home/DescriptionHome.astro";
+import PortfolioHome from 'src/components/home/PortfolioHome.astro';
 
 //const currentYear = new Date().getFullYear();
 ---
 
-<Layout title='SebaOlateH | Front-end developer'>
+<Layout title='SebaOlate | Front-end developer'>
   <!-- las clases que sirven para crear un .contanier con "container px-3 mx-auto py-6 md:pt-0 columns-3 gap-8" -->
   <main>
     <HeroHome />
 
     <DescriptionHome />
+
+    <PortfolioHome />
 
     <code>const hola:string = "EVA - 01";</code>
     <p>const hola:string = "EVA - 01";</p>

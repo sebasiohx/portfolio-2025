@@ -1,68 +1,75 @@
 ---
 import Layout from "../../layouts/Layout.astro"; 
 ---
+<script>
+  const imgClick = document.getElementById("imgClick")!;
 
+  imgClick.addEventListener("click", () => {
+    alert('Hiciiste click en la imagen!');
+  });
+    
+</script>
 <Layout title="SebaOlate | Front-end developer">
   <div class="banner">
     <div class="slider" style="--quantity: 10">
       <div class="item" style="--position: 1">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_1.jpg" alt="" />
+        <img id="imgClick" class="item__img" src="/assets/css-gallery-3d/dragon_1.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 2">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_2.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_2.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 3">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_3.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_3.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 4">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_4.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_4.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 5">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_5.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_5.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 6">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_6.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_6.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 7">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_7.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_7.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 8">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_8.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_8.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 9">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_9.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_9.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
       <div class="item" style="--position: 10">
-        <img class="item__img" src="/public/assets/css-gallery-3d/dragon_10.jpg" alt="" />
+        <img class="item__img" src="/assets/css-gallery-3d/dragon_10.jpg" alt="" />
         <div class="item__backface">
-          <img class="item__backface__img" src="/public/assets/logo-so.svg" alt="logo Sebaolate"/>
+          <img class="item__backface__img" src="/assets/logo-so.svg" alt="logo Sebaolate"/>
         </div>
       </div>
     </div>
@@ -96,11 +103,14 @@ import Layout from "../../layouts/Layout.astro";
     transform: perspective(1000px);
     animation: autoRun 20s linear infinite;
   }
+  .banner .slider:hover {
+    animation-play-state: paused;
+  }
   @keyframes autoRun {
-    from{
-      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
-    } to {
-      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    0% {
+      transform: perspective(2000px) rotateX(-16deg) rotateY(0deg);
+    } 100% {
+      transform: perspective(2000px) rotateX(-16deg) rotateY(360deg);
     }
   }
   .banner .slider .item {
@@ -110,6 +120,7 @@ import Layout from "../../layouts/Layout.astro";
     transform:
       rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
       translateZ(550px);
+      box-shadow: 0 23px 30px -10px var(--color-main-1),0 2px 4px 2px var(--color-main-2);
   }
   .banner .slider .item .item__img {
     width: 100%;

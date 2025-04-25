@@ -1,0 +1,136 @@
+---
+import Icon from '../Icon.astro'
+---
+
+<!-- <div class="banner">
+  <div class="carousel" style="--quantity: 6">
+    <div class="item" style="--position: 1">
+      <div class="item__frontface">
+        <h2>Hola mundo 1</h2>
+      </div>
+      <div class="item__backface">
+        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
+      </div>
+    </div>
+    <div class="item" style="--position: 2">
+      <div class="item__frontface">
+        <h2>Hola mundo 2</h2>
+      </div>
+      <div class="item__backface">
+        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
+      </div>
+    </div>
+    <div class="item" style="--position: 3">
+      <div class="item__frontface">
+        <h2>Hola mundo 3</h2>
+      </div>
+      <div class="item__backface">
+        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
+      </div>
+    </div>
+    <div class="item" style="--position: 4">
+      <div class="item__frontface">
+        <h2>Hola mundo 4</h2>
+      </div>
+      <div class="item__backface">
+        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
+      </div>
+    </div>
+    <div class="item" style="--position: 5">
+      <div class="item__frontface">
+        <h2>Hola mundo 5</h2>
+      </div>
+      <div class="item__backface">
+        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
+      </div>
+    </div>
+    <div class="item" style="--position: 6">
+      <div class="item__frontface">
+        <h2>Hola mundo 6</h2>
+      </div>
+      <div class="item__backface">
+        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <span class="bar-background">/////////////////////////////////</span>
+    <div class="content__titlebox">
+      <h2 class="content__title title-evangelion">Portafolio</h2>
+    </div>
+  </div>
+</div> -->
+
+<section class='portfolio-home'>
+  <div class="top-content">
+    <span class="bar-background"></span>
+    <div class="top-content__titlebox">
+      <h2 class="top-content__title title-evangelion">Portafolio</h2>
+    </div>
+  </div>
+  <div class='container mx-auto px-2 md:px-4'>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quidem, minima voluptates, vitae eligendi qui sunt odio totam voluptas accusantium aspernatur earum officiis. Eveniet, dolore. Saepe asperiores amet veniam adipisci?
+    Minima voluptates sequi perspiciatis. Repudiandae in, mollitia possimus beatae itaque earum laborum maxime quod sunt aliquid aliquam quos vel? Autem dolorem nesciunt magni architecto ipsum nam optio rem placeat nobis?
+    Praesentium id magnam dolorem quam recusandae sed perferendis aspernatur tempore asperiores rem in hic nulla porro maiores suscipit vel earum, veritatis magni! Officiis, ratione. Consectetur quas iste alias fugit unde?</p>
+  </div>
+</section>
+
+<style lang='scss'>
+  .portfolio-home {
+    position: relative;
+    width: 100%;
+    height: 900px;
+    margin-top: -48px;
+    background-color: var(--color-bg);
+    background-image: linear-gradient(var(--color-main-1-d4) 1px, transparent 1px), linear-gradient(to right, var(--color-main-1-d4) 1px, transparent 1px);
+    background-size: 194px 194px; //214px 214px
+    clip-path: polygon(23% 5%,30% 0%,70% 0%,77% 5%,100% 5%,100% 100%,0% 100%,0% 5%);
+
+    @media screen and (width >= 768px) {
+      clip-path: polygon(36% 5%, 40% 0%, 60% 0%, 64% 5%, 100% 5%, 100% 100%, 0% 100%, 0% 5%);
+    }
+    @media screen and (width >= 1024px) {
+      background-size: 214px 214px;
+    }
+  }
+  
+  .top-content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 1rem;
+    margin-bottom: 3rem;
+
+    .bar-background{
+      clip-path: polygon(15% 0%, 85% 0%, 95% 100%, 5% 100%);
+      display: block;
+      width: 46vw;
+      height: 30px;
+      background-image: repeating-linear-gradient(45deg,transparent,transparent 7px,var(--color-main-1) 8px,var(--color-main-1) 9px);
+
+      @media screen and (width >= 768px) {
+        width: 24vw;
+      }
+    }
+    &__titlebox{
+      min-width: 22vw;
+      padding: 2rem 1rem;
+      backdrop-filter: blur(3px);
+      background-color: rgba(var(--color-bg-rgb), 0.3);
+      border: 1px solid rgba(var(--color-main-1-rgb), 0.125);
+      border-right: 2px solid var(--color-main-1);
+      border-bottom: 2px solid var(--color-main-1);
+      outline: var(--color-main-2-d2) double 4px;
+      outline-offset: 5px;
+    }
+    &__title{
+      font-size: clamp(2rem, 2.08vw + 1rem, 2.625rem);
+      text-align: center;
+    }
+  }
+  
+</style>
