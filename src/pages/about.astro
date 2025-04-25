@@ -5,4 +5,91 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="SebaOlateH | Acerca de mi">
   <h1>about</h1>
 
+  
+  <style>    
+    /* Estilos para el botón */
+    .btn-abrir {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .btn-abrir:hover {
+      background-color: #45a049;
+    }
+    
+    /* Estilos para el modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-contenido {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      width: 70%;
+      max-width: 500px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    
+    .cerrar {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .cerrar:hover {
+      color: black;
+    }
+  </style>
+  <!-- Botón para abrir el modal -->
+  <button class="btn-abrir mt-80" id="btnAbrir">Abrir Modal</button>
+  
+  <!-- El modal -->
+  <div id="miModal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" id="btnCerrar">&times;</span>
+      <h2>Bienvenido al Modal</h2>
+      <p>Este es un ejemplo simple de un modal hecho con JavaScript.</p>
+      <p>Puedes cerrar este modal haciendo clic en la X o fuera del modal.</p>
+    </div>
+  </div>
+
+  <script>
+    // Obtener elementos del DOM
+    const modal = document.getElementById("miModal")!;
+    const btnAbrir = document.getElementById("btnAbrir")!;
+    const btnCerrar = document.getElementById("btnCerrar")!;
+    
+    // Abrir el modal cuando se hace clic en el botón
+    btnAbrir.addEventListener("click", function() {
+      modal.style.display = "block";
+    });
+    
+    // Cerrar el modal cuando se hace clic en la X
+    btnCerrar.addEventListener("click", function() {
+      modal.style.display = "none";
+    });
+    
+    // Cerrar el modal cuando se hace clic fuera del modal
+    window.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
 </Layout>

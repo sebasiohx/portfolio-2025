@@ -23,29 +23,35 @@ const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[
 
 <script>
   /* funcion para el comportamiento del header segun este en el index o no */
-  const headerCSS: any = document.querySelector('#Header')?.classList;
-  const headerClasses = () => {
-    document.addEventListener('scroll', () => {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Verificar si el header existe una sola vez
+    const header = document.querySelector('#Header');
+    if (!header) return;
+    
+    // Usar una variable global o función que ya tenga acceso a header
+    const toggleClassHeaderOnScroll = () => {
       let altura: number = window.scrollY;
-
-      if (headerCSS.contains('Header--home')) {
+      
+      if (header.classList.contains('Header--home')) {
         if (altura >= 0 && altura < 730) {
-          headerCSS.add('Header--big');
+          header.classList.add('Header--big');
         } else {
-          headerCSS.remove('Header--big');
+          header.classList.remove('Header--big');
         }
       } else {
         if (altura >= 250) {
-          headerCSS.add('Header--big');
+          header.classList.add('Header--big');
         } else {
-          headerCSS.remove('Header--big');
+          header.classList.remove('Header--big');
         }
       }
-    });
-  };
-
-  document.addEventListener('DOMContentLoaded', () => {
-    headerClasses();
+    };
+    
+    // Añadir el event listener
+    document.addEventListener('scroll', toggleClassHeaderOnScroll);
+    
+    // Ejecutar inicial
+    toggleClassHeaderOnScroll();
   });
 </script>
 

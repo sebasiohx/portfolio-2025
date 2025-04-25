@@ -9,14 +9,14 @@ import Balatro from '../jsx/Balatro';
     <div class='hero-section__bg-0'></div>
     <div class='hero-section__bg-1'>
       <Balatro
-        client:load      
+        client:load
         isRotate={true}
         spinRotation={-0.5}
         mouseInteraction={false}
         pixelFilter={2000}
-        color1="#3AD937"
-        color2="#090b11"
-        color3="#3AD937"
+        color1='#3AD937'
+        color2='#090b11'
+        color3='#3AD937'
       />
     </div>
   </div>
@@ -24,13 +24,9 @@ import Balatro from '../jsx/Balatro';
     <article class='hero-section__hero'>
       <div class='eva-heading pt-14 pb-20 px-4 md:px-20 md:pt-10'>
         <hgroup>
-          <h2 class='title-evangelion eva-heading__title--2'>
-            Sebastián
-          </h2>
+          <h2 class='title-evangelion eva-heading__title--2'>Sebastián</h2>
           <h2 class='title-evangelion eva-heading__title--2'>Olate H.</h2>
-          <h1 class='title-evangelion eva-heading__title--1'>
-            Front-end
-          </h1>
+          <h1 class='title-evangelion eva-heading__title--1'>Front-end</h1>
           <h3 class='eva-heading__episode-number'></h3>
           <h4 class='eva-heading__episode-title'>Desarrollador Web</h4>
           <h4 class='eva-heading__episode-title'>CSS Senior</h4>
@@ -135,9 +131,28 @@ import Balatro from '../jsx/Balatro';
           color: transparent;
           text-shadow: none;
           white-space: nowrap;
+          
+          /* opcion animacion de fondo del titulo
+          animation: bg 32s linear infinite both;
+          background: linear-gradient(
+            to bottom,
+            var(--color-main-2),
+            var(--color-main-1),
+            var(--color-main-1),
+            var(--color-main-2),
+          );
+          background-size: 1000px 100%; */
         }
         &--2 {
           font-size: clamp(2.25rem, 3vw + 1rem, 4rem);
+        }
+      }
+      @keyframes bg {
+        0% {
+          background-position-y: 0;
+        }
+        100% {
+          background-position-y: 800px;
         }
       }
       &__episode-number {
@@ -180,7 +195,7 @@ import Balatro from '../jsx/Balatro';
     @media screen and (width >= 768px) {
       height: 80vh;
       min-height: 700px;
-    
+
       &__hero {
         display: grid;
         grid-template-areas: 'stack';
@@ -205,7 +220,7 @@ import Balatro from '../jsx/Balatro';
       &__img-container {
         grid-area: stack;
         justify-self: end;
-        transform: translate(0.8vw,7vw);
+        transform: translate(0.8vw, 7vw);
       }
     }
 
@@ -229,7 +244,7 @@ import Balatro from '../jsx/Balatro';
       &__img-container {
         height: 540px;
         width: 360px;
-        transform: translate(-1.5vw, 4.5vw);
+        transform: translate(-1.1vw, 1.8vw);
       }
     }
 
