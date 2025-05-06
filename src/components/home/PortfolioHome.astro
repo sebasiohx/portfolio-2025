@@ -1,77 +1,209 @@
 ---
 import Icon from '../Icon.astro'
 ---
+<script>
+	import Splide from '@splidejs/splide';
+	
+	document.addEventListener('DOMContentLoaded', () => {
+		// Configuracion del slider principal
+		const mainSlider = new Splide('#main-slider-portfolio-home', {
+			type: 'loop',
+			perPage: 1,
+			perMove: 1,
+			gap: '1rem',
+			pagination: false,
+			autoplay: true,
+			interval: 3000,
+			pauseOnHover: true,
+			pauseOnFocus: true,
+			progress: true,
+			resetProgress: false,
+			height: '400px',
+			breakpoints: {
+				768: {
+					height: '250px',
+				},
+			},
+		});
 
-<!-- <div class="banner">
-  <div class="carousel" style="--quantity: 6">
-    <div class="item" style="--position: 1">
-      <div class="item__frontface">
-        <h2>Hola mundo 1</h2>
-      </div>
-      <div class="item__backface">
-        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
-      </div>
-    </div>
-    <div class="item" style="--position: 2">
-      <div class="item__frontface">
-        <h2>Hola mundo 2</h2>
-      </div>
-      <div class="item__backface">
-        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
-      </div>
-    </div>
-    <div class="item" style="--position: 3">
-      <div class="item__frontface">
-        <h2>Hola mundo 3</h2>
-      </div>
-      <div class="item__backface">
-        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
-      </div>
-    </div>
-    <div class="item" style="--position: 4">
-      <div class="item__frontface">
-        <h2>Hola mundo 4</h2>
-      </div>
-      <div class="item__backface">
-        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
-      </div>
-    </div>
-    <div class="item" style="--position: 5">
-      <div class="item__frontface">
-        <h2>Hola mundo 5</h2>
-      </div>
-      <div class="item__backface">
-        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
-      </div>
-    </div>
-    <div class="item" style="--position: 6">
-      <div class="item__frontface">
-        <h2>Hola mundo 6</h2>
-      </div>
-      <div class="item__backface">
-        <Icon icon="logoSO" size="140px" color="var(--color-main-2)" />
-      </div>
-    </div>
-  </div>
-  <div class="content">
-    <span class="bar-background">/////////////////////////////////</span>
-    <div class="content__titlebox">
-      <h2 class="content__title title-evangelion">Portafolio</h2>
-    </div>
-  </div>
-</div> -->
+		// Configuracion del slider Thumbnail
+		const thumbnailSlider = new Splide('#thumbnail-slider-portfolio-home', {
+			rewind: true,
+			focus: 'center',gap: 10,
+			pagination: false,
+			arrows: false,
+			isNavigation: true,
+      fixedWidth: 150,
+			fixedHeight: 100,
+			breakpoints: {
+				768: {
+					fixedWidth: 60,
+					fixedHeight: 40,
+				}
+			},
+		});
+
+		// Sincronizar los sliders e iniciarlos
+		mainSlider.sync(thumbnailSlider);
+
+		mainSlider.mount();
+		thumbnailSlider.mount();
+
+		// Configuracion del slider de contenido
+		const contentSlides = document.querySelectorAll('.content-slide-portfolio');
+
+		contentSlides[0].classList.add('is-active');
+
+		mainSlider.on('moved', (newIndex) => {
+			//ocultar todos los textos
+			contentSlides.forEach( slideElement => {
+				slideElement.classList.remove('is-active');
+			});
+			// Mostrar el texto correspondiente al slide activo
+			contentSlides[newIndex].classList.add('is-active');
+		});
+
+		// iniciar el contenido del primer slide al cargar la página
+		mainSlider.on('ready', () => {
+			contentSlides[mainSlider.index].classList.add('is-active');
+		});
+	});
+</script>
 
 <section class='portfolio-home'>
   <div class="top-content">
-    <span class="bar-background"></span>
     <div class="top-content__titlebox">
       <h2 class="top-content__title title-evangelion">Portafolio</h2>
     </div>
   </div>
   <div class='container mx-auto px-2 md:px-4'>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quidem, minima voluptates, vitae eligendi qui sunt odio totam voluptas accusantium aspernatur earum officiis. Eveniet, dolore. Saepe asperiores amet veniam adipisci?
-    Minima voluptates sequi perspiciatis. Repudiandae in, mollitia possimus beatae itaque earum laborum maxime quod sunt aliquid aliquam quos vel? Autem dolorem nesciunt magni architecto ipsum nam optio rem placeat nobis?
-    Praesentium id magnam dolorem quam recusandae sed perferendis aspernatur tempore asperiores rem in hic nulla porro maiores suscipit vel earum, veritatis magni! Officiis, ratione. Consectetur quas iste alias fugit unde?</p>
+    <article class='portfolio-slider'>
+      <h3 class="portfolio-slider__title">Destacados</h3>
+      <div class="portfolio-slider__container">
+        <!-- seccion 1 -->
+        <div class="portfolio-slider__section portfolio-slider__section--1">
+					<!-- Slider principal -->
+					<section id="main-slider-portfolio-home" class="splide">
+            <div class="splide__arrows">
+              <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path></svg>
+              </button>
+              <button class="splide__arrow splide__arrow--next" title="trabajo siguiente">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path></svg>
+              </button>
+            </div>
+            
+						<div class="splide__track">
+							<ul class="splide__list">
+								<!-- Slide 1 -->
+								<li class="splide__slide">
+                  <a href="#">
+                    <img src="https://picsum.photos/id/1018/1000/600" alt="Montañas">
+                  </a>
+								</li>
+								<!-- Slide 2 -->
+								<li class="splide__slide">
+                  <a href="#">
+                    <img src="https://picsum.photos/id/1015/1000/600" alt="Río y montañas">
+                  </a>
+								</li>
+								<!-- Slide 3 -->
+								<li class="splide__slide">
+                  <a href="#">
+                    <img src="https://picsum.photos/id/1019/1000/600" alt="Lago">
+                  </a>
+								</li>
+								<!-- Slide 4 -->
+								<li class="splide__slide">
+                  <a href="#">
+                    <img src="https://picsum.photos/id/1039/1000/600" alt="Bosque">
+                  </a>
+								</li>
+								<!-- Slide 5 -->
+								<li class="splide__slide">
+                  <a href="#">
+                    <img src="https://picsum.photos/id/1043/1000/600" alt="Campo">
+                  </a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="splide__progress">
+							<div class="splide__progress__bar"></div>
+						</div>
+            <button class="splide__toggle" type="button">
+              <span class="splide__toggle__play" title="Play">
+                <Icon icon="play" size={24} color="var(--color-text)"/>
+              </span>
+              <span class="splide__toggle__pause" title="Pause">
+                <Icon icon="pause" size={24} color="var(--color-text)"/>
+              </span>
+            </button>
+					</section>
+				</div>
+				<!-- seccion 2 -->
+        <div class="portfolio-slider__section portfolio-slider__section--2">
+					<!-- Slider de miniaturas (thumbnails) -->
+					<section id="thumbnail-slider-portfolio-home" class="splide thumbnail-slider">
+						<div class="splide__track">
+							<ul class="splide__list">
+								<!-- Las mismas imágenes que en el slider principal, pero como miniaturas -->
+								<li class="splide__slide">
+									<img src="https://picsum.photos/id/1018/200/200" alt="Montañas">
+								</li>
+								<li class="splide__slide">
+									<img src="https://picsum.photos/id/1015/200/200" alt="Río y montañas">
+								</li>
+								<li class="splide__slide">
+									<img src="https://picsum.photos/id/1019/200/200" alt="Lago">
+								</li>
+								<li class="splide__slide">
+									<img src="https://picsum.photos/id/1039/200/200" alt="Bosque">
+								</li>
+								<li class="splide__slide">
+									<img src="https://picsum.photos/id/1043/200/200" alt="Campo">
+								</li>
+							</ul>
+						</div>
+					</section>
+
+					<!-- Sección de contenido (títulos y descripciones) -->
+					<section id="content-slider-portfolio-home" class="content-section-porfolio">
+						<!-- Contenido Slide 1 -->
+						<div class="content-slide-portfolio" id="content-0">
+							<h2 class="slide-title">Paisaje montañoso</h2>
+							<p class="slide-description">Disfruta de las impresionantes vistas de estas montañas majestuosas. Las cumbres nevadas se alzan hacia el cielo azul, creando un espectáculo natural que te dejará sin aliento. Este paisaje es perfecto para los amantes de la naturaleza y la fotografía.</p>
+						</div>
+						
+						<!-- Contenido Slide 2 -->
+						<div class="content-slide-portfolio" id="content-1">
+							<h2 class="slide-title">Río entre montañas</h2>
+							<p class="slide-description">El agua cristalina refleja el paisaje natural que lo rodea. El sonido relajante del agua corriendo entre las rocas y la frescura del aire te transportarán a un estado de paz y tranquilidad. Un destino ideal para desconectar del estrés de la vida diaria.</p>
+						</div>
+						
+						<!-- Contenido Slide 3 -->
+						<div class="content-slide-portfolio" id="content-2">
+							<h2 class="slide-title">Lago tranquilo</h2>
+							<p class="slide-description">La paz y serenidad de este lago te transportarán a otro mundo. El espejo de agua refleja las nubes y el cielo, creando una atmósfera casi mágica. Este lugar es conocido por sus increíbles amaneceres y atardeceres que pintan el agua con tonos dorados y rojizos.</p>
+						</div>
+						
+						<!-- Contenido Slide 4 -->
+						<div class="content-slide-portfolio" id="content-3">
+							<h2 class="slide-title">Bosque misterioso</h2>
+							<p class="slide-description">Adéntrate en la mágica atmósfera de este denso bosque. Los rayos de sol que se filtran entre las hojas crean juegos de luces y sombras fascinantes. La rica biodiversidad de este ecosistema ofrece un hogar a numerosas especies de flora y fauna única.</p>
+						</div>
+						
+						<!-- Contenido Slide 5 -->
+						<div class="content-slide-portfolio" id="content-4">
+							<h2 class="slide-title">Campos verdes</h2>
+							<p class="slide-description">La belleza de la naturaleza en estado puro. Extensas praderas verdes que se mecen con la brisa, transmitiendo una sensación infinita de libertad y espacio. El perfecto equilibrio entre cielo y tierra que nos recuerda la importancia de preservar nuestros paisajes naturales.</p>
+						</div>
+					</section>
+				</div>
+        <!-- seccion 3 -->
+        <div class="portfolio-slider__section portfolio-slider__section--3"></div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -79,16 +211,12 @@ import Icon from '../Icon.astro'
   .portfolio-home {
     position: relative;
     width: 100%;
-    height: 900px;
-    margin-top: -48px;
+    //height: 960px;
     background-color: var(--color-bg);
     background-image: linear-gradient(var(--color-main-1-d4) 1px, transparent 1px), linear-gradient(to right, var(--color-main-1-d4) 1px, transparent 1px);
-    background-size: 194px 194px; //214px 214px
-    clip-path: polygon(23% 5%,30% 0%,70% 0%,77% 5%,100% 5%,100% 100%,0% 100%,0% 5%);
+    background-size: 194px 194px;
+    padding-top: 3rem;
 
-    @media screen and (width >= 768px) {
-      clip-path: polygon(36% 5%, 40% 0%, 60% 0%, 64% 5%, 100% 5%, 100% 100%, 0% 100%, 0% 5%);
-    }
     @media screen and (width >= 1024px) {
       background-size: 214px 214px;
     }
@@ -105,32 +233,225 @@ import Icon from '../Icon.astro'
     padding-top: 1rem;
     margin-bottom: 3rem;
 
-    .bar-background{
-      clip-path: polygon(15% 0%, 85% 0%, 95% 100%, 5% 100%);
-      display: block;
-      width: 46vw;
-      height: 30px;
-      background-image: repeating-linear-gradient(45deg,transparent,transparent 7px,var(--color-main-1) 8px,var(--color-main-1) 9px);
-
-      @media screen and (width >= 768px) {
-        width: 24vw;
-      }
-    }
     &__titlebox{
+      position: relative;
       min-width: 22vw;
       padding: 2rem 1rem;
       backdrop-filter: blur(3px);
       background-color: rgba(var(--color-bg-rgb), 0.3);
       border: 1px solid rgba(var(--color-main-1-rgb), 0.125);
-      border-right: 2px solid var(--color-main-1);
-      border-bottom: 2px solid var(--color-main-1);
+      border-left: 2px solid var(--color-main-1);
+      border-top: 2px solid var(--color-main-1);
       outline: var(--color-main-2-d2) double 4px;
       outline-offset: 5px;
+
+      &::before{
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 0px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: var(--color-main-1);
+        clip-path: polygon(0 0,100% 0,100% 50%,0% 100%);
+        transition: opacity 0.3s,transform 0.3s cubic-bezier(0.455,0.03,0.515,0.955);
+      }
     }
     &__title{
       font-size: clamp(2rem, 2.08vw + 1rem, 2.625rem);
       text-align: center;
     }
+  }
+
+  .portfolio-slider{
+    position: relative;
+    //width: 80%;
+    margin-inline: auto;
+    &__title{
+      font-size: var(--size-26px);
+      border-bottom: 1px solid var(--color-main-1-d1);
+      margin-bottom: 2rem;
+      font-family: var(--font-family-2);
+      text-transform: uppercase;
+    }
+    &__container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;      
+    }
+    &__section{
+      position: relative;
+      //width: 50%;
+      height: 568px;
+      border: 1px solid var(--color-main-1-d2);
+
+      &--1{
+        width: 45%;
+      }
+      &--2{
+        width: 45%;
+      }
+      &--3{
+        width: 10%;
+      }
+    }
+  }
+
+	#main-slider-portfolio-home.splide{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: repeating-linear-gradient(135deg, var(--color-main-1-d3) 0, var(--color-main-1-d3) 1px, transparent 0, transparent 50%);
+    background-size: 32px 32px;
+
+    .splide__slide{
+      a{
+        display: inline-block;
+        border: 1px solid var(--color-bg);
+
+        &:hover{
+          border: 1px solid var(--color-main-1-d3);
+        }
+      }
+      img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+    }
+
+    .splide__track{
+      width: 80%;
+    }
+
+    .splide__arrows{
+      .splide__arrow{
+        position: absolute;
+        z-index: 1;
+        padding: 8px 2px;
+        background-color: var(--color-main-1-d1);
+
+        &:hover{
+          background-color: var(--color-main-1-l2);
+        }
+        svg{
+          width: 2.5rem;
+          height: 2.5rem;
+          fill: var(--color-bg);
+        }
+        &--prev{
+          left: 2%;
+          top: 50%;
+          transform: translateY(-50%) rotateY(180deg);
+        }
+        &--next{
+          right: 2%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    .splide__progress {
+      border: 1px solid var(--color-main-1-d3);
+      display: block;
+      width: 80%;
+      background-color: rgba(var(--color-bg-rgb, 0.3));
+
+      .splide__progress__bar{
+        height: 10px;
+        background-color: var(--color-main-2);
+      }
+    }
+
+    .splide__toggle{
+      padding: 0.3rem;
+      //align-self: flex-end;
+      transform: translateY(.5rem);
+      background-color: var(--color-main-2);
+      //border-radius: 8px;
+      .splide__toggle__pause, .splide__toggle__play{
+        vertical-align: middle;
+      }
+
+      &.is-active{
+        background-color: var(--color-main-2-d3);
+
+        &:hover{
+          background-color: var(--color-main-2);
+        }
+      }
+    }
+  }
+
+  #thumbnail-slider-portfolio-home.splide{
+    padding: .5rem;
+    border-bottom: 1px solid var(--color-main-1-d2);
+    .splide__list {
+      //transform: translateX(0) !important; /* Anular el centrado */
+      //justify-content: flex-start !important; /* Alinear a la izquierda */
+      gap: 0.5rem;
+    }
+    .splide__slide{
+      // width: 18% !important;
+      position: relative;
+      margin-right: 0 !important;
+      transition: 0.3s ease-in-out;
+      border: 1px solid transparent;
+      filter:saturate(0);
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+      &::before{
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 5px;
+        height: 15px;
+        background-color: transparent;
+      }
+      &::after{
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 5px;
+        height: 15px;
+        background-color: transparent;
+      }
+      &.is-active{
+        filter:saturate(1.5);
+        transition: 0.3s ease-in-out;
+        border: 1px solid var(--color-main-1);
+
+        &::before, &::after{
+          background-color: var(--color-main-1);
+        }
+      }
+    }
+  }
+
+  .content-section-porfolio{
+    margin-top: 20px;
+    padding: 20px;
+
+    .content-slide-portfolio {
+      display: none; /* Ocultamos todos los slides por defecto */
+      animation: fadeIn 0.5s ease-in-out;
+
+      &.is-active {
+        display: block; /* Mostramos solo el slide activo */
+      }
+    }
+    
   }
   
 </style>
