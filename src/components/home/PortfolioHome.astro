@@ -240,6 +240,10 @@ import Threads from '../jsx/Threads';
             distance={.8}
             enableMouseInteraction={true}
           />
+          <div class="console-section-3">
+            <span>cargando datos...</span>
+            <span>sincronizando frecuencia...</span>
+          </div>
         </div>
       </div>
     </article>
@@ -336,6 +340,7 @@ import Threads from '../jsx/Threads';
       &--3{
         width: 10%;
         background-color: rgba(var(--color-bg-rgb), .8);
+        position: relative;
       }
     }
   }
@@ -578,5 +583,15 @@ import Threads from '../jsx/Threads';
         }
       }
     }
+  }
+
+  .console-section-3{
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    display: inline;
+    color: var(--color-text);
+    font-size: var(--size-10px);
+    font-family: var(--font-family-3);
   }
 </style>

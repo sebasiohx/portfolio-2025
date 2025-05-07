@@ -5,7 +5,7 @@ interface Props {
   href?: string;
   target?: string;
   isActive?: boolean;
-  class?: string;
+  className?: string;
 }
 
 const {
@@ -14,7 +14,7 @@ const {
   href,
   target = '_self',
   isActive = false,
-  class: className = '',
+  className = '',
 } = Astro.props;
 ---
 
@@ -97,7 +97,7 @@ const {
     font-weight: bold;
     display: flex;
     padding: 0.5rem 1rem;
-    background-color: var(--color-bg);
+    /* background-color: var(--color-bg); */
   }
   .btn-content:is(:hover, .active:hover) {
     background: linear-gradient(
