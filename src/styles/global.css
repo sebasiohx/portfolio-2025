@@ -151,6 +151,11 @@ code {
   100%{ opacity: 1}
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Utilities */
 .ejemplpo-bg-gradiente-repeat{
   background: repeating-linear-gradient(115deg, var(--color-bg), var(--color-bg) 10px, var(--color-bg) 20px, var(--color-main-1) 21px, var(--color-main-1) 40px, var(--color-main-1) 41px);
