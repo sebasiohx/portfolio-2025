@@ -1,5 +1,4 @@
 ---
-import type { transform } from 'typescript';
 import Icon from '../Icon.astro'
 import Threads from '../jsx/Threads';
 ---
@@ -14,16 +13,16 @@ import Threads from '../jsx/Threads';
 			perMove: 1,
 			gap: '1rem',
 			pagination: false,
-			autoplay: true,
-			interval: 3000,
+			autoplay: true, //true
+			interval: 3500,
 			pauseOnHover: true,
 			pauseOnFocus: true,
 			progress: true,
 			resetProgress: false,
-			height: '400px',
+			height: 400,
 			breakpoints: {
-				768: {
-					height: '250px',
+				767: {
+					height: 300,
 				},
 			},
 		});
@@ -38,9 +37,9 @@ import Threads from '../jsx/Threads';
       fixedWidth: 150,
 			fixedHeight: 100,
 			breakpoints: {
-				768: {
-					fixedWidth: 60,
-					fixedHeight: 40,
+				767: {
+					fixedWidth: 120,
+					fixedHeight: 80,
 				}
 			},
 		});
@@ -88,10 +87,10 @@ import Threads from '../jsx/Threads';
 					<section id="main-slider-portfolio-home" class="main-portfolio-slider splide">
             <div class="splide__arrows">
               <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path></svg>
+                <Icon icon='arrowSlider' size={40} color='var(--color-bg)'/>
               </button>
               <button class="splide__arrow splide__arrow--next" title="trabajo siguiente">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path></svg>
+                <Icon icon='arrowSlider' size={40} color='var(--color-bg)'/>
               </button>
             </div>
             
@@ -99,32 +98,47 @@ import Threads from '../jsx/Threads';
 							<ul class="splide__list">
 								<!-- Slide 1 -->
 								<li class="splide__slide">
-                  <a href="#">
-                    <img src="https://picsum.photos/id/1018/1000/600" alt="Montañas">
+                  <a class="splide__link" href="#">
+                    <span class="splide__active-screen">
+                      <Icon class='splide__icon' icon="zoom" size={60} color="var(--color-main-1)"/>
+                    </span>
+                    <img class="splide__img-main" src="https://picsum.photos/id/1018/1000/600" alt="Montañas">
                   </a>
 								</li>
 								<!-- Slide 2 -->
 								<li class="splide__slide">
-                  <a href="#">
-                    <img src="https://picsum.photos/id/1015/1000/600" alt="Río y montañas">
+                  <a class="splide__link" href="#">
+                    <span class="splide__active-screen">
+                      <Icon class='splide__icon' icon="zoom" size={60} color="var(--color-main-1)"/>
+                    </span>
+                    <img class="splide__img-main" src="https://picsum.photos/id/1015/1000/600" alt="Río y montañas">
                   </a>
 								</li>
 								<!-- Slide 3 -->
 								<li class="splide__slide">
-                  <a href="#">
-                    <img src="https://picsum.photos/id/1019/1000/600" alt="Lago">
+                  <a class="splide__link" href="#">
+                    <span class="splide__active-screen">
+                      <Icon class='splide__icon' icon="zoom" size={60} color="var(--color-main-1)"/>
+                    </span>
+                    <img class="splide__img-main" src="https://picsum.photos/id/1019/1000/600" alt="Lago">
                   </a>
 								</li>
 								<!-- Slide 4 -->
 								<li class="splide__slide">
-                  <a href="#">
-                    <img src="https://picsum.photos/id/1039/1000/600" alt="Bosque">
+                  <a class="splide__link" href="#">
+                    <span class="splide__active-screen">
+                      <Icon class='splide__icon' icon="zoom" size={60} color="var(--color-main-1)"/>
+                    </span>
+                    <img class="splide__img-main" src="https://picsum.photos/id/1039/1000/600" alt="Bosque">
                   </a>
 								</li>
 								<!-- Slide 5 -->
 								<li class="splide__slide">
-                  <a href="#">
-                    <img src="https://picsum.photos/id/1043/1000/600" alt="Campo">
+                  <a class="splide__link" href="#">
+                    <span class="splide__active-screen">
+                      <Icon class='splide__icon' icon="zoom" size={60} color="var(--color-main-1)"/>
+                    </span>
+                    <img class="splide__img-main" src="https://picsum.photos/id/1043/1000/600" alt="Campo">
                   </a>
 								</li>
 							</ul>
@@ -151,19 +165,34 @@ import Threads from '../jsx/Threads';
 							<ul class="splide__list">
 								<!-- Las mismas imágenes que en el slider principal, pero como miniaturas -->
 								<li class="splide__slide">
-									<img src="https://picsum.photos/id/1018/200/200" alt="Montañas">
+                  <span class="splide__client-screen">
+                    Escuela militar
+                  </span>
+									<img class="splide__img" src="https://picsum.photos/id/1018/200/200" alt="Montañas">
 								</li>
 								<li class="splide__slide">
-									<img src="https://picsum.photos/id/1015/200/200" alt="Río y montañas">
+                  <span class="splide__client-screen">
+                    Policia de investigaciones (PDI)
+                  </span>
+									<img class="splide__img" src="https://picsum.photos/id/1015/200/200" alt="Río y montañas">
 								</li>
 								<li class="splide__slide">
-									<img src="https://picsum.photos/id/1019/200/200" alt="Lago">
+                  <span class="splide__client-screen">
+                    Mnisterio de energia
+                  </span>
+									<img class="splide__img" src="https://picsum.photos/id/1019/200/200" alt="Lago">
 								</li>
 								<li class="splide__slide">
-									<img src="https://picsum.photos/id/1039/200/200" alt="Bosque">
+                  <span class="splide__client-screen">
+                    Escuela militar
+                  </span>
+									<img class="splide__img" src="https://picsum.photos/id/1039/200/200" alt="Bosque">
 								</li>
 								<li class="splide__slide">
-									<img src="https://picsum.photos/id/1043/200/200" alt="Campo">
+                  <span class="splide__client-screen">
+                    Policia de investigaciones (PDI)
+                  </span>
+									<img class="splide__img" src="https://picsum.photos/id/1043/200/200" alt="Campo">
 								</li>
 							</ul>
 						</div>
@@ -320,27 +349,55 @@ import Threads from '../jsx/Threads';
     }
     &__container{
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;      
     }
     &__section{
       position: relative;
-      //width: 50%;
-      height: 568px;
+      height: auto;
       border: 1px solid var(--color-main-1-d2);
-
       &--1{
-        width: 45%;
+        width: 100%;
+        height: 400px;
       }
       &--2{
-        width: 45%;
-        border-left: 0px;
-        border-right: 0px;
+        width: 100%;
       }
       &--3{
-        width: 10%;
-        background-color: rgba(var(--color-bg-rgb), .8);
-        position: relative;
+        display: none;
+      }
+    }
+    @media screen and (width >= 768px) {
+      &__container{
+        flex-direction: row;        
+      }
+      &__section{
+        height: 528px;
+        &--1{
+          width: 50%;
+        }
+        &--2{
+          width: 50%;
+          border-left: 0px;
+        }
+      }
+    }
+    @media screen and (width >= 1024px) {
+      &__section{
+        height: 568px;
+        &--1{
+          width: 45%;
+        }
+        &--2{
+          width: 45%;
+          border-right: 0px;
+        }
+        &--3{
+          display: block;
+          width: 10%;
+          background-color: rgba(var(--color-bg-rgb), .8);
+          position: relative;
+        }
       }
     }
   }
@@ -353,56 +410,73 @@ import Threads from '../jsx/Threads';
     justify-content: center;
     align-items: center;
     position: relative;
-    background-image: repeating-linear-gradient(135deg, var(--color-main-1-d3) 0, var(--color-main-1-d3) 1px, transparent 0, transparent 50%);
+    background-image: repeating-linear-gradient(135deg, var(--color-main-1-d4) 0, var(--color-main-1-d4) 1px, transparent 0, transparent 50%);
     background-size: 32px 32px;
 
-    .splide__slide{
-      a{
-        position: relative;
-        display: inline-block;
-        border: 1px solid var(--color-bg);
-        transition: background-color 0.3s ease-in-out;
+    .splide__link{
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      border: 1px solid var(--color-bg);
+      transition: background-color 0.3s ease-in-out;
 
-        &::before{
-          content: "";
-          position: absolute;
-          top: 0px;
-          left: -1px;
-          width: 65px;
-          height: 60px;
-          background-color: transparent;
-          clip-path: polygon(0% 0%, 100% 0, 56% 80%, 21% 80%, 0% 100%);
-        }
-        &::after{
-          content: "";
-          position: absolute;
-          top: 0px;
-          right: -1px;
-          width: 65px;
-          height: 60px;
-          background-color: transparent;
-          clip-path: polygon(0% 0%, 100% 0, 56% 80%, 21% 80%, 0% 100%);
-          transform: rotate(180deg) rotateX(-180deg);
-        }
-        &:hover{
-          border: 1px solid var(--color-main-1);
-
-          &::before, &::after{
-            background-color: var(--color-main-1);
-          }
-        }
+      &::before{
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        left: -1px;
+        width: 65px;
+        height: 60px;
+        background-color: transparent;
+        clip-path: polygon(0% 0%, 100% 0, 56% 80%, 21% 80%, 0% 100%);
       }
-      img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
+      &::after{
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0px;
+        right: -1px;
+        width: 65px;
+        height: 60px;
+        background-color: transparent;
+        clip-path: polygon(0% 0%, 100% 0, 56% 80%, 21% 80%, 0% 100%);
+        transform: rotate(180deg) rotateX(-180deg);
+      }
+      &:hover{
+        border: 1px solid var(--color-main-1);
+
+        &::before, &::after{
+          background-color: var(--color-main-1);
+          transition: background 0.2s ease-in-out;
+        }
+        .splide__active-screen{
+          opacity: 1;
+          background-color: rgba(var(--color-bg-rgb), .4);
+          transition: opacity 0.2s ease-in-out;
+        }
       }
     }
-
+    .splide__active-screen{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .splide__icon{
+      fill: tomato;
+    }
+    .splide__img-main{
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
     .splide__track{
       width: 80%;
     }
-
     .splide__arrows{
       .splide__arrow{
         position: absolute;
@@ -415,24 +489,18 @@ import Threads from '../jsx/Threads';
           background-color: var(--color-main-1-l2);
           transition: background-color 0.2s ease-in-out;
         }
-        svg{
-          width: 2.5rem;
-          height: 2.5rem;
-          fill: var(--color-bg);
-        }
         &--prev{
           left: 2%;
-          top: 50%;
+          top: 46%;
           transform: translateY(-50%) rotateY(180deg);
         }
         &--next{
           right: 2%;
-          top: 50%;
+          top: 46%;
           transform: translateY(-50%);
         }
       }
     }
-
     .splide__progress {
       border: 1px solid var(--color-main-1-d3);
       display: block;
@@ -444,9 +512,8 @@ import Threads from '../jsx/Threads';
         background-color: var(--color-main-2);
       }
     }
-
     .splide__toggle{
-      padding: 0.3rem;
+      padding: 0.3rem 10px;
       transform: translateY(.5rem);
       background-color: var(--color-main-2);
       transition: background-color 0.3s ease-in-out;
@@ -478,18 +545,16 @@ import Threads from '../jsx/Threads';
     }
     .splide__slide{
       position: relative;
+      z-index: 2;
       margin-right: 0 !important;
       transition: 0.3s ease-in-out;
       border: 1px solid transparent;
       filter:saturate(0);
 
-      img {
-        width: 100%;
-        object-fit: cover;
-      }
       &::before{
         content: "";
         position: absolute;
+        z-index: 1;
         top: 0px;
         left: 0px;
         width: 5px;
@@ -499,6 +564,7 @@ import Threads from '../jsx/Threads';
       &::after{
         content: "";
         position: absolute;
+        z-index: 1;
         top: 0px;
         right: 0px;
         width: 5px;
@@ -518,22 +584,48 @@ import Threads from '../jsx/Threads';
           background-color: var(--color-main-1);
         }
       }
+      &:hover, &.is-active{
+        .splide__client-screen{
+          opacity: 1;
+          transition: opacity 0.3s ease-in-out;
+        }
+      }
+    }
+    .splide__img {
+      width: 100%;
+      object-fit: cover;
+    }
+    .splide__client-screen{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      padding: .8rem;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-family-2);
+      font-size: .8rem;
+      background-color: rgba(var(--color-bg-rgb), .4);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    @media screen and (width >= 1024px) {
+      .splide__client-screen{
+        font-size: 1rem;
+        padding: 1rem;
+      }
     }
   }
 
   .content-slider-portfolio{
-    margin-top: 20px;
-    padding: 40px;
-
     .content-slide {
       display: none; /* Ocultamos todos los slides por defecto */
       animation: fadeIn 0.5s ease-in-out;
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
 
       &.is-active {
         display: block; /* Mostramos solo el slide activo */
-        padding: 2vw;
-        border: 1px solid var(--color-main-1-d4);
+        padding: 2rem;
         background-color: rgba(var(--color-main-2-rgb), .6);
       }
 
@@ -541,6 +633,7 @@ import Threads from '../jsx/Threads';
         font-family: var(--font-family-3);
         font-size: 3rem;
         margin-bottom: 1rem;
+        line-height: 3rem;
       }
       &__slide-title{
         font-family: var(--font-family-2);
@@ -557,10 +650,11 @@ import Threads from '../jsx/Threads';
         background-color: var(--color-text);
         clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         padding: 1px;
-        display: inline-block;
+        display: block;
 
         &-content{
-          display: inline-block;
+          display: block;
+          text-align: center;
           font-family: var(--font-family-2);
           font-size: 1rem;
           font-weight: bold;
@@ -583,6 +677,31 @@ import Threads from '../jsx/Threads';
         }
       }
     }
+
+    @media screen and (width >= 768px){
+      margin-top: 20px;
+      padding: 22px 24px;
+
+      .content-slide{
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+        &.is-active{
+          padding: 2vw;
+        }
+        &__number{
+          line-height: normal;
+        }
+        &__btn{
+          display: inline-block;
+          &-content{
+            display: inline-block;
+            text-align: unset;
+          }
+        }
+      }
+    }
+    @media screen and (width >= 1024px){
+      padding: 44px;
+    }
   }
 
   .console-section-3{
@@ -590,7 +709,7 @@ import Threads from '../jsx/Threads';
     top: 15px;
     left: 5px;
     display: inline;
-    color: var(--color-text);
+    color: var(--color-main-1);
     font-size: var(--size-10px);
     font-family: var(--font-family-3);
   }
