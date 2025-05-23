@@ -138,11 +138,11 @@ code {
 /* Animaciones */
 @keyframes blink-in {
   0%,30%,60% {
-      opacity: 0
+    opacity: 0
   }
 
   15%,45%,75%,to {
-      opacity: 1
+    opacity: 1
   }
 }
 
@@ -159,18 +159,10 @@ code {
 }
 
 @keyframes fade-sequence {
-  0% {
-    opacity: 0;
-  }
-  12.5% {
-    opacity: 1;
-  }
-  37.5% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  12.5% { opacity: 1; }
+  37.5% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* Utilities */
