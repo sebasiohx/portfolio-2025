@@ -108,8 +108,8 @@
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
-  /* font-family: var(--font-family-2); */
   font-size: var(--font-size);
+  /* font-family: var(--font-family-2); */
 }
 code {
   font-family:
@@ -135,7 +135,7 @@ code {
   }
 }
 
-/* Animations */
+/* Animaciones */
 @keyframes blink-in {
   0%,30%,60% {
       opacity: 0
@@ -158,6 +158,21 @@ code {
   to { opacity: 1; }
 }
 
+@keyframes fade-sequence {
+  0% {
+    opacity: 0;
+  }
+  12.5% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* Utilities */
 .ejemplpo-bg-gradiente-repeat{
   background: repeating-linear-gradient(115deg, var(--color-bg), var(--color-bg) 10px, var(--color-bg) 20px, var(--color-main-1) 21px, var(--color-main-1) 40px, var(--color-main-1) 41px);
@@ -171,6 +186,36 @@ code {
   text-transform: uppercase;
   font-weight: bold;
   text-shadow: 0 0 2px #e19a86,0 0 1.5px #854535,0 0 1.5px #5c150c;
+}
+
+.btn-main{
+  display: inline-block;
+  padding: 1px;
+  background-color: var(--color-text);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.btn-main__content{
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family-2);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease-in-out;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.btn-main:hover{
+  transition: background-color 0.3s ease-in-out;
+}
+.btn-main:hover .btn-main__content{
+  color: var(--color-bg);
+  background-color: var(--color-text);
+  transition: background-color 0.15s ease-in-out;
 }
 
 /* :global([data-theme="light"]) {

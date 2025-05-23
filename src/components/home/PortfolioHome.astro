@@ -69,6 +69,19 @@ import Threads from '../jsx/Threads';
 			contentSlides[mainSlider.index].classList.add('is-active');
 		});
 	});
+
+  const console = document.querySelector('.portfolio-slider__section--3');
+  const consoleText1 = document.querySelector('.console-section-3__text-1');
+  const consoleText2 = document.querySelector('.console-section-3__text-2');
+
+  console?.addEventListener('mouseenter', () => {
+    consoleText1?.classList.add('hidden');
+    consoleText2?.classList.remove('hidden');
+  });
+  console?.addEventListener('mouseleave', () => {
+    consoleText1?.classList.remove('hidden');
+    consoleText2?.classList.add('hidden');
+  });
 </script>
 
 <section class='portfolio-home'>
@@ -149,10 +162,10 @@ import Threads from '../jsx/Threads';
 						</div>
             <button class="splide__toggle" type="button">
               <span class="splide__toggle__play" title="Play">
-                <Icon icon="play" size={24} color="var(--color-text)"/>
+                <Icon icon="play" size={24} color="var(--color-bg)"/>
               </span>
               <span class="splide__toggle__pause" title="Pause">
-                <Icon icon="pause" size={24} color="var(--color-text)"/>
+                <Icon icon="pause" size={24} color="var(--color-bg)"/>
               </span>
             </button>
 					</section>
@@ -203,10 +216,12 @@ import Threads from '../jsx/Threads';
 						<!-- Contenido Slide 1 -->
 						<div class="content-slide" id="content-0">
               <h4 class="content-slide__number">01</h4>
-							<h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-							<p class="content-slide__slide-description">Escuela Militar.</p>
-              <a href="#" class="content-slide__btn">
-                <span class="content-slide__btn-content">
+              <div class="content-slide__text-wrap">
+                <h3 class="content-slide__slide-title">Sitio web institucional</h3>
+                <p class="content-slide__slide-description">Escuela Militar.</p>
+              </div>
+              <a href="#" class="content-slide__btn btn-main">
+                <span class="content-slide__btn-content btn-main__content">
                   Ver trabajo
                 </span>
               </a>
@@ -215,10 +230,12 @@ import Threads from '../jsx/Threads';
 						<!-- Contenido Slide 2 -->
 						<div class="content-slide" id="content-1">
 							<h4 class="content-slide__number">02</h4>
-							<h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-							<p class="content-slide__slide-description">Escuela Militar.</p>
-              <a href="#" class="content-slide__btn">
-                <span class="content-slide__btn-content">
+							<div class="content-slide__text-wrap">
+                <h3 class="content-slide__slide-title">Policia de investigaciones (PDI)</h3>
+                <p class="content-slide__slide-description">Escuela Militar.</p>
+              </div>
+              <a href="#" class="content-slide__btn btn-main">
+                <span class="content-slide__btn-content btn-main__content">
                   Ver trabajo
                 </span>
               </a>
@@ -227,10 +244,12 @@ import Threads from '../jsx/Threads';
 						<!-- Contenido Slide 3 -->
 						<div class="content-slide" id="content-2">
 							<h4 class="content-slide__number">03</h4>
-							<h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-							<p class="content-slide__slide-description">Escuela Militar.</p>
-              <a href="#" class="content-slide__btn">
-                <span class="content-slide__btn-content">
+							<div class="content-slide__text-wrap">
+                <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
+                <p class="content-slide__slide-description">Escuela Militar.</p>
+              </div>
+              <a href="#" class="content-slide__btn btn-main">
+                <span class="content-slide__btn-content btn-main__content">
                   Ver trabajo
                 </span>
               </a>
@@ -239,10 +258,12 @@ import Threads from '../jsx/Threads';
 						<!-- Contenido Slide 4 -->
 						<div class="content-slide" id="content-3">
 							<h4 class="content-slide__number">04</h4>
-							<h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-							<p class="content-slide__slide-description">Escuela Militar.</p>
-              <a href="#" class="content-slide__btn">
-                <span class="content-slide__btn-content">
+							<div class="content-slide__text-wrap">
+                <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
+                <p class="content-slide__slide-description">Escuela Militar.</p>
+              </div>
+              <a href="#" class="content-slide__btn btn-main">
+                <span class="content-slide__btn-content btn-main__content">
                   Ver trabajo
                 </span>
               </a>
@@ -251,10 +272,12 @@ import Threads from '../jsx/Threads';
 						<!-- Contenido Slide 5 -->
 						<div class="content-slide" id="content-4">
 							<h4 class="content-slide__number">05</h4>
-							<h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-							<p class="content-slide__slide-description">Escuela Militar.</p>
-              <a href="#" class="content-slide__btn">
-                <span class="content-slide__btn-content">
+							<div class="content-slide__text-wrap">
+                <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
+                <p class="content-slide__slide-description">Escuela Militar.</p>
+              </div>
+              <a href="#" class="content-slide__btn btn-main">
+                <span class="content-slide__btn-content btn-main__content">
                   Ver trabajo
                 </span>
               </a>
@@ -270,12 +293,33 @@ import Threads from '../jsx/Threads';
             enableMouseInteraction={true}
           />
           <div class="console-section-3">
-            <span>cargando datos...</span>
-            <span>sincronizando frecuencia...</span>
+            <article class="console-section-3__text-1">
+              <p>Conectando servidor</p>
+              <p>Consumiendo API</p>
+              <p>
+                Cargando datos<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+              </p>
+            </article>
+            <article class="console-section-3__text-2 hidden">
+              <p>[Conección interrumpida]</p>
+            </article>
           </div>
         </div>
       </div>
     </article>
+  </div>
+  <div class="bottom-content">
+    <div class='container mx-auto px-2 md:px-4'>
+      <div class="bottom-content__btn-wrap">
+        <span class="triangle triangle--1"></span>
+        <a href="#" class="btn-main">
+          <span class="btn-main__content">
+            Ver más trabajos
+          </span>
+        </a>
+        <span class="triangle triangle--2"></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -287,7 +331,8 @@ import Threads from '../jsx/Threads';
     background-color: var(--color-bg);
     background-image: linear-gradient(var(--color-main-1-d4) 1px, transparent 1px), linear-gradient(to right, var(--color-main-1-d4) 1px, transparent 1px);
     background-size: 194px 194px;
-    padding-top: 3rem;
+    padding-block: 5rem;
+    border-bottom: 1px solid var(--color-main-1-d4);
 
     @media screen and (width >= 1024px) {
       background-size: 214px 214px;
@@ -336,6 +381,71 @@ import Threads from '../jsx/Threads';
     }
   }
 
+  .bottom-content{
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+
+    &__btn-wrap{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: .8rem;
+      height: 180px;
+      border: 1px solid var(--color-main-1-d2);
+      background: 
+      radial-gradient(farthest-side at -33.33% 50%,#0000 52%,rgba(var(--color-main-1-rgb), .15) 54% 57%,#0000 59%) 0 calc(80px/2),
+      radial-gradient(farthest-side at 50% 133.33%,#0000 52%,rgba(var(--color-main-1-rgb), .15) 54% 57%,#0000 59%) calc(80px/2) 0,
+      radial-gradient(farthest-side at 133.33% 50%,#0000 52%,rgba(var(--color-main-1-rgb), .15) 54% 57%,#0000 59%),
+      radial-gradient(farthest-side at 50% -33.33%,#0000 52%,rgba(var(--color-main-1-rgb), .15) 54% 57%,#0000 59%),
+      transparent;
+      background-size: calc(80px/4.667) 80px,80px calc(80px/4.667);
+
+      &:has(.btn-main:hover){
+        .triangle{
+          visibility: visible;
+        }
+      }
+    }
+
+    .triangle{
+      visibility: hidden;
+      border-left: .8rem solid transparent;
+      border-right: .8rem solid transparent;
+      animation: blink-in .2s infinite cubic-bezier(1,0,0,1) forwards;
+      
+      &--1{
+        border-top: .8rem solid var(--color-main-3);
+      }
+      &--2{
+        border-bottom: .8rem solid var(--color-main-3);
+      }
+    }
+
+    .btn-main{
+      width: 16rem;
+      height: 4rem;
+      background-color: var(--color-main-1);
+
+      &__content{
+        font-size: var(--size-20px);
+        font-weight: bold;
+      }
+
+      &:hover{
+        background-color: var(--color-main-3);
+        transition: background-color 0.3s ease-in-out;
+
+        .btn-main__content{
+          background: linear-gradient(0deg, var(--color-main-3-d3) 0%, var(--color-main-3) 20%);
+          transition: background-color 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
   .portfolio-slider{
     position: relative;
     //width: 80%;
@@ -379,6 +489,9 @@ import Threads from '../jsx/Threads';
         &--2{
           width: 50%;
           border-left: 0px;
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 118px 1fr;
         }
       }
     }
@@ -509,13 +622,13 @@ import Threads from '../jsx/Threads';
 
       .splide__progress__bar{
         height: 10px;
-        background-color: var(--color-main-2);
+        background-color: var(--color-main-3);
       }
     }
     .splide__toggle{
       padding: 0.3rem 10px;
       transform: translateY(.5rem);
-      background-color: var(--color-main-2);
+      background-color: var(--color-main-1);
       transition: background-color 0.3s ease-in-out;
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
       width: 42px;
@@ -525,10 +638,10 @@ import Threads from '../jsx/Threads';
       }
 
       &.is-active{
-        background-color: var(--color-main-2-d2);
+        background-color: var(--color-main-1-d2);
 
         &:hover{
-          background-color: var(--color-main-2);
+          background-color: var(--color-main-1);
           transition: background-color 0.3s ease-in-out;
         }
       }
@@ -538,6 +651,7 @@ import Threads from '../jsx/Threads';
   .thumbnail-slider.splide{
     padding: .5rem;
     border-bottom: 1px solid var(--color-main-1-d2);
+    overflow: hidden;
     .splide__list {
       //transform: translateX(0) !important; /* Anular el centrado */
       //justify-content: flex-start !important; /* Alinear a la izquierda */
@@ -549,27 +663,25 @@ import Threads from '../jsx/Threads';
       margin-right: 0 !important;
       transition: 0.3s ease-in-out;
       border: 1px solid transparent;
+      overflow: hidden;
       filter:saturate(0);
 
-      &::before{
+      &::before, &::after{
         content: "";
         position: absolute;
         z-index: 1;
-        top: 0px;
-        left: 0px;
+        top: 0;
         width: 5px;
         height: 15px;
         background-color: transparent;
       }
+      &::before{
+        left: 0px;
+        clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+      }
       &::after{
-        content: "";
-        position: absolute;
-        z-index: 1;
-        top: 0px;
         right: 0px;
-        width: 5px;
-        height: 15px;
-        background-color: transparent;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
       }
       &:hover{
         filter:saturate(1);
@@ -624,7 +736,8 @@ import Threads from '../jsx/Threads';
       animation: fadeIn 0.5s ease-in-out;
 
       &.is-active {
-        display: block; /* Mostramos solo el slide activo */
+        display: flex; /* Mostramos solo el slide activo */
+        flex-direction: column;
         padding: 2rem;
         background-color: rgba(var(--color-main-2-rgb), .6);
       }
@@ -635,6 +748,11 @@ import Threads from '../jsx/Threads';
         margin-bottom: 1rem;
         line-height: 3rem;
       }
+      &__text-wrap{
+        display: block;
+        min-height: 120 + 32px;
+        margin-bottom: 1rem;
+      }
       &__slide-title{
         font-family: var(--font-family-2);
         font-size: 2rem;
@@ -644,35 +762,21 @@ import Threads from '../jsx/Threads';
         font-family: var(--font-family-3);
         font-size: 1.1rem;
         line-height: 2rem;
-        margin-bottom: 1rem;
       }
       &__btn{
-        background-color: var(--color-text);
-        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        padding: 1px;
-        display: block;
+        width: 60%;
+        margin-inline: auto;
 
         &-content{
-          display: block;
-          text-align: center;
-          font-family: var(--font-family-2);
-          font-size: 1rem;
-          font-weight: bold;
-          padding: 0.5rem 1rem;
-          color: var(--color-text);
+          //font-weight: bold;
           background-color: var(--color-main-2);
-          clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-          transition: background-color 0.3s ease-in-out;
         }
 
         &:hover{
           background-color: var(--color-main-1);
-          transition: background-color 0.3s ease-in-out;
 
           .content-slide__btn-content{
             background: linear-gradient(0deg, var(--color-main-1-d3) 0%, var(--color-main-1) 20%);
-            color: var(--color-bg);
-            transition: background-color 0.2s ease-in-out;
           }
         }
       }
@@ -681,6 +785,8 @@ import Threads from '../jsx/Threads';
     @media screen and (width >= 768px){
       margin-top: 20px;
       padding: 22px 24px;
+      display: grid;
+      align-content: center;
 
       .content-slide{
         clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
@@ -691,16 +797,24 @@ import Threads from '../jsx/Threads';
           line-height: normal;
         }
         &__btn{
-          display: inline-block;
-          &-content{
-            display: inline-block;
-            text-align: unset;
-          }
+          width: unset;
         }
       }
     }
     @media screen and (width >= 1024px){
       padding: 44px;
+
+      .content-slide{
+        &.is-active{
+          align-items: start;
+        }
+        &__text-wrap{
+          min-height: 80 + 32px;
+        }
+        &__btn{
+          margin-inline: unset;
+        }
+      }
     }
   }
 
@@ -709,8 +823,29 @@ import Threads from '../jsx/Threads';
     top: 15px;
     left: 5px;
     display: inline;
-    color: var(--color-main-1);
+    color: var(--color-main-3);
     font-size: var(--size-10px);
     font-family: var(--font-family-3);
+
+    .dot {
+      opacity: 0;
+      animation: fade-sequence 2.4s infinite;
+
+      &:nth-child(1) {
+        animation-delay: 0s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    }
+  }
+
+  :global([data-theme="light"]) {
+    .console-section-3{
+      color: var(--color-text);
+    }
   }
 </style>
