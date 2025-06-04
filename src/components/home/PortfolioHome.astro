@@ -24,6 +24,9 @@ import Threads from '../jsx/Threads';
 				767: {
 					height: 300,
 				},
+        1023: {
+          height: 350,
+        },
 			},
 		});
 
@@ -51,7 +54,7 @@ import Threads from '../jsx/Threads';
 		thumbnailSlider.mount();
 
 		// Configuracion del slider de contenido
-		const contentSlides = document.querySelectorAll('.content-slide');
+		const contentSlides = document.querySelectorAll('.content-slide__wrap');
 
 		contentSlides[0].classList.add('is-active');
 
@@ -213,75 +216,77 @@ import Threads from '../jsx/Threads';
 
 					<!-- Sección de contenido (títulos y descripciones) -->
 					<section id="content-slider-portfolio-home" class="content-slider-portfolio">
-						<!-- Contenido Slide 1 -->
-						<div class="content-slide" id="content-0">
-              <h4 class="content-slide__number">01</h4>
-              <div class="content-slide__text-wrap">
-                <h3 class="content-slide__slide-title">Sitio web institucional</h3>
-                <p class="content-slide__slide-description">Escuela Militar.</p>
+            <div class="content-slide">
+              <!-- Contenido Slide 1 -->
+              <div class="content-slide__wrap" id="content-0">
+                <h4 class="content-slide__number">01</h4>
+                <div class="content-slide__text-wrap">
+                  <h3 class="content-slide__slide-title">Sitio web institucional</h3>
+                  <p class="content-slide__slide-description">Escuela Militar.</p>
+                </div>
+                <a href="#" class="content-slide__btn btn-main">
+                  <span class="content-slide__btn-content btn-main__content">
+                    Ver trabajo
+                  </span>
+                </a>
               </div>
-              <a href="#" class="content-slide__btn btn-main">
-                <span class="content-slide__btn-content btn-main__content">
-                  Ver trabajo
-                </span>
-              </a>
-						</div>
-						
-						<!-- Contenido Slide 2 -->
-						<div class="content-slide" id="content-1">
-							<h4 class="content-slide__number">02</h4>
-							<div class="content-slide__text-wrap">
-                <h3 class="content-slide__slide-title">Policia de investigaciones (PDI)</h3>
-                <p class="content-slide__slide-description">Escuela Militar.</p>
+              
+              <!-- Contenido Slide 2 -->
+              <div class="content-slide__wrap" id="content-1">
+                <h4 class="content-slide__number">02</h4>
+                <div class="content-slide__text-wrap">
+                  <h3 class="content-slide__slide-title">Policia de investigaciones (PDI)</h3>
+                  <p class="content-slide__slide-description">Escuela Militar.</p>
+                </div>
+                <a href="#" class="content-slide__btn btn-main">
+                  <span class="content-slide__btn-content btn-main__content">
+                    Ver trabajo
+                  </span>
+                </a>
               </div>
-              <a href="#" class="content-slide__btn btn-main">
-                <span class="content-slide__btn-content btn-main__content">
-                  Ver trabajo
-                </span>
-              </a>
-						</div>
-						
-						<!-- Contenido Slide 3 -->
-						<div class="content-slide" id="content-2">
-							<h4 class="content-slide__number">03</h4>
-							<div class="content-slide__text-wrap">
-                <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-                <p class="content-slide__slide-description">Escuela Militar.</p>
+              
+              <!-- Contenido Slide 3 -->
+              <div class="content-slide__wrap" id="content-2">
+                <h4 class="content-slide__number">03</h4>
+                <div class="content-slide__text-wrap">
+                  <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
+                  <p class="content-slide__slide-description">Escuela Militar.</p>
+                </div>
+                <a href="#" class="content-slide__btn btn-main">
+                  <span class="content-slide__btn-content btn-main__content">
+                    Ver trabajo
+                  </span>
+                </a>
               </div>
-              <a href="#" class="content-slide__btn btn-main">
-                <span class="content-slide__btn-content btn-main__content">
-                  Ver trabajo
-                </span>
-              </a>
-						</div>
-						
-						<!-- Contenido Slide 4 -->
-						<div class="content-slide" id="content-3">
-							<h4 class="content-slide__number">04</h4>
-							<div class="content-slide__text-wrap">
-                <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-                <p class="content-slide__slide-description">Escuela Militar.</p>
+              
+              <!-- Contenido Slide 4 -->
+              <div class="content-slide__wrap" id="content-3">
+                <h4 class="content-slide__number">04</h4>
+                <div class="content-slide__text-wrap">
+                  <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
+                  <p class="content-slide__slide-description">Escuela Militar.</p>
+                </div>
+                <a href="#" class="content-slide__btn btn-main">
+                  <span class="content-slide__btn-content btn-main__content">
+                    Ver trabajo
+                  </span>
+                </a>
               </div>
-              <a href="#" class="content-slide__btn btn-main">
-                <span class="content-slide__btn-content btn-main__content">
-                  Ver trabajo
-                </span>
-              </a>
-						</div>
-						
-						<!-- Contenido Slide 5 -->
-						<div class="content-slide" id="content-4">
-							<h4 class="content-slide__number">05</h4>
-							<div class="content-slide__text-wrap">
-                <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-                <p class="content-slide__slide-description">Escuela Militar.</p>
+              
+              <!-- Contenido Slide 5 -->
+              <div class="content-slide__wrap" id="content-4">
+                <h4 class="content-slide__number">05</h4>
+                <div class="content-slide__text-wrap">
+                  <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
+                  <p class="content-slide__slide-description">Escuela Militar.</p>
+                </div>
+                <a href="#" class="content-slide__btn btn-main">
+                  <span class="content-slide__btn-content btn-main__content">
+                    Ver trabajo
+                  </span>
+                </a>
               </div>
-              <a href="#" class="content-slide__btn btn-main">
-                <span class="content-slide__btn-content btn-main__content">
-                  Ver trabajo
-                </span>
-              </a>
-						</div>
+            </div>
 					</section>
 				</div>
         <!-- seccion 3 -->
@@ -301,7 +306,7 @@ import Threads from '../jsx/Threads';
               </p>
             </article>
             <article class="console-section-3__text-2 hidden">
-              <p>[Conección interrumpida]</p>
+              <p>[Conexión interrumpida]</p>
             </article>
           </div>
         </div>
@@ -589,7 +594,7 @@ import Threads from '../jsx/Threads';
       object-fit: cover;
     }
     .splide__track{
-      width: 80%;
+      width: 70%;
     }
     .splide__arrows{
       .splide__arrow{
@@ -618,7 +623,7 @@ import Threads from '../jsx/Threads';
     .splide__progress {
       border: 1px solid var(--color-main-1-d3);
       display: block;
-      width: 80%;
+      width: 70%;
       background-color: rgba(var(--color-bg-rgb, 0.3));
 
       .splide__progress__bar{
@@ -645,6 +650,14 @@ import Threads from '../jsx/Threads';
           background-color: var(--color-main-1);
           transition: background-color 0.3s ease-in-out;
         }
+      }
+    }
+    @media screen and (width >= 768px){
+      .splide__track{
+        width: 80%;
+      }
+      .splide__progress {
+        width: 80%;
       }
     }
   }
@@ -733,14 +746,16 @@ import Threads from '../jsx/Threads';
 
   .content-slider-portfolio{
     .content-slide {
-      display: none; /* Ocultamos todos los slides por defecto */
-      animation: fadeIn 0.5s ease-in-out;
-
-      &.is-active {
-        display: flex; /* Mostramos solo el slide activo */
-        flex-direction: column;
-        padding: 2rem;
-        background-color: rgba(var(--color-main-2-rgb), .6);
+      padding: 2rem;
+      background-color: rgba(var(--color-main-2-rgb), .6);
+      &__wrap{
+        display: none; /* Ocultamos todos los slides por defecto */
+        animation: fadeIn 0.5s ease-in-out;
+  
+        &.is-active {
+          display: flex; /* Mostramos solo el slide activo */
+          flex-direction: column;
+        }
       }
 
       &__number{
@@ -784,7 +799,7 @@ import Threads from '../jsx/Threads';
     }
 
     @media screen and (width >= 768px){
-      margin-top: 20px;
+      //margin-top: 20px;
       padding: 22px 24px;
       display: grid;
       align-content: center;
@@ -825,7 +840,7 @@ import Threads from '../jsx/Threads';
     left: 5px;
     display: inline;
     color: var(--color-main-3);
-    font-size: var(--size-10px);
+    font-size: 11px;
     font-family: var(--font-family-3);
 
     .dot {
