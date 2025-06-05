@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Recomendaciones Laborales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/splide/4.1.4/css/splide.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .splide {
+            margin-bottom: 30px;
+        }
+
+        .recommendation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 0 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .boss-info h3 {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .boss-position {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .recommendation-text {
+            color: #555;
+            line-height: 1.6;
+            font-style: italic;
+            flex-grow: 1;
+            font-size: 1rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Personalización de Splide - Ocultar paginación automática */
+        .splide__pagination {
+            display: none !important; /* Ocultamos la paginación automática */
+        }
+
+        /* Paginación personalizada */
+        .custom-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .pagination-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0;
+        }
+
+        .pagination-dot:hover {
+            border-color: rgba(255,255,255,0.8);
+            transform: scale(1.2);
+        }
+
+        .pagination-dot.active {
+            background: white;
+            border-color: white;
+            transform: scale(1.3);
+        }
+
+        .pagination-dot.active::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .pagination-dot:focus {
+            outline: 2px solid white;
+            outline-offset: 3px;
+        }
+
+        .splide__arrow {
+            background: rgba(255,255,255,0.9) !important;
+            border-radius: 50% !important;
+            width: 50px !important;
+            height: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .splide__arrow:hover {
+            background: white !important;
+            transform: scale(1.1) !important;
+        }
+
+        .splide__arrow svg {
+            fill: #667eea !important;
+        }
+
+        .splide__arrow--prev {
+            left: -25px !important;
+        }
+
+        .splide__arrow--next {
+            right: -25px !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .recommendation-card {
+                margin: 0 10px;
+                height: auto;
+                min-height: 350px;
+            }
+
+            .splide__arrow--prev {
+                left: -15px !important;
+            }
+
+            .splide__arrow--next {
+                right: -15px !important;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recomendaciones Laborales</h1>
+        
+        <div class="splide" id="recommendations-slider">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <div class="recommendation-card">
+                            <div class="card-header">
+                                <div class="avatar">MR</div>
+                                <div class="boss-info">
+                                    <h3>María Rodríguez</h3>
+                                    <p class="boss-position">Gerente de Desarrollo</p>
+                                    <p class="company">TechSolutions Inc.</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-text">
+                                "Juan demostró ser un desarrollador excepcional durante su tiempo en nuestro equipo. Su capacidad para resolver problemas complejos y su dedicación al aprendizaje continuo lo convirtieron en un activo valioso. Siempre entregó código limpio y bien documentado."
+                            </div>
+                            <div class="rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-text">Excelente desempeño</div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="recommendation-card">
+                            <div class="card-header">
+                                <div class="avatar">AG</div>
+                                <div class="boss-info">
+                                    <h3>Andrés García</h3>
+                                    <p class="boss-position">Director de Tecnología</p>
+                                    <p class="company">Innovate Digital</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-text">
+                                "Trabajar con Juan fue una experiencia muy positiva. Su habilidad para adaptarse a nuevas tecnologías y su enfoque colaborativo hicieron que fuera fácil integrarlo en proyectos complejos. Recomiendo ampliamente sus servicios profesionales."
+                            </div>
+                            <div class="rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-text">Altamente recomendado</div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="recommendation-card">
+                            <div class="card-header">
+                                <div class="avatar">LC</div>
+                                <div class="boss-info">
+                                    <h3>Laura Castro</h3>
+                                    <p class="boss-position">Líder de Proyecto</p>
+                                    <p class="company">WebCorp Solutions</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-text">
+                                "Juan sobresalió en todos los proyectos asignados. Su atención al detalle y capacidad para trabajar bajo presión fueron impresionantes. Además, siempre mostró iniciativa para proponer mejoras en los procesos de desarrollo."
+                            </div>
+                            <div class="rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-text">Profesional destacado</div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="recommendation-card">
+                            <div class="card-header">
+                                <div class="avatar">PM</div>
+                                <div class="boss-info">
+                                    <h3>Pedro Morales</h3>
+                                    <p class="boss-position">Coordinador de Desarrollo</p>
+                                    <p class="company">StartupTech</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-text">
+                                "Durante su período con nosotros, Juan demostró un crecimiento profesional extraordinario. Su capacidad de comunicación y trabajo en equipo lo convierten en un candidato ideal para cualquier empresa que busque talento comprometido."
+                            </div>
+                            <div class="rating">
+                                <div class="stars">★★★★☆</div>
+                                <div class="rating-text">Muy recomendado</div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="splide__slide">
+                        <div class="recommendation-card">
+                            <div class="card-header">
+                                <div class="avatar">SF</div>
+                                <div class="boss-info">
+                                    <h3>Sofía Fernández</h3>
+                                    <p class="boss-position">Gerente de Operaciones</p>
+                                    <p class="company">Digital Agency Pro</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-text">
+                                "Juan aportó ideas frescas e innovadoras a nuestros proyectos. Su pasión por la tecnología y su ética de trabajo ejemplar lo hacen destacar entre sus pares. Fue un placer tenerlo en nuestro equipo de desarrollo."
+                            </div>
+                            <div class="rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-text">Excelente colaborador</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Paginación personalizada -->
+        <div class="custom-pagination">
+            <button class="pagination-dot active" data-slide="0" aria-label="Ir al slide 1"></button>
+            <button class="pagination-dot" data-slide="1" aria-label="Ir al slide 2"></button>
+            <button class="pagination-dot" data-slide="2" aria-label="Ir al slide 3"></button>
+            <button class="pagination-dot" data-slide="3" aria-label="Ir al slide 4"></button>
+            <button class="pagination-dot" data-slide="4" aria-label="Ir al slide 5"></button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/splide/4.1.4/js/splide.min.js"></script>
+    <script>
+        // Inicialización del slider con Splide.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const splide = new Splide('#recommendations-slider', {
+                // Configuración básica
+                type: 'loop',          // Slider infinito
+                perPage: 3,            // Mostrar 3 slides por página
+                perMove: 1,            // Mover de a 1 slide
+                gap: '1rem',           // Espacio entre slides
+                
+                // Desactivar paginación automática para usar la personalizada
+                pagination: true,     // No mostrar paginación automática
+                
+                // Configuración de flechas
+                arrows: true,          // Mostrar flechas de navegación
+                
+                // Configuración de autoplay (opcional)
+                autoplay: true,        // Reproducción automática
+                interval: 4000,        // Intervalo de 4 segundos
+                pauseOnHover: true,    // Pausar al hacer hover
+                
+                // Configuración responsive
+                breakpoints: {
+                    768: {
+                        perPage: 1,    // En móviles mostrar 1 slide
+                        gap: '0.5rem',
+                    },
+                    1024: {
+                        perPage: 2,    // En tablets mostrar 2 slides
+                    }
+                },
+                
+                // Configuración de animación
+                speed: 600,            // Velocidad de transición en ms
+                easing: 'ease',        // Tipo de animación
+                
+                // Configuración adicional
+                focus: 'center',       // Centrar el slide activo
+                trimSpace: false,      // No recortar espacios
+            });
+
+            // Montar el slider
+            splide.mount();
+
+            // Configurar paginación personalizada
+            const paginationDots = document.querySelectorAll('.pagination-dot');
+            const totalSlides = document.querySelectorAll('.splide__slide').length;
+
+            // Función para actualizar el estado activo de los puntos
+            function updatePaginationDots(activeIndex) {
+                paginationDots.forEach((dot, index) => {
+                    dot.classList.remove('active');
+                    // Como usamos tipo 'loop', necesitamos manejar los índices correctamente
+                    if (index === activeIndex % totalSlides) {
+                        dot.classList.add('active');
+                    }
+                });
+            }
+
+            // Event listeners para los puntos de paginación
+            paginationDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    // Ir al slide específico
+                    splide.go(index);
+                    
+                    // Pausar autoplay temporalmente
+                    splide.Components.Autoplay.pause();
+                    
+                    // Reanudar autoplay después de 3 segundos
+                    setTimeout(() => {
+                        splide.Components.Autoplay.play();
+                    }, 3000);
+                });
+
+                // Agregar efecto hover
+                dot.addEventListener('mouseenter', () => {
+                    if (!dot.classList.contains('active')) {
+                        dot.style.borderColor = 'rgba(255,255,255,0.8)';
+                    }
+                });
+
+                dot.addEventListener('mouseleave', () => {
+                    if (!dot.classList.contains('active')) {
+                        dot.style.borderColor = 'rgba(255,255,255,0.5)';
+                    }
+                });
+            });
+
+            // Escuchar cambios de slide para actualizar paginación
+            splide.on('moved', function(newIndex, prevIndex) {
+                console.log(`Slide cambiado de ${prevIndex} a ${newIndex}`);
+                updatePaginationDots(newIndex);
+            });
+
+            // Inicializar estado de paginación
+            updatePaginationDots(0);
+
+            // Pausar autoplay cuando el usuario interactúa con las flechas
+            splide.on('click', function() {
+                splide.Components.Autoplay.pause();
+                
+                // Reanudar después de 3 segundos
+                setTimeout(() => {
+                    splide.Components.Autoplay.play();
+                }, 3000);
+            });
+
+            // Manejar navegación con teclado para accesibilidad
+            document.addEventListener('keydown', function(e) {
+                if (document.activeElement.classList.contains('pagination-dot')) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        document.activeElement.click();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

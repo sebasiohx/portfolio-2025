@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Octaedro 3D</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .content {
+      --p: 0;
+      overflow: hidden;
+      height: 100vh;
+      perspective: 25em;
+      perspective-origin: 50% calc(50% - 1em);
+      background: gainsboro;
+    }
+
+    .s8hedron {
+      --i: 0;
+      --j: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-style: preserve-3d;
+      animation: rot 10s linear calc((var(--p) - 1)*10s) infinite;
+    }
+    .s8hedron:before {
+      position: absolute;
+      margin: -1px;
+      padding: 1px;
+      transform: translatey(calc(17.67767vmin + 2em)) rotatex(90deg);
+      box-shadow: 0 0 3.125vmin 12.5vmin currentcolor;
+      background: currentcolor;
+      color: silver;
+      content: "";
+    }
+    .s8hedron__face {
+      position: absolute;
+      margin: -14.43376vmin;
+      padding: 14.43376vmin;
+      transform: rotatey(calc(var(--i)*-1turn/4)) rotate(calc((1 - var(--j))*.5turn)) rotatex(35.26439deg) translatez(10.20621vmin);
+      background: #7e2b83;
+      filter: brightness(calc(1 + var(--j)*.1));
+      --shape: polygon(50% 0%, 93.30127% 75%, 6.69873% 75%);
+      clip-path: var(--shape);
+      animation: shade 5s ease-in-out calc((var(--p) - var(--i)/4)*10s) infinite alternate;
+      animation-play-state: inherit;
+    }
+    .s8hedron__face:nth-child(n + 5) {
+      --j: 1;
+    }
+    .s8hedron__face:nth-child(4n + 2) {
+      --i: 1;
+    }
+    .s8hedron__face:nth-child(4n + 3) {
+      --i: 2;
+    }
+    .s8hedron__face:nth-child(4n + 4) {
+      --i: 3;
+    }
+    @keyframes rot {
+      0% {
+        transform: rotatey(1turn);
+      }
+    }
+    @keyframes shade {
+      to {
+        filter: brightness(calc(.5 + var(--j)*.1));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="s8hedron">
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+      <div class="s8hedron__face"></div>
+    </div>
+  </div>
+</body>
+</html>

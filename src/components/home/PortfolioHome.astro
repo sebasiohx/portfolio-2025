@@ -1,5 +1,5 @@
 ---
-import Icon from '../Icon.astro'
+import Icon from '@components/Icon.astro';
 import Threads from '../jsx/Threads';
 ---
 <script>
@@ -9,11 +9,11 @@ import Threads from '../jsx/Threads';
 		// Configuracion del slider principal
 		const mainSlider = new Splide('#main-slider-portfolio-home', {
 			type: 'loop',
+			autoplay: true, //true
 			perPage: 1,
 			perMove: 1,
 			gap: '1rem',
 			pagination: false,
-			autoplay: true, //true
 			interval: 3500,
 			pauseOnHover: true,
 			pauseOnFocus: true,
@@ -73,6 +73,7 @@ import Threads from '../jsx/Threads';
 		});
 	});
 
+  //Script para la sección 3 de la consola
   const console = document.querySelector('.portfolio-slider__section--3');
   const consoleText1 = document.querySelector('.console-section-3__text-1');
   const consoleText2 = document.querySelector('.console-section-3__text-2');
