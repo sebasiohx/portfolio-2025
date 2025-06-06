@@ -9,24 +9,59 @@ import bgImageClouds from '@images/bg-nubes.jpg';
   document.addEventListener('DOMContentLoaded', () => {
     const splide = new Splide('#slider-recommendations', {
       type: 'loop',
-			autoplay: true, //true
+			autoplay: false, //true
 			perPage: 1,
 			perMove: 1,
-      pagination: true,
+      pagination: false,
       arrows: true,
-      breakpoints: {
-        768: {
-          perPage: 1,
-          pagination: false,
-          arrows: false,
-        },
-        1024: {
-          perPage: 2,
-        },
-      },
+    });
+
+    splide.on( 'pagination:mounted', function ( data ) {
+      // You can add your class to the UL element
+      data.list.classList.add( 'splide__pagination--custom' );
+
+      // `items` contains all dot items
+      data.items.forEach( function ( item ) {
+        item.button.classList.add( 'splide__pagination__page--custom' );
+        console.log(item.button);
+        
+      });
     });
 
     splide.mount();
+
+    // Configurar paginación personalizada
+    const paginationDots = document.querySelectorAll('.pagination-dot');
+    const totalSlides = document.querySelectorAll('.splide__slide').length;
+
+    // Función para actualizar el estado activo de los puntos
+    const updatePaginationDots = (activeIndex:number) => {
+      paginationDots.forEach((dot, index) => {
+        dot.classList.remove('active');
+        // Añadir clase 'active' al punto correspondiente
+        if (index === activeIndex % totalSlides) {
+            dot.classList.add('active');
+        }
+      });
+    }
+
+    // Event listeners para los puntos de paginación
+    paginationDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        // Ir al slide específico
+        splide.go(index);
+        // Actualizar estado de paginación
+        updatePaginationDots(index);
+      });
+    });
+
+    // Escuchar cambios de slide para actualizar paginación
+    splide.on('moved', function (newIndex, prevIndex) {
+      updatePaginationDots(newIndex);
+    });
+
+    // Inicializar estado de paginación
+    updatePaginationDots(0);
   });
 </script>
 
@@ -56,15 +91,25 @@ import bgImageClouds from '@images/bg-nubes.jpg';
               <li class="splide__slide">2 Hola mundo</li>
               <li class="splide__slide">3 Hola mundo</li>
             </ul>
-
-            <div class="splide__arrows">
-              <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">
-                <Icon icon='arrowSlider' size={40} color='var(--color-bg)'/>
-              </button>
-              <button class="splide__arrow splide__arrow--next" title="trabajo siguiente">
-                <Icon icon='arrowSlider' size={40} color='var(--color-bg)'/>
-              </button>
-            </div>
+          </div>
+          <ul class="custom__pagination">
+            <li>
+              <button class="pagination-dot active" data-slide="0" aria-label="Ir al slide 1"></button>
+            </li>
+            <li>
+              <button class="pagination-dot" data-slide="1" aria-label="Ir al slide 2"></button>
+            </li>
+            <li>
+              <button class="pagination-dot" data-slide="2" aria-label="Ir al slide 3"></button>
+            </li>
+          </ul>
+          <div class="splide__arrows">
+            <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">
+              <Icon icon='arrowSlider' size={30} color='var(--color-bg)'/>
+            </button>
+            <button class="splide__arrow splide__arrow--next" title="trabajo siguiente">
+              <Icon icon='arrowSlider' size={30} color='var(--color-bg)'/>
+            </button>
           </div>
         </div>
       </article>
@@ -159,5 +204,27 @@ import bgImageClouds from '@images/bg-nubes.jpg';
     position: relative;
     z-index: 2;
     background-color: tomato;
+
+    .custom__pagination{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 0;
+      pointer-events: none;
+    }
+    .pagination-dot {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: var(--color-bg);
+      border: 2px solid var(--color-main-2);
+      cursor: pointer;
+      pointer-events: auto;
+
+      &:hover, &.active {
+        background-color: var(--color-main-2);
+      }
+    }
   }
 </style>
