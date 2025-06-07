@@ -1,11 +1,15 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from '@components/Icon.astro';
 import bgImageTokyo3 from '@images/Tokyo-3.jpeg';
 import bgImageClouds from '@images/bg-nubes.jpg';
+import AvatarExample from '@images/avatar-recomendation.jpeg';
 ---
+
 <script>
 	import Splide from '@splidejs/splide';
 
+  // Configuracion del slider Recomendaciones
   document.addEventListener('DOMContentLoaded', () => {
     const splide = new Splide('#slider-recommendations', {
       type: 'loop',
@@ -14,18 +18,6 @@ import bgImageClouds from '@images/bg-nubes.jpg';
 			perMove: 1,
       pagination: false,
       arrows: true,
-    });
-
-    splide.on( 'pagination:mounted', function ( data ) {
-      // You can add your class to the UL element
-      data.list.classList.add( 'splide__pagination--custom' );
-
-      // `items` contains all dot items
-      data.items.forEach( function ( item ) {
-        item.button.classList.add( 'splide__pagination__page--custom' );
-        console.log(item.button);
-        
-      });
     });
 
     splide.mount();
@@ -65,7 +57,10 @@ import bgImageClouds from '@images/bg-nubes.jpg';
   });
 </script>
 
-<section class='contact'>
+<section 
+  class='contact'
+  style={`background-image: url(${bgImageTokyo3.src || bgImageTokyo3})`}
+>
 <!-- <p>Si tienes alguna pregunta o comentario, no dudes en contactarnos a través de nuestro correo electrónico: </p> -->
   <div class="octahedron">
     <div class="octahedron__container">
@@ -82,58 +77,162 @@ import bgImageClouds from '@images/bg-nubes.jpg';
   <div class="crosses"></div>
   <div class='container mx-auto px-2 md:px-4'>
     <div class="contact__content">
-      <article class="recommendations">
-        <h3>Recomendaciones</h3>
+      <article class="contact__child recommendations">
+        <h3 class="recommendations__title">Recomendaciones</h3>
         <div id="slider-recommendations" class="slider-recommendations splide">
           <div class="splide__track">
 						<ul class="splide__list">
-              <li class="splide__slide">1 Hola mundo</li>
-              <li class="splide__slide">2 Hola mundo</li>
-              <li class="splide__slide">3 Hola mundo</li>
+              <li class="splide__slide">
+                <article class="card-recommendation">
+                  <figure class="card-recommendation__header">
+                    <div class="card-recommendation__avatar">
+                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                    </div>
+                    <figcaption class="card-recommendation__hgroup">
+                      <h4 class="card-recommendation__name">
+                        Sebastian Andres Elgueda Jure
+                      </h4>
+                      <h5 class="card-recommendation__position">
+                        Technical Project Manager at Ki Technologies
+                      </h5>
+                    </figcaption>
+                  </figure>
+                  <p class="card-recommendation__text">
+                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
+                  </p>
+                  <p class="card-recommendation__text">
+                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
+                  </p>
+                </article>
+              </li>
+              <li class="splide__slide">
+                <article class="card-recommendation">
+                  <figure class="card-recommendation__header">
+                    <div class="card-recommendation__avatar">
+                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                    </div>
+                    <figcaption class="card-recommendation__hgroup">
+                      <h4 class="card-recommendation__name">
+                        Sebastian Andres Elgueda Jure
+                      </h4>
+                      <h5 class="card-recommendation__position">
+                        Technical Project Manager at Ki Technologies
+                      </h5>
+                    </figcaption>
+                  </figure>
+                  <p class="card-recommendation__text">
+                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
+                  </p>
+                  <p class="card-recommendation__text">
+                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
+                  </p>
+                </article>
+              </li>
+              <li class="splide__slide">
+                <article class="card-recommendation">
+                  <figure class="card-recommendation__header">
+                    <div class="card-recommendation__avatar">
+                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                    </div>
+                    <figcaption class="card-recommendation__hgroup">
+                      <h4 class="card-recommendation__name">
+                        Sebastian Andres Elgueda Jure
+                      </h4>
+                      <h5 class="card-recommendation__position">
+                        Technical Project Manager at Ki Technologies
+                      </h5>
+                    </figcaption>
+                  </figure>
+                  <p class="card-recommendation__text">
+                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
+                  </p>
+                  <p class="card-recommendation__text">
+                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
+                  </p>
+                </article>
+              </li>
+              <li class="splide__slide">
+                <article class="card-recommendation">
+                  <figure class="card-recommendation__header">
+                    <div class="card-recommendation__avatar">
+                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                    </div>
+                    <figcaption class="card-recommendation__hgroup">
+                      <h4 class="card-recommendation__name">
+                        Sebastian Andres Elgueda Jure
+                      </h4>
+                      <h5 class="card-recommendation__position">
+                        Technical Project Manager at Ki Technologies
+                      </h5>
+                    </figcaption>
+                  </figure>
+                  <p class="card-recommendation__text">
+                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
+                  </p>
+                  <p class="card-recommendation__text">
+                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
+                  </p>
+                </article>
+              </li>
             </ul>
           </div>
-          <ul class="custom__pagination">
-            <li>
-              <button class="pagination-dot active" data-slide="0" aria-label="Ir al slide 1"></button>
-            </li>
-            <li>
-              <button class="pagination-dot" data-slide="1" aria-label="Ir al slide 2"></button>
-            </li>
-            <li>
-              <button class="pagination-dot" data-slide="2" aria-label="Ir al slide 3"></button>
-            </li>
-          </ul>
-          <div class="splide__arrows">
-            <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">
-              <Icon icon='arrowSlider' size={30} color='var(--color-bg)'/>
-            </button>
-            <button class="splide__arrow splide__arrow--next" title="trabajo siguiente">
-              <Icon icon='arrowSlider' size={30} color='var(--color-bg)'/>
-            </button>
+          <div class="splide__controls">
+            <ul class="custom__pagination">
+              <li>
+                <button class="pagination-dot active" data-slide="0" aria-label="Ir al slide 1"></button>
+              </li>
+              <li>
+                <button class="pagination-dot" data-slide="1" aria-label="Ir al slide 2"></button>
+              </li>
+              <li>
+                <button class="pagination-dot" data-slide="2" aria-label="Ir al slide 3"></button>
+              </li>
+              <li>
+                <button class="pagination-dot" data-slide="3" aria-label="Ir al slide 4"></button>
+              </li>
+            </ul>
+            <div class="splide__arrows">
+              <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">
+                <Icon icon='arrowSlider' size={30} color='var(--color-bg)'/>
+              </button>
+              <button class="splide__arrow splide__arrow--next" title="trabajo siguiente">
+                <Icon icon='arrowSlider' size={30} color='var(--color-bg)'/>
+              </button>
+            </div>
           </div>
         </div>
       </article>
-      <article class="contact-links">
+      <article class="contact__child contact-links">
         <h3>Links de contacto</h3>
       </article>
     </div>
   </div>
 </section>
 
-<style lang="scss" define:vars={{ 
-  bgImgContact1: `url("${bgImageTokyo3.src}")`,
-  bgImgContact2: `url("${bgImageClouds.src}")`,
-}}>
+<!-- <style lang="scss" define:vars={{ bgImgContact1: `url("${bgImageTokyo3.src}")` }}> -->
+<style lang="scss">
   .contact {
-    background-image: var(--bgImgContact1);
     background-size: cover;
     background-attachment: fixed;
     position: relative;
     width: 100%;
     height: 80vh;
     overflow: hidden;
-  }
+    padding-block: 8vh;
 
+    &__content{
+      display: flex;
+      flex-direction: row;
+      gap: 30%;
+    }
+    &__child {
+      position: relative;
+      z-index: 2;
+      width: 35%;
+      background-color: var(--color-bg);
+      border: solid 1px var(--color-main-1);
+    }
+  }
   .octahedron {
     --p: 0;
     position: absolute;
@@ -200,13 +299,51 @@ import bgImageClouds from '@images/bg-nubes.jpg';
     background-size: 110px;
     background-repeat: space;
   }
-  .slider-recommendations.splide{
-    position: relative;
-    z-index: 2;
-    background-color: tomato;
 
-    .custom__pagination{
+  .recommendations{
+    padding-top: 1rem;
+    &__title {
+      font-family: var(--font-family-3);
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--color-text);
+      text-transform: uppercase;
+      border-block: solid 1px var(--color-text);
+      border-inline: solid 10px var(--color-text);
+      display: inline-block;
+      padding: .25rem .5rem;
+      margin-bottom: 2rem;
+      margin-left: 1rem;
+      position: relative;
+
+      &::after {
+        content: 'sacadas desde mi perfil en LinkedIn *';
+        position: absolute;
+        top: 0;
+        right: -150px;
+        display: inline-block;
+        color: var(--color-text);
+        font-size: 11px;
+        font-weight: normal;
+        width: 8rem;
+      }
+    }
+  }
+  .slider-recommendations.splide{
+    .splide__track{
+      margin: 0 1rem;
+    }
+    .splide__controls{
+      position: relative;
+      background-color: var(--color-main-1);
       display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: .5rem 1rem;
+    }
+    .custom__pagination{
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       gap: 1rem;
@@ -216,8 +353,8 @@ import bgImageClouds from '@images/bg-nubes.jpg';
     .pagination-dot {
       width: 1rem;
       height: 1rem;
-      border-radius: 50%;
-      background-color: var(--color-bg);
+      //border-radius: 50%;
+      background-color: var(--color-main-1);
       border: 2px solid var(--color-main-2);
       cursor: pointer;
       pointer-events: auto;
@@ -226,5 +363,62 @@ import bgImageClouds from '@images/bg-nubes.jpg';
         background-color: var(--color-main-2);
       }
     }
+    .splide__arrows {
+      height: 30px;
+      display: flex
+;
+    gap: 1rem;
+
+      .splide__arrow--prev{
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .card-recommendation {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--color-main-2-d4);
+    clip-path: polygon(0% 0%, 95% 0%, 100% 10%, 100% 100%, 0% 100%);
+    width: min(100%, 430px);
+    margin: 0 auto 1rem;
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    &__avatar {
+      display: inline-block;
+      width: 55px;
+      height: 50px;
+      //background-color: var(--color-main-1);
+      clip-path: polygon(0% 0%,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    }
+    &__img {
+      object-fit: cover;
+    }
+    &__name {
+      font-weight: bold;
+      color: var(--color-text);
+      font-family: var(--font-family-1);
+      font-size: var(--size-18px);
+    }
+    &__position {
+      font-style: italic;
+      color: var(--color-text);
+      font-family: var(--font-family-2);
+      font-size: var(--size-14px);
+    }
+    &__text {
+      color: var(--color-text);
+      font-size: var(--size-14px);
+    }
+  }
+
+  .contact-links{
+    padding: .5rem;
   }
 </style>
