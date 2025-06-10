@@ -3,7 +3,8 @@ import { Image } from 'astro:assets';
 import Icon from '@components/Icon.astro';
 import bgImageTokyo3 from '@images/Tokyo-3.jpeg';
 import bgImageClouds from '@images/bg-nubes.jpg';
-import AvatarExample from '@images/avatar-recomendation.jpeg';
+import avatarExample from '@images/avatar-recomendation.jpeg';
+import mapTokyo3 from '@images/map-tokyo-3.jpg';
 ---
 
 <script>
@@ -18,6 +19,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
 			perMove: 1,
       pagination: false,
       arrows: true,
+      gap: '2rem',
     });
 
     splide.mount();
@@ -86,7 +88,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -109,7 +111,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -132,7 +134,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -155,7 +157,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={AvatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -203,7 +205,46 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
         </div>
       </article>
       <article class="contact__child contact-links">
-        <h3>Links de contacto</h3>
+        <div class="header-decoration"></div>
+
+        <h2 class="contact-links__title title-evangelion">Contacto</h2>
+
+        <p class="contact-links__cite">Si tienes alguna pregunta o comentario, no dudes en contactarme a través de:</p>
+        <div class="contact-links__content">
+          <div class="decoration-corner">
+            <span class="decoration-corner__corner decoration-corner__corner--1"></span>
+            <span class="decoration-corner__corner decoration-corner__corner--2"></span>
+            <span class="decoration-corner__corner decoration-corner__corner--3"></span>
+            <span class="decoration-corner__corner decoration-corner__corner--4"></span>
+          </div>
+          <ul class="contact-links__list">
+            <li class="contact-links__item">
+              <a class="contact-links__link" href="mailto:seba.olate.h@gmail.com">
+                <span class="contact-links__text">
+                  <Icon icon='email' size={24} class='contact-links__icon'/>
+                  Email
+                </span>
+                <small class="contact-links__subtext">seba.olate.h@gmail.com</small>
+              </a>
+            </li>
+            <li class="contact-links__item">
+              <a class="contact-links__link" target="_blank" href="https://www.linkedin.com/in/sebastianolateh/">
+                <span class="contact-links__text">
+                  <Icon icon='linkedin' size={24} class='contact-links__icon'/>
+                  LinkedIn
+                </span>
+                <small class="contact-links__subtext">/in/sebastianolateh/</small>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="decoration-map">
+          <div class="decoration-map__content" style={`background-image: url(${mapTokyo3.src || mapTokyo3})`}>
+            <p class="decoration-map__kanji">東京3</p>
+            <p class="decoration-map__text">[localizando <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>]</p>
+          </div>
+        </div>
       </article>
     </div>
   </div>
@@ -219,8 +260,14 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
     height: 80vh;
     overflow: hidden;
     padding-block: 8vh;
+    border-bottom: 6px solid var(--color-bg);
+    box-shadow: 
+      0 -5px 28px rgba(var(--color-main-1-rgb), 0.5), 
+      inset 0 0 10px rgba(var(--color-text-rgb), 0.8), 
+      1px 20px 4px 5px rgba(var(--color-bg-rgb), .2);
+    z-index: 1;
 
-    &__content{
+    &__content {
       display: flex;
       flex-direction: row;
       gap: 30%;
@@ -300,7 +347,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
     background-repeat: space;
   }
 
-  .recommendations{
+  .recommendations {
     padding-top: 1rem;
     &__title {
       font-family: var(--font-family-3);
@@ -329,7 +376,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
       }
     }
   }
-  .slider-recommendations.splide{
+  .slider-recommendations.splide {
     .splide__track{
       margin: 0 1rem;
     }
@@ -354,7 +401,7 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
       width: 1rem;
       height: 1rem;
       //border-radius: 50%;
-      background-color: var(--color-main-1);
+      background-color: var(--color-main-1-d1);
       border: 2px solid var(--color-main-2);
       cursor: pointer;
       pointer-events: auto;
@@ -365,9 +412,8 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
     }
     .splide__arrows {
       height: 30px;
-      display: flex
-;
-    gap: 1rem;
+      display: flex;
+      gap: 1rem;
 
       .splide__arrow--prev{
         transform: rotate(180deg);
@@ -383,6 +429,11 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
     clip-path: polygon(0% 0%, 95% 0%, 100% 10%, 100% 100%, 0% 100%);
     width: min(100%, 430px);
     margin: 0 auto 1rem;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
 
     &__header {
       display: flex;
@@ -418,7 +469,207 @@ import AvatarExample from '@images/avatar-recomendation.jpeg';
     }
   }
 
-  .contact-links{
-    padding: .5rem;
+  .contact-links {
+    padding: 4rem 2rem 2rem 2rem; 
+    transform: translateY(6rem);
+
+    &__title {
+      font-size: var(--size-56px);
+      margin-bottom: 3rem;
+    }
+    &__cite {
+      font-family: var(--font-family-2);
+      margin-bottom: 1rem;
+    }
+    &__content {
+      //border: solid 1px var(--color-main-1-d3);
+      padding: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      z-index: 3;
+    }
+    &__link {
+      position: relative;
+      //height: 38px;
+      border: 3px solid var(--color-main-3);
+      border-radius: 8px;
+      padding: .5rem;
+      color: var(--color-main-3);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-direction: row;
+      text-transform: uppercase;
+      font-weight: bolder;
+      background-color: transparent;
+      box-shadow: inset var(--color-main-3) 0 0 2px;
+      gap: .5rem;
+      cursor: pointer;
+      transition: 250ms;
+
+      &:hover{
+        box-shadow: inset var(--color-main-3) 0 0 12px;
+        text-shadow: var(--color-main-3) 0 0 12px;
+        transition: 250ms;
+        animation: blink-in 0.15s cubic-bezier(1,0,0,1) forwards;
+      }
+    }
+    &__text {
+      font-size: var(--size-24px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .5rem;
+    }
+    &__icon {
+      color: var(--color-main-3);
+    }
+    &__subtext {
+      transform: translateY(-2px);
+    }
+    
+    .decoration-corner {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      
+      &__corner {
+        position: absolute;
+        display: block;
+        width: 65px;
+        height: 35px;
+        background-color: transparent;
+        &--1 {
+          top: 0;
+          left: 0;
+          border-top: solid 1px var(--color-main-1-d3);
+          border-left: solid 1px var(--color-main-1-d3);
+        }
+        &--2 {
+          top: 0;
+          right: 0;
+          border-top: solid 1px var(--color-main-1-d3);
+          border-right: solid 1px var(--color-main-1-d3);
+        }
+        &--3 {
+          bottom: 0;
+          left: 0;
+          border-bottom: solid 1px var(--color-main-1-d3);
+          border-left: solid 1px var(--color-main-1-d3);
+        }
+        &--4 {
+          bottom: 0;
+          right: 0;
+          border-bottom: solid 1px var(--color-main-1-d3);
+          border-right: solid 1px var(--color-main-1-d3);
+        }
+      }
+    }
+    .header-decoration {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 1.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--color-main-1), var(--color-main-2));
+
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 102%;
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 10px, var(--color-bg) 11px, var(--color-bg) 20px);
+      }
+    }
   }
+
+  .decoration-map {
+    position: absolute;
+    z-index: 3;
+    width: 200px;
+    height: 120px;
+    bottom: -80px;
+    right: -15px;
+    padding: 1px;
+    opacity: .9;
+    cursor: crosshair;
+    background-color: var(--color-main-1);
+    clip-path: polygon(0 34%, 14% 4%, 51% 4%, 60% 0%, 99% 0%, 100% 100%, 0% 100%);
+    
+    &__content {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      background-position: top right -50px;
+      animation: move-map 20s infinite;
+      clip-path: polygon(0 34%, 14% 4%, 51% 4%, 60% 0%, 99% 0%, 100% 100%, 0% 100%);
+    }
+    &__kanji {
+      position: absolute;
+      top: 0;
+      right: 3px;
+      padding: 0 .25rem;
+      border-inline: 5px solid var(--color-main-3);
+      color: var(--color-main-3);
+      background-color: var(--color-bg);
+    }
+    &__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;      
+    font-size: 1rem;
+    background-color: var(--color-bg);
+    display: inline-block;
+    padding: 0 4px;
+    color: var(--color-main-3);
+      .dot {
+        opacity: 0;
+        animation: fade-sequence 1.4s infinite;
+
+        &:nth-child(1) {
+          animation-delay: 0s;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+      }
+    }
+  }
+:global([data-theme='light']) {
+  .contact-links {
+    &__link {
+      color: var(--color-text);
+      &:hover {
+        text-shadow: var(--color-main-3) 0px 1px 1px;
+      }
+    }
+    &__icon{
+      fill: var(--color-text);
+      text-shadow: var(--color-main-3) 0px 1px 1px;
+    }  
+  }
+  .decoration-map {
+    &__text, &__kanji {
+      background-color: var(--color-text);
+    }
+  }
+}
 </style>

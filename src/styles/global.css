@@ -145,24 +145,50 @@ code {
     opacity: 1
   }
 }
-
 @keyframes pulse {
   0%{ opacity: 1}
   40%{ opacity: 0}
   60%{ opacity: 0}
   100%{ opacity: 1}
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 @keyframes fade-sequence {
   0% { opacity: 0; }
   12.5% { opacity: 1; }
   37.5% { opacity: 1; }
   100% { opacity: 0; }
+}
+@keyframes bg {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 800px; }
+}
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes move-map {
+  0% {
+    background-position: 40% 0%;
+  }
+  25% {
+    background-position: 70% 60%;
+  }
+  50%, 70% {
+    background-position: 70% 5%;
+  }
+  100% {
+    background-position: 40% 0%;
+  }
 }
 
 /* Utilities */
