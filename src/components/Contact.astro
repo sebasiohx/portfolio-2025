@@ -254,7 +254,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
 <style lang="scss">
   .contact {
     background-size: cover;
-    background-attachment: fixed;
+    background-position: top center;
     position: relative;
     width: 100%;
     height: auto;
@@ -294,6 +294,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       padding-block: 8vw 15vw;
     }
     @media screen and (width >= 1280px) {
+      background-attachment: fixed;
       padding-block: 6vw;
       min-height: 840px;
       &__content {
@@ -388,8 +389,12 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     width: 100%;
     height: 100%;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49">   <rect x="19" y="24" height="1" width="11" style="fill: rgba(228, 233, 243, 0.5);"></rect>   <rect x="24" y="19" height="11" width="1" style="fill: rgba(228, 233, 243, 0.5);"></rect> </svg>');
-    background-size: 110px;
+    background-size: 70px;
     background-repeat: space;
+
+    @media screen and (width >= 768px) {
+      background-size: 110px;
+    }
   }
 
   .recommendations {
@@ -545,6 +550,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     &__title {
       font-size: var(--size-48px);
       margin-bottom: 3rem;
+      text-align: center;
     }
     &__cite {
       font-family: var(--font-family-2);
@@ -672,6 +678,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       align-self: end;
       &__title {
         font-size: var(--size-56px);
+        text-align: left;
       }
       &__link {
         flex-direction: row;

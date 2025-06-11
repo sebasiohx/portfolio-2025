@@ -762,6 +762,7 @@ import Threads from '../jsx/Threads';
         &.is-active {
           display: flex; /* Mostramos solo el slide activo */
           flex-direction: column;
+          align-items: center;
         }
       }
 
@@ -773,8 +774,9 @@ import Threads from '../jsx/Threads';
       }
       &__text-wrap{
         display: block;
-        min-height: 115px;
+        min-height: 152px;
         margin-bottom: 1rem;
+        text-align: center;
       }
       &__slide-title{
         font-family: var(--font-family-2);
@@ -818,6 +820,9 @@ import Threads from '../jsx/Threads';
         }
         &__number{
           line-height: normal;
+        }
+        &__wrap.is-active{
+          align-items: normal;
         }
         &__text-wrap{
           min-height: 120 + 32px;
