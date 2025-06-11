@@ -88,7 +88,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -111,7 +111,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -134,7 +134,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -157,7 +157,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                 <article class="card-recommendation">
                   <figure class="card-recommendation__header">
                     <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={55} height={50} class="card-recommendation__img"/>
+                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
@@ -257,9 +257,9 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     background-attachment: fixed;
     position: relative;
     width: 100%;
-    height: 80vh;
+    height: auto;
     overflow: hidden;
-    padding-block: 8vh;
+    padding-block: 8vh 42vmin;
     border-bottom: 6px solid var(--color-bg);
     box-shadow: 
       0 -5px 28px rgba(var(--color-main-1-rgb), 0.5), 
@@ -269,15 +269,44 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
 
     &__content {
       display: flex;
-      flex-direction: row;
-      gap: 30%;
+      flex-direction: column;
+      gap: 3rem;
     }
     &__child {
       position: relative;
       z-index: 2;
-      width: 35%;
+      width: 100%;
       background-color: var(--color-bg);
       border: solid 1px var(--color-main-1);
+    }
+
+    @media screen and (width >= 768px) {
+      padding-block: 8vh;
+      &__content {
+        gap: 4rem;
+      }
+      &__child {
+        width: 55%;
+      }
+    }
+    @media screen and (width >= 1024px) {
+      min-height: 888px;
+      &__content {
+        flex-direction: row;
+        gap: 10%;
+      }
+      &__child {
+        width: 45%;
+      }
+    }
+    @media screen and (width >= 1280px) {
+      min-height: 848px;
+      &__content {
+        gap: 30%;
+      }
+      &__child {
+        width: 35%;
+      }
     }
   }
   .octahedron {
@@ -285,8 +314,8 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     position: absolute;
     z-index: 0;
     width: 100%;
-    height: 100%;
-    inset: 0;
+    height: 150px;
+    bottom: 0;
     overflow: hidden;
     perspective: 25em;
     perspective-origin: 50% calc(45% - 1em);
@@ -335,6 +364,17 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
         filter: brightness(calc(.5 + var(--j)*.1));
       }
     }
+    @media screen and (width >= 768px) {
+      height: 360px;
+      top: 15%;
+      left: 28%;
+    }
+    @media screen and (width >= 1024px) {
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
   }
   .crosses {
     position: absolute;
@@ -351,7 +391,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     padding-top: 1rem;
     &__title {
       font-family: var(--font-family-3);
-      font-size: 1.5rem;
+      font-size: var(--size-20px);
       font-weight: bold;
       color: var(--color-text);
       text-transform: uppercase;
@@ -373,6 +413,13 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
         font-size: 11px;
         font-weight: normal;
         width: 8rem;
+      }
+    }
+
+    @media screen and (width >= 768px) {
+      align-self: start;
+      &__title {
+        font-size: 1.5rem
       }
     }
   }
@@ -443,8 +490,8 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     }
     &__avatar {
       display: inline-block;
-      width: 55px;
-      height: 50px;
+      width: 104px;
+      height: 74px;
       //background-color: var(--color-main-1);
       clip-path: polygon(0% 0%,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
     }
@@ -456,25 +503,42 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       color: var(--color-text);
       font-family: var(--font-family-1);
       font-size: var(--size-18px);
+      line-height: 20px;
     }
     &__position {
       font-style: italic;
       color: var(--color-text);
       font-family: var(--font-family-2);
-      font-size: var(--size-14px);
+      font-size: var(--size-12px);
     }
     &__text {
       color: var(--color-text);
-      font-size: var(--size-14px);
+      font-size: var(--size-12px);
+    }
+
+    @media screen and (width >= 768px) {
+      &__avatar {
+        width: 55px;
+        height: 50px;
+      }
+      &__name {
+        line-height: inherit;
+      }
+      &__position {
+        font-size: var(--size-14px);
+      }
+      &__text {
+        font-size: var(--size-14px);
+      }
     }
   }
 
   .contact-links {
-    padding: 4rem 2rem 2rem 2rem; 
-    transform: translateY(6rem);
+    padding: 3rem 1rem 2rem 1rem; 
+    transform: translateY(0rem);
 
     &__title {
-      font-size: var(--size-56px);
+      font-size: var(--size-48px);
       margin-bottom: 3rem;
     }
     &__cite {
@@ -502,9 +566,9 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       padding: .5rem;
       color: var(--color-main-3);
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       text-transform: uppercase;
       font-weight: bolder;
       background-color: transparent;
@@ -526,6 +590,9 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       flex-direction: row;
       align-items: center;
       gap: .5rem;
+      border-bottom: 1px solid;
+      width: 64%;
+      justify-content: center;
     }
     &__icon {
       color: var(--color-main-3);
@@ -595,17 +662,40 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
         background-image: repeating-linear-gradient(135deg, transparent, transparent 10px, var(--color-bg) 11px, var(--color-bg) 20px);
       }
     }
-  }
 
+    @media screen and (width >= 768px) {
+      align-self: end;
+      &__title {
+        font-size: var(--size-56px);
+      }
+      &__link {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      &__text {
+        border-bottom: 0px solid;
+        width: 100%;
+        justify-content: start;
+      }
+    }
+    @media screen and (width >= 1024px) {
+      transform: translateY(10rem);
+      padding: 4rem 2rem 3rem 2rem;
+    }
+    @media screen and (width >= 1280px) {
+      transform: translateY(6rem);
+    }
+  }
   .decoration-map {
     position: absolute;
     z-index: 3;
     width: 200px;
     height: 120px;
-    bottom: -80px;
     right: -15px;
     padding: 1px;
     opacity: .9;
+    display: none;
     cursor: crosshair;
     background-color: var(--color-main-1);
     clip-path: polygon(0 34%, 14% 4%, 51% 4%, 60% 0%, 99% 0%, 100% 100%, 0% 100%);
@@ -632,7 +722,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     position: absolute;
     bottom: 0;
     left: 0;      
-    font-size: 1rem;
+    font-size: var(--size-12px);
     background-color: var(--color-bg);
     display: inline-block;
     padding: 0 4px;
@@ -640,7 +730,6 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       .dot {
         opacity: 0;
         animation: fade-sequence 1.4s infinite;
-
         &:nth-child(1) {
           animation-delay: 0s;
         }
@@ -651,6 +740,15 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
           animation-delay: 0.6s;
         }
       }
+    }
+    @media screen and (width >= 768px) {
+      display: block;
+      bottom: 73%;
+      right: 108%;
+    }
+    @media screen and (width >= 1024px) {
+      bottom: -100px;
+      right: -15px;
     }
   }
 :global([data-theme='light']) {
