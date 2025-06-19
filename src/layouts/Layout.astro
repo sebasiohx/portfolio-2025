@@ -1,14 +1,16 @@
 ---
-import '../styles/global.css';
+import '@styles/global.css';
 import '@splidejs/splide/css/core';
 import Header from '@components/Header.astro';
+import Contact from '@components/Contact.astro';
+import Footer from '@components/Footer.astro';
 import { AstroFont } from "astro-font";
 
 interface Props {
 	title: string;
 }
-
 const { title } = Astro.props;
+const urlPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -37,8 +39,11 @@ const { title } = Astro.props;
 		<script src="https://kit.fontawesome.com/a236ea0636.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<Header />
-		
+		<Header currentPath={urlPath} />
+		<!-- contenido -->
 		<slot />
+
+		<Contact />
+		<Footer />
 	</body>
 </html>

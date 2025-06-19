@@ -1,25 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroHome from "@components/home/HeroHome.astro";
+import Hero from "@components/Hero.astro";
 import DescriptionHome from "@components/home/DescriptionHome.astro";
 import PortfolioHome from '@components/home/PortfolioHome.astro';
-import Contact from '@components/Contact.astro';
-import Footer from '@components/Footer.astro';
 
 //const currentYear = new Date().getFullYear();
 ---
 
 <Layout title='SebaOlate | Front-end developer'>
-  <!-- las clases que sirven para crear un .contanier con "container px-3 mx-auto py-6 md:pt-0 columns-3 gap-8" -->
+  <!-- las clases que sirven para crear un .contanier con "<div class='container mx-auto px-2 md:px-4'>" -->
   <main>
-    <HeroHome />
+    <Hero type='home'/>
 
     <DescriptionHome />
 
     <PortfolioHome />
-
-    <Contact />
-
-    <Footer />
   </main>
 </Layout>

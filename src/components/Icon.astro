@@ -1,20 +1,24 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { iconPaths } from './scripts/IconPaths';
+import { iconPaths } from '@scripts/IconPaths';
 
 interface Props {
   icon: keyof typeof iconPaths;
   class?: string;
   size?: number | string;
+  height?: number | string;
+  width?: number | string;
   color?: string;
   style?: HTMLAttributes<'svg'>['style'];
 }
 
 const {
   icon,
-  color = 'currentColor',
-  size = '1.5rem',
   class: className = '',
+  size = '1.5rem',
+  height = '',
+  width = '',
+  color = 'currentColor',
   style = {'vertical-align': 'middle'},
 } = Astro.props;
 
@@ -24,8 +28,8 @@ const iconViewBox = iconPaths[icon][1] ?? '0 0 512 512';
 const attrs: HTMLAttributes<'svg'> = {
   xmlns: 'http://www.w3.org/2000/svg',
   'aria-hidden': 'true',
-  height: size,
-  width: size,
+  height: height || size,
+  width: width || size,
   fill: color,
   class: className,
   style: style,

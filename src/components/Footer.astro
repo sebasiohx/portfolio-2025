@@ -1,5 +1,5 @@
 ---
-
+import Icon from '@components/Icon.astro';
 ---
 <script>
   const currentYear = new Date().getFullYear();
@@ -14,37 +14,12 @@
   <div class='container mx-auto px-2 md:px-4'>
     <div class="flex justify-center md:justify-between flex-wrap gap-4">
       <div class='footer__content'>
-        <p class='footer__text'>&copy;<span class="footer__year">2020</span> Sebastián Olate H.</p>
-        <p class='footer__text'>Desarrollado y diseñado en Chile con <a href="https://astro.build/" target="_blank" class="underline"><cite>Astro</cite></a> y mucho CSS.</p>
-        <p class='footer__text'>Inspirado en la serie <a href="https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion" target="_blank" class="underline"><cite>Neon Genesis Evangelion</cite></a> (新世紀エヴァンゲリオン)</p>
+        <p class='footer__text'>&copy;<span class="footer__year">2020</span> Sebastián Olate Huenuñir.</p>
+        <p class='footer__text'>Desarrollado en Chile con <a href="https://astro.build/" target="_blank" class="underline"><cite>Astro</cite></a> y mucho CSS.</p>
+        <p class='footer__text'>Diseño inspirado en la serie <a href="https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion" target="_blank" class="underline"><cite>Neon Genesis Evangelion</cite></a> (新世紀エヴァンゲリオン)</p>
       </div>
       <div class="footer__logo-content">
-        <svg
-          id='logo-SO'
-          data-name='logo-SO'
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 98 36'
-          class='footer__logo'
-        >
-          <path
-            d='M3.9,35.29,1.15,31.61,3.08,20.7l-.67-.79H.32L1,16.09H3.08L4,15.3,5.93,4.39,10,.71h6.56l-.7,3.94H12.26l-.86.77L9.57,15.83,7,18,8.78,20.2,7,30.58l.59.77h3.62l-.7,3.94Z'
-          ></path>
-          <path
-            d='M14.91,29.09l.86-5h12.8L30,23l.47-2.72-1-1.16H19.39l-3-3.72,1.23-7,4.34-3.69H38.05l-.86,5H24.73l-1.4,1.16L23,12.94l1,1.16H34l3,3.68L35.7,25.41l-4.34,3.68Z'
-          ></path>
-          <path
-            d='M38.58,29.09l.93-5.2h5.81l-.93,5.2ZM40.71,17l.93-5.21h5.8L46.51,17Z'
-          ></path>
-          <path
-            d='M52,29.09l-3-3.68L52,8.34l4.34-3.69H70.75l3,3.69-3,17.07-4.34,3.68Zm4.61-4.71h7l1.36-1.16,2.25-12.7-1-1.16h-6.9l-1.39,1.16-2.26,12.7Z'
-          ></path>
-          <path
-            d='M71.67,32.74l3.09-8.85H81l-5.34,8.85ZM76,17l.93-5.21h5.8L81.75,17Z'
-          ></path>
-          <path
-            d='M81.75,35.29l.7-3.94h3.61l.87-.77,1.82-10.41L91.34,18,89.55,15.8,91.37,5.42l-.6-.77H87.16L87.85.71h6.57l2.75,3.68L95.25,15.3l.66.79H98l-.66,3.82H95.25l-.93.79L92.4,31.61l-4.08,3.68Z'
-          ></path>
-        </svg>
+        <Icon icon="logoSO" width="180px" height="auto" color='var(--color-main-1)' class="footer__logo" />
       </div>
     </div>
   </div>
@@ -62,8 +37,7 @@
       font-size: var(--size-14px);
     }
     &__logo {
-      width: 180px;
-      fill: var(--color-main-1);
+      background-color: tomato;
     }
   }
 </style>

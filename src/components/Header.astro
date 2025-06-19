@@ -1,10 +1,13 @@
 ---
-import Navbar from './Navbar.astro';
-import MenuMobile from "./MenuMobile.astro";
-import { iconPaths } from './scripts/IconPaths';
+import Navbar from '@components/Navbar.astro';
+import MenuMobile from "@components/MenuMobile.astro";
+import { iconPaths } from '@scripts/IconPaths';
 
-const urlPath = Astro.url.pathname;
-const isIndex = urlPath === '/';
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+const isIndex = currentPath === '/';
 
 /** Menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -39,10 +42,10 @@ const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[
           header.classList.remove('Header--big');
         }
       } else {
-        if (altura >= 250) {
-          header.classList.add('Header--big');
-        } else {
+        if (altura >= 150) {
           header.classList.remove('Header--big');
+        } else {
+          header.classList.add('Header--big');
         }
       }
     };
@@ -110,9 +113,9 @@ const iconsLinks: { label: string; href: string; icon: keyof typeof iconPaths }[
       </div>
     </div>
 
-    <Navbar textLinks={textLinks} iconsLinks={iconsLinks} currentPath={urlPath}/>
+    <Navbar textLinks={textLinks} iconsLinks={iconsLinks} currentPath={currentPath}/>
 
-    <MenuMobile textLinks={textLinks} iconsLinks={iconsLinks} currentPath={urlPath}/>
+    <MenuMobile textLinks={textLinks} iconsLinks={iconsLinks} currentPath={currentPath}/>
 
     <div class='bar-right-decoration'></div>
   </div>
