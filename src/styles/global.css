@@ -111,9 +111,6 @@ html {
   font-size: var(--font-size);
   /* font-family: var(--font-family-2); */
 }
-body {
-  border-left: 1px solid var(--color-main-1);
-}
 code {
   font-family:
     Menlo,
