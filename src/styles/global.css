@@ -31,6 +31,7 @@
   /* Color tone */
   --color-dark: #090b11;
   --color-light: #E4E9F3;
+  
   /*Main color 1*/
   --color-main-1-l1: color-mix(in srgb, var(--color-main-1) 20%, var(--color-text));
   --color-main-1-l2: color-mix(in srgb, var(--color-main-1) 40%, var(--color-text));

@@ -62,9 +62,6 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     );
     episodeNumberElement &&
       (episodeNumberElement.textContent = `EPISODIO: ${currentYear}`);
-    console.log(
-      `EPISODIO: ${currentYear} / ${episodeNumberElement?.textContent}`
-    );
   </script>
 )}
 { type === 'page' && (

@@ -1,18 +1,182 @@
 ---
 import Hero from '@components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+import Image from 'astro/components/Image.astro';
+import Icon from '@components/Icon.astro';
+import trabajoDePrueba1 from '@images/trabajo-ejemplo-1.png';
+import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
+import '@splidejs/splide/css/core';
 ---
 
-<Layout title="SebaOlateH | Detail">
-  <main>
-    <Hero type="detail" title="Sitio web institucional Escuela Militar" tagline="Aquí encontrarás una selección de mis trabajos más relevantes." subtitle='Trabajos destacados' align="left"/>
-    
+<script>
+  import Splide from '@splidejs/splide';
+
+  // Configuracion del slider Recomendaciones
+  document.addEventListener('DOMContentLoaded', () => {
+    const splide = new Splide('.slider-detail-portfolio', {
+      type: 'loop',
+      autoplay: false, //true
+      perPage: 1,
+      perMove: 1,
+      arrows: true,
+      fixedHeight: '648px',
+      gap: '2rem',
+    });
+
+    splide.mount();
+  });
+</script>
+
+<Layout title='SebaOlateH | Detail'>
+  <main class='mb-24'>
+    <Hero
+      type='detail'
+      title='Sitio web institucional Escuela Militar'
+      tagline='Aquí encontrarás una selección de mis trabajos más relevantes.'
+      subtitle='Trabajos destacados'
+      align='left'
+    />
+
     <div class='container mx-auto px-2 md:px-4'>
-      <h2 class="text-2xl font-bold mb-4">Detalles del Proyecto</h2>
-      <p class="mb-4">Este proyecto fue desarrollado para la Escuela Militar, con el objetivo de modernizar su presencia en línea y mejorar la comunicación con los estudiantes y el público en general.</p>
-      <p class="mb-4">Incluye un diseño responsivo, una interfaz amigable y una estructura de navegación intuitiva. Además, se implementaron características como formularios de contacto, galerías de imágenes y secciones informativas sobre la institución.</p>
-      <p class="mb-4">El sitio web fue construido utilizando tecnologías modernas como HTML, CSS y JavaScript, asegurando una experiencia de usuario fluida y accesible desde cualquier dispositivo.</p>
-      <p class="mb-4">Puedes ver el proyecto en vivo <a href="https://example.com" class="text-blue-500 hover:underline">aquí</a>.</p>
-    </section>
+      <hr class='detail__hr' />
+      <section class='detail grid grid-cols-2 gap-8'>
+        <div class='col-span-1'>
+          <p class='detail__text mb-6'>
+            Sitio Institucional de la Escuela Militar hecho en base a Sitefinity
+            (CMS), donde el trabajo de diseño fue realizado por mis colegas y yo
+            me encargué casi por completo del desarrollo front-end del sitio,
+            utilizando diferentes librerías y elementos gráficos, incluyendo el
+            tema de accesibilidad.
+          </p>
+          <p class='detail__text mb-6'>
+            Este proyecto estaba pensado para la admisión 2020 y fue un real
+            reto para mi en cuanto a exigencias técnicas, el diseño era complejo
+            y las expectativas muy altas.
+          </p>
+          <p class='detail__text mb-6'>
+            También este fue el proyecto donde pudimos utilizar plenamente el
+            sistema modular de SASS que había creado.
+          </p>
+
+          <hr class='w-1/2 h-px bg-[var(--color-main-2-d1)] border-t-0 mb-4' />
+
+          <h4 class='detail__subtitle'>Herramientas utilizadas</h4>
+          <ul class='detail__tools'>
+            <li class='detail__tool'>html</li>
+            <li class='detail__tool'>css</li>
+            <li class='detail__tool'>javascript</li>
+            <li class='detail__tool'>jquery</li>
+            <li class='detail__tool'>sass</li>
+            <li class='detail__tool'>bootstrap 4</li>
+          </ul>
+        </div>
+        <div class='col-span-1'>
+          <div class='splide slider-detail-portfolio'>
+            <div class='splide__arrows'>
+              <button
+                class='splide__arrow splide__arrow--prev'
+                title='pantalla anterior'
+              >
+                <Icon icon='arrowSlider' size={40} color='var(--color-bg)' />
+              </button>
+              <button
+                class='splide__arrow splide__arrow--next'
+                title='siguiente pantalla'
+              >
+                <Icon icon='arrowSlider' size={40} color='var(--color-bg)' />
+              </button>
+            </div>
+            <div class='splide__track'>
+              <ul class='splide__list'>
+                <li class='splide__slide'>
+                  <Image
+                    src={trabajoDePrueba1}
+                    alt='Escuela Militar - Imagen 1'
+                    class='detail__image'
+                  />
+                </li>
+                <li class='splide__slide'>
+                  <Image
+                    src={trabajoDePrueba2}
+                    alt='Escuela Militar - Imagen 2'
+                    class='detail__image'
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 </Layout>
+
+<style lang='scss'>
+  .detail {
+    &__hr {
+      height: 1rem;
+      width: 100%;
+      border: none;
+      margin-bottom: 2rem;
+      background-image: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 10px,
+        var(--color-main-2-d2) 11px,
+        var(--color-main-2-d2) 20px
+      );
+    }
+    &__subtitle {
+      font-size: var(--size-24px);
+      font-family: var(--font-family-3);
+    }
+    &__tools {
+      list-style-type: disclosure-closed;
+      padding-left: 1.4rem;
+
+    }
+    &__tool {
+      text-transform: uppercase;
+      &::marker{
+        color: var(--color-main-3);
+      }
+    }
+      
+  }
+  .slider-detail-portfolio.splide {
+    width: 100%;
+    
+    .splide__slide {
+      overflow-y: scroll;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+    .splide__arrows {
+      .splide__arrow {
+        position: absolute;
+        z-index: 1;
+        padding: 8px 2px;
+        background-color: var(--color-main-1-d1);
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: var(--color-main-1-l2);
+          transition: background-color 0.2s ease-in-out;
+        }
+        &--prev {
+          left: 1rem;
+          top: 50%;
+          transform: translateY(-50%) rotateY(180deg);
+        }
+        &--next {
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+</style>
