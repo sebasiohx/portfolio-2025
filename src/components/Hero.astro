@@ -15,6 +15,13 @@ interface Props {
 
 const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
 ---
+<script>
+  const currentYear = new Date().getFullYear();
+  const episodeNumberElement = document.querySelector('.eva-heading__episode-number');
+  episodeNumberElement &&
+    (episodeNumberElement.textContent = `EPISODIO: ${currentYear}`);
+</script>
+
 {type === 'home' && (
   <section class='hero-home'>
     <div class='hero-home__bg'>
@@ -55,14 +62,6 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
       </article>
     </div>
   </section>
-  <script>
-    const currentYear = new Date().getFullYear();
-    const episodeNumberElement = document.querySelector(
-      '.eva-heading__episode-number'
-    );
-    episodeNumberElement &&
-      (episodeNumberElement.textContent = `EPISODIO: ${currentYear}`);
-  </script>
 )}
 { type === 'page' && (
   <section class='hero-page'>

@@ -5,7 +5,6 @@ import Image from 'astro/components/Image.astro';
 import Icon from '@components/Icon.astro';
 import trabajoDePrueba1 from '@images/trabajo-ejemplo-1.png';
 import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
-import '@splidejs/splide/css/core';
 ---
 
 <script>
@@ -19,8 +18,14 @@ import '@splidejs/splide/css/core';
       perPage: 1,
       perMove: 1,
       arrows: true,
+      pagination: false,
       fixedHeight: '648px',
       gap: '2rem',
+      breakpoints: {
+        768: {
+          fixedHeight: '582px',
+        }
+      }
     });
 
     splide.mount();
@@ -28,7 +33,7 @@ import '@splidejs/splide/css/core';
 </script>
 
 <Layout title='SebaOlateH | Detail'>
-  <main class='mb-24'>
+  <main class='mb-16 md:mb-24'>
     <Hero
       type='detail'
       title='Sitio web institucional Escuela Militar'
@@ -39,8 +44,8 @@ import '@splidejs/splide/css/core';
 
     <div class='container mx-auto px-2 md:px-4'>
       <hr class='detail__hr' />
-      <section class='detail grid grid-cols-2 gap-8'>
-        <div class='col-span-1'>
+      <section class='detail grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div class='col-span-1 px-4 md:px-0'>
           <p class='detail__text mb-6'>
             Sitio Institucional de la Escuela Militar hecho en base a Sitefinity
             (CMS), donde el trabajo de diseño fue realizado por mis colegas y yo
@@ -58,7 +63,7 @@ import '@splidejs/splide/css/core';
             sistema modular de SASS que había creado.
           </p>
 
-          <hr class='w-1/2 h-px bg-[var(--color-main-2-d1)] border-t-0 mb-4' />
+          <hr class='w-full xl:w-1/2 h-px bg-[var(--color-main-2-d1)] border-t-0 mb-4' />
 
           <h4 class='detail__subtitle'>Herramientas utilizadas</h4>
           <ul class='detail__tools'>
