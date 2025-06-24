@@ -1,7 +1,7 @@
 ---
-import Hero from '@components/Hero.astro';
-import Layout from '../layouts/Layout.astro';
 import Image from 'astro/components/Image.astro';
+import Layout from '../layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
 import Icon from '@components/Icon.astro';
 import trabajoDePrueba1 from '@images/trabajo-ejemplo-1.png';
 import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
@@ -12,11 +12,11 @@ import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
 
   // Configuracion del slider Recomendaciones
   document.addEventListener('DOMContentLoaded', () => {
-    const splide = new Splide('.slider-detail-portfolio', {
+    const detailSlider = new Splide('.slider-detail-portfolio', {
       type: 'loop',
-      autoplay: false, //true
       perPage: 1,
       perMove: 1,
+      autoplay: false,
       arrows: true,
       pagination: false,
       fixedHeight: '648px',
@@ -28,7 +28,7 @@ import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
       }
     });
 
-    splide.mount();
+    detailSlider.mount();
   });
 </script>
 

@@ -3,13 +3,13 @@ import Icon from '@components/Icon.astro';
 import Threads from '../jsx/Threads';
 ---
 <script>
-	import Splide from '@splidejs/splide';
+	import { Splide } from '@splidejs/splide';
+  import { Intersection } from '@splidejs/splide-extension-intersection';
 	
 	document.addEventListener('DOMContentLoaded', () => {
 		// Configuracion del slider principal
 		const mainSlider = new Splide('#main-slider-portfolio-home', {
 			type: 'loop',
-			autoplay: true, //true
 			perPage: 1,
 			perMove: 1,
 			gap: '1rem',
@@ -19,6 +19,15 @@ import Threads from '../jsx/Threads';
 			pauseOnFocus: true,
 			progress: true,
 			resetProgress: false,
+      autoplay: 'pause',
+      intersection: {
+        inView: {
+          autoplay: true,
+        },
+        outView: {
+          autoplay: false,
+        },
+      },
 			height: 400,
 			breakpoints: {
 				767: {
@@ -50,7 +59,7 @@ import Threads from '../jsx/Threads';
 		// Sincronizar los sliders e iniciarlos
 		mainSlider.sync(thumbnailSlider);
 
-		mainSlider.mount();
+		mainSlider.mount({ Intersection });
 		thumbnailSlider.mount();
 
 		// Configuracion del slider de contenido
@@ -538,7 +547,12 @@ import Threads from '../jsx/Threads';
     position: relative;
     background-image: repeating-linear-gradient(135deg, var(--color-main-1-d4) 0, var(--color-main-1-d4) 1px, transparent 0, transparent 50%);
     background-size: 32px 32px;
-
+    .splide__slide{
+      transition: all 0.3s ease-in-out;
+      &.is-active{
+        transition: all 0.3s ease-in-out;
+      }
+    }
     .splide__link{
       position: relative;
       z-index: 2;

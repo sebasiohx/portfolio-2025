@@ -11,8 +11,8 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
 
   // Configuracion del slider Recomendaciones
   document.addEventListener('DOMContentLoaded', () => {
-    const splide = new Splide('#slider-recommendations', {
-      type: 'loop',
+    const recommendationSlider = new Splide('#slider-recommendations', {
+      type: 'slide',
 			autoplay: false, //true
 			perPage: 1,
 			perMove: 1,
@@ -21,7 +21,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       gap: '2rem',
     });
 
-    splide.mount();
+    recommendationSlider.mount();
 
     // Configurar paginación personalizada
     const paginationDots = document.querySelectorAll('.pagination-dot');
@@ -42,14 +42,14 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
     paginationDots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         // Ir al slide específico
-        splide.go(index);
+        recommendationSlider.go(index);
         // Actualizar estado de paginación
         updatePaginationDots(index);
       });
     });
 
     // Escuchar cambios de slide para actualizar paginación
-    splide.on('moved', function (newIndex, prevIndex) {
+    recommendationSlider.on('moved', function (newIndex, prevIndex) {
       updatePaginationDots(newIndex);
     });
 
@@ -90,7 +90,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure
+                        Sebastian Andres Elgueda Jure 1
                       </h4>
                       <h5 class="card-recommendation__position">
                         Technical Project Manager at Ki Technologies
@@ -113,7 +113,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure
+                        Sebastian Andres Elgueda Jure 2
                       </h4>
                       <h5 class="card-recommendation__position">
                         Technical Project Manager at Ki Technologies
@@ -136,7 +136,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure
+                        Sebastian Andres Elgueda Jure 3
                       </h4>
                       <h5 class="card-recommendation__position">
                         Technical Project Manager at Ki Technologies
@@ -159,7 +159,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
                     </div>
                     <figcaption class="card-recommendation__hgroup">
                       <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure
+                        Sebastian Andres Elgueda Jure 4
                       </h4>
                       <h5 class="card-recommendation__position">
                         Technical Project Manager at Ki Technologies
