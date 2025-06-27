@@ -347,6 +347,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
       background-color: var(--color-bg);
       padding: 1.5rem;
       position: relative;
+      box-shadow: var(--color-main-1) -1px 0px 5px;
 
       &::before {
         content: '';
@@ -363,6 +364,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     }
     &__title {
       font-size: var(--size-40px);
+      margin-bottom: 1rem;
     }
     &__subtitle {
       font-family: var(--font-family-3);
@@ -382,10 +384,21 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
         min-width: 500px;
         width: auto;
         padding: 2rem;
-        border-left: solid 20px var(--color-main-1);
+        border-left: solid 10px var(--color-main-1);
         &::before {
           top: 1.3rem;
-          left: -3px;
+        }
+        &::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          position: absolute;
+          bottom: 0;
+          left: -10px;
+          border-right: solid 10px transparent;
+          border-bottom: solid 10px var(--color-bg);
+          border-left: solid 10px transparent;
         }
       }
       &__title {

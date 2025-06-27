@@ -1,41 +1,149 @@
 ---
-import Hero from '@components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import ButtonMain from '@components/ButtonMain.astro';
+import Image from 'astro/components/Image.astro';
+import Hero from '@components/Hero.astro';
+import trabajoDePrueba1 from '@images/trabajo-ejemplo-1.png';
+import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
 ---
 
-<Layout title="SebaOlateH | Portafolio">
+<script>
+// Hacer que los elementos del catálogo tengan la mitad de su altura
+document.addEventListener('DOMContentLoaded', () => {
+  const elementosMitad = document.querySelectorAll('.catalog__item');
+  
+  elementosMitad.forEach((elementoMitad) => {
+    if (elementoMitad instanceof HTMLElement) {
+      const alturaContenedor = elementoMitad.offsetHeight;
+      const mitadAltura = alturaContenedor / 2;
+      elementoMitad.style.height = mitadAltura + 'px';
+      console.log(elementoMitad.style.height);
+    }
+  });
+});
+</script>
+
+<Layout title='SebaOlateH | Portafolio'>
   <main>
-    <Hero type="page" title="Acerca de mí" tagline="Aquí encontrarás una selección de mis trabajos más relevantes." subtitle='Trabajos destacados' align="left" />
+    <Hero
+      type='page'
+      title='Portafolio'
+      tagline='Aquí encontrarás una selección de mis trabajos más relevantes.'
+      align='left'
+    />
 
-    <ButtonMain
-      href="/detail"
-      className="btn-main"
-      type="anchor"
-    > Ir a pagina Detail 
-    </ButtonMain>
-
-      
-
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus repudiandae dolores autem eius aliquam magni est eum? Molestiae similique eaque repudiandae suscipit voluptatibus temporibus atque fugit doloribus ut. Expedita, ipsa.
-    Impedit veniam quis quisquam soluta quam libero aliquid pariatur officia nulla fugit vitae quas dolore nesciunt nostrum provident harum eos, vel non laboriosam ut nisi. Atque, magni eos. Atque, tenetur.</p>
+    <div class='container mx-auto px-2 md:px-4'>
+      <ul class='catalog py-16 md:py-24'>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba1}
+                alt='Imagen 1'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 1</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba2}
+                alt='Imagen 2'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 2</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba1}
+                alt='Imagen 1'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 1</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba2}
+                alt='Imagen 2'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 2</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba1}
+                alt='Imagen 1'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 1</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba2}
+                alt='Imagen 2'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 2</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+        <li class="catalog__item">
+          <figure class="catalog__figure">
+            <a class="catalog__link" href="/portfolio/work">
+              <Image
+                src={trabajoDePrueba1}
+                alt='Imagen 1'
+                class='catalog__image'
+              />
+              <figcaption class="catalog__caption">
+                <h3 class="catalog__title">Trabajo de prueba 1</h3>
+              </figcaption>
+            </a>
+          </figure>
+        </li>
+      </ul>
+    </div>
   </main>
 </Layout>
+
+<style lang="scss">
+  .catalog {
+    columns: 18vw 4;
+    column-gap: 1rem;
+
+    &__item {
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+  }
+</style>

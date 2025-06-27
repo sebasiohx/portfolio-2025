@@ -83,15 +83,15 @@ import Threads from '../jsx/Threads';
 	});
 
   //Script para la sección 3 de la consola
-  const console = document.querySelector('.portfolio-slider__section--3');
+  const consoleSection = document.querySelector('.portfolio-slider__section--3');
   const consoleText1 = document.querySelector('.console-section-3__text-1');
   const consoleText2 = document.querySelector('.console-section-3__text-2');
 
-  console?.addEventListener('mouseenter', () => {
+  consoleSection?.addEventListener('mouseenter', () => {
     consoleText1?.classList.add('hidden');
     consoleText2?.classList.remove('hidden');
   });
-  console?.addEventListener('mouseleave', () => {
+  consoleSection?.addEventListener('mouseleave', () => {
     consoleText1?.classList.remove('hidden');
     consoleText2?.classList.add('hidden');
   });
@@ -377,6 +377,7 @@ import Threads from '../jsx/Threads';
       border-top: 2px solid var(--color-main-1);
       outline: var(--color-main-2-d2) double 4px;
       outline-offset: 5px;
+      box-shadow: var(--color-main-2) 0px 0px 25px;
 
       &::before{
         content: "";
