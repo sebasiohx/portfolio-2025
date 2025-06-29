@@ -66,20 +66,21 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
 { type === 'page' && (
   <section class='hero-page'>
     <div class='hero-page__content-bg'>
-      <div class='hero-page__bg'></div>
-      <Waves
-        client:load
-        lineColor="#fff"
-        waveSpeedX={0.02}
-        waveSpeedY={0.01}
-        waveAmpX={40}
-        waveAmpY={20}
-        friction={0.9}
-        tension={0.01}
-        maxCursorMove={120}
-        xGap={12}
-        yGap={36}
-      />
+      <div class="hero-page__bg-waves">
+        <Waves
+          client:load
+          lineColor="#fff"
+          waveSpeedX={0.02}
+          waveSpeedY={0.01}
+          waveAmpX={40}
+          waveAmpY={20}
+          friction={0.9}
+          tension={0.01}
+          maxCursorMove={120}
+          xGap={12}
+          yGap={36}
+        />
+      </div>
     </div>
     <div class='container mx-auto px-2 h-full md:px-4'>
       <article class:list={['hero-page__hero', {'items-start': align === 'left', 'items-center': align === 'center', 'items-end': align === 'right'}]}>
@@ -321,16 +322,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
       z-index: 0;
       width: 100%;
       height: 100%;
-    }
-    &__bg {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-image: repeating-linear-gradient(135deg, var(--color-main-1-d4) 0, var(--color-main-1-d4) 1px, transparent 0, transparent 50%);
-      background-size: 32px 32px;
+      filter: invert(1) contrast(0.1) brightness(1.2);
     }
     &__hero {
       position: relative;
@@ -344,10 +336,11 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     }
     &__heading {
       width: 100%;
-      background-color: var(--color-bg);
       padding: 1.5rem;
       position: relative;
       box-shadow: var(--color-main-1) -1px 0px 5px;
+      background-color: rgba(var(--color-bg-rgb), 0.7);
+      backdrop-filter: blur(8px);
 
       &::before {
         content: '';
@@ -523,6 +516,12 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
         text-shadow:
           0 0 2px var(--color-main-1-d4),
           0 0 1.5px var(--color-main-1-d1);
+      }
+    }
+    .hero-page {
+      &__heading {
+        background-color: rgba(var(--color-bg-rgb), 0.4);
+        backdrop-filter: blur(4px);
       }
     }
   }
