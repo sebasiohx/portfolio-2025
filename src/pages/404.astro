@@ -28,7 +28,6 @@ import Hero from '@components/Hero.astro';
     padding: 0;
     margin: 0;
     font-family: var(--font-family-2);
-    filter: blur(1px);
     line-height: 1rem;
     overflow: hidden;
 
@@ -124,13 +123,13 @@ import Hero from '@components/Hero.astro';
     margin: 0;
     font-size: 5rem;
     line-height: 8rem;
-    font-family: var(--font-family-2);
+    filter: blur(1px);
     animation: scroll 5s linear infinite;
   }
   .secondary {
     opacity: 0.75;
     font-size: 3rem;
-    font-family: var(--font-family-2);
+    filter: blur(1px);
   }
   .cartridge {
     position: relative;
@@ -143,6 +142,7 @@ import Hero from '@components/Hero.astro';
     line-height: 2rem;
     background-color: var(--color-bg);
     color: var(--color-main-3);
+    text-shadow: 0 0 10px;
 
     &__btn {
       transition: all 0.2s ease-in-out;
@@ -181,6 +181,8 @@ import Hero from '@components/Hero.astro';
 :global([data-theme="light"]) {
   .cartridge {
     color: var(--color-text);
+    text-shadow: unset;
+    box-shadow: inset var(--color-main-3) 0 0 10px;
   }
 }
 </style>
