@@ -442,7 +442,7 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: .5rem 1rem;
+      padding: .2rem 1rem;
     }
     .custom__pagination{
       display: inline-flex;
@@ -466,10 +466,22 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
       }
     }
     .splide__arrows {
-      height: 30px;
+      height: 38px;
       display: flex;
       gap: 1rem;
 
+      .splide__arrow {
+        background-color: var(--color-main-1);
+        padding: .25rem;
+
+        &:hover {
+          background-color: var(--color-main-1-d1);
+          transition: background-color 0.3s ease-in-out;
+        }
+        &[disabled]:hover {
+          background-color: var(--color-main-1);
+        }
+      }
       .splide__arrow--prev{
         transform: rotate(180deg);
       }
