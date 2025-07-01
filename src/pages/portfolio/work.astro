@@ -129,6 +129,16 @@ import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
         var(--color-main-2-d2) 11px,
         var(--color-main-2-d2) 20px
       );
+      background-size: 56px 30px; /* Definimos el tamaño del patrón */
+      animation: deslizarX 3s linear infinite;
+    }
+    @keyframes deslizarX {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 56px 0;
+      }
     }
     &__subtitle {
       font-size: var(--size-24px);
