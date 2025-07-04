@@ -1,9 +1,27 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from '@components/Icon.astro';
+import data from '@data/data.json';
 import bgImageTokyo3 from '@images/Tokyo-3.jpeg';
-import avatarExample from '@images/avatar-recomendation.jpeg';
 import mapTokyo3 from '@images/map-tokyo-3.jpg';
+import avatar1 from '@images/recomendaciones/avatar-recomendation-juan.jpeg';
+import avatar2 from '@images/recomendaciones/avatar-recomendation-matias.jpeg';
+import avatar3 from '@images/recomendaciones/avatar-recomendation-michael.jpeg';
+import avatar4 from '@images/recomendaciones/avatar-recomendation-sebastian.jpeg';
+
+const { recommendations } = data;
+
+const recommendationAvatars = [
+  avatar1,
+  avatar2,
+  avatar3,
+  avatar4
+];
+
+const newRecommendations = recommendations.map((reco) => ({
+  ...reco,
+  avatar: recommendationAvatars[reco.avatar -1] || recommendationAvatars[0]
+}));
 ---
 
 <script>
@@ -82,114 +100,43 @@ import mapTokyo3 from '@images/map-tokyo-3.jpg';
         <div id="slider-recommendations" class="slider-recommendations splide">
           <div class="splide__track">
 						<ul class="splide__list">
-              <li class="splide__slide">
-                <article class="card-recommendation">
-                  <figure class="card-recommendation__header">
-                    <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
-                    </div>
-                    <figcaption class="card-recommendation__hgroup">
-                      <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure 1
-                      </h4>
-                      <h5 class="card-recommendation__position">
-                        Technical Project Manager at Ki Technologies
-                      </h5>
-                    </figcaption>
-                  </figure>
-                  <p class="card-recommendation__text">
-                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
-                  </p>
-                  <p class="card-recommendation__text">
-                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
-                  </p>
-                </article>
-              </li>
-              <li class="splide__slide">
-                <article class="card-recommendation">
-                  <figure class="card-recommendation__header">
-                    <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
-                    </div>
-                    <figcaption class="card-recommendation__hgroup">
-                      <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure 2
-                      </h4>
-                      <h5 class="card-recommendation__position">
-                        Technical Project Manager at Ki Technologies
-                      </h5>
-                    </figcaption>
-                  </figure>
-                  <p class="card-recommendation__text">
-                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
-                  </p>
-                  <p class="card-recommendation__text">
-                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
-                  </p>
-                </article>
-              </li>
-              <li class="splide__slide">
-                <article class="card-recommendation">
-                  <figure class="card-recommendation__header">
-                    <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
-                    </div>
-                    <figcaption class="card-recommendation__hgroup">
-                      <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure 3
-                      </h4>
-                      <h5 class="card-recommendation__position">
-                        Technical Project Manager at Ki Technologies
-                      </h5>
-                    </figcaption>
-                  </figure>
-                  <p class="card-recommendation__text">
-                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
-                  </p>
-                  <p class="card-recommendation__text">
-                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
-                  </p>
-                </article>
-              </li>
-              <li class="splide__slide">
-                <article class="card-recommendation">
-                  <figure class="card-recommendation__header">
-                    <div class="card-recommendation__avatar">
-                      <Image src={avatarExample} alt="Avatar de Sebastian Andres Elgueda Jure" width={155} height={150} class="card-recommendation__img"/>
-                    </div>
-                    <figcaption class="card-recommendation__hgroup">
-                      <h4 class="card-recommendation__name">
-                        Sebastian Andres Elgueda Jure 4
-                      </h4>
-                      <h5 class="card-recommendation__position">
-                        Technical Project Manager at Ki Technologies
-                      </h5>
-                    </figcaption>
-                  </figure>
-                  <p class="card-recommendation__text">
-                    Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.
-                  </p>
-                  <p class="card-recommendation__text">
-                    En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa.
-                  </p>
-                </article>
-              </li>
+              {
+                newRecommendations.map((reco) => (
+                  <li class="splide__slide">
+                    <article class="card-recommendation">
+                      <figure class="card-recommendation__header">
+                        <div class="card-recommendation__avatar">
+                          <Image src={reco.avatar} alt={`Avatar de ${reco.name}`} width={155} height={150} class="card-recommendation__img"/>
+                        </div>
+                        <figcaption class="card-recommendation__hgroup">
+                          <h4 class="card-recommendation__name">
+                            {reco.name}
+                          </h4>
+                          <h5 class="card-recommendation__position">
+                            {reco.position}
+                          </h5>
+                        </figcaption>
+                      </figure>
+                      {reco.text.map((p) => (
+                        <p class="card-recommendation__text">
+                          {p}
+                        </p>
+                      ))}
+                    </article>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div class="splide__controls">
             <ul class="custom__pagination">
-              <li>
-                <button class="pagination-dot active" data-slide="0" aria-label="Ir al slide 1"></button>
-              </li>
-              <li>
-                <button class="pagination-dot" data-slide="1" aria-label="Ir al slide 2"></button>
-              </li>
-              <li>
-                <button class="pagination-dot" data-slide="2" aria-label="Ir al slide 3"></button>
-              </li>
-              <li>
-                <button class="pagination-dot" data-slide="3" aria-label="Ir al slide 4"></button>
-              </li>
+              {
+                newRecommendations.map((_, index) => (
+                  <li>
+                    <button class={`pagination-dot ${index === 0}`} data-slide={index} aria-label={`Ir al slide ${index}`}></button>
+                  </li>
+                ))
+              }
             </ul>
             <div class="splide__arrows">
               <button class="splide__arrow splide__arrow--prev" title="trabajo anterior">

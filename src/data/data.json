@@ -1,0 +1,24 @@
+{
+  "textLinks": [
+    { "label": "Home", "href": "/" },
+    { "label": "Portafolio", "href": "/portfolio" },
+    { "label": "Acerca de mi", "href": "/about" }
+  ],
+  "iconsLinks": [
+    {"label": "LinkedIn", "href": "https://www.linkedin.com/in/sebastianolateh/", "icon": "linkedin"},
+    {"label": "GitHub", "href": "https://github.com/sebasiohx", "icon": "github"},
+    {"label": "CodePen", "href": "https://codepen.io/Solate", "icon": "codepen"}
+  ],
+  "recommendations": [
+    {
+      "avatar": 1,
+      "name": "Juan 1",
+      "position": "Desarrollador Full Stack",
+      "text": [
+        "Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.",
+        "En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa."
+      ]
+    } 
+  ],
+  "trabajos": []
+}

@@ -1,9 +1,10 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
-import { iconPaths } from '@scripts/IconPaths';
+import { iconPaths } from '@data/IconPaths';
+import type { IconName } from '@data/IconPaths';
 
 interface Props {
-  icon: keyof typeof iconPaths;
+  icon: IconName;
   class?: string;
   size?: number | string;
   height?: number | string;

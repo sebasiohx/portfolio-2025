@@ -1,10 +1,10 @@
 ---
-import { iconPaths } from '@scripts/IconPaths';
+import { iconPaths } from '@data/IconPaths';
 import Icon from './Icon.astro';
 
 interface Props {
   textLinks: Array<{ label: string; href: string }>;
-  iconsLinks: Array<{ label: string; href: string; icon: keyof typeof iconPaths }>;
+  iconsLinks: Array<{ label: string; href: string; icon: string }>;
   currentPath: string;
 }
 
