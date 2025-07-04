@@ -12,13 +12,40 @@
   "recommendations": [
     {
       "avatar": 1,
-      "name": "Juan 1",
-      "position": "Desarrollador Full Stack",
+      "name": "Juan Francisco López Berríos",
+      "position": "Tech Manager || Tech Lead || Geek",
+      "text": [
+        "Sebastián es un desarrollador con flexibilidad de aprender nuevos stack de tecnología y adaptarse a negocios muy distintos entre si.",
+        "Se ha desempeñado excelente en cada proyecto que trabajó y siempre ha tenido buen feedback tanto de parte interna como del cliente.",
+        "Por otra parte, tiene afinidad con el diseño por lo cual lo hace un frontend muy completo."
+      ]
+    }, 
+    {
+      "avatar": 2,
+      "name": "Matías Fuentes Mora",
+      "position": "Líder Técnico en ReSimple",
+      "text": [
+        "Durante los 3 años que me tocó trabajar con Seba, siempre se lograron resolver los requerimientos de la mejor manera a nivel técnico y profesional. Sebastián es un profesional experto en su área, quien cosntantemente busca desarrollar soluciones apuntando a la excelencia. Por otra parte tiene un potencial tremendo para adquirir y manejar nuevos conocimientos relacionados al desarrollo Frontend.",
+        "Seba es muy minucioso en su trabajo, lo cual transmite una confianza tremenda al momento de asignarle una tarea o solicitarle ayuda, esta característica lo hace encajar, a mi parecer, en cualquier equipo de trabajo."
+      ]
+    },
+    {
+      "avatar": 3,
+      "name": "Michael Gutierrez",
+      "position": "Technical Project Manager at Ki Technologies",
       "text": [
         "Sebastian es un profesional amable, responsable y tecnicamente muy hábil. Siempre que queremos realizar un trabajo prolijo y bien orquestado buscamos su apoyo.",
         "En nuestro equipo se ha desenvuelto en situaciones de mucho estrés realizando las labores de manera exitosa, siempre comprometido y siendo parte del equipo; es caracteristico de el su timidez que en ocasiones esconde lo adaptable que es como profesional. En nuestro equipo constantemente asumió desafíos cumpliendolos con creces: ha tenido una grán evolución a traves del tiempo que ha permanecido en la empresa."
       ]
-    } 
-  ],
-  "trabajos": []
+    },
+    {
+      "avatar": 4,
+      "name": "Sebastian Andres Elgueda Jure",
+      "position": "Agile Coach | Agile Facilitator",
+      "text": [
+        "Es Excelente en lo que hace, en lo que sabe y en lo que no. Un purista en su disciplina y un motor que te invita a hacer las cosas bien.",
+        "Es una excelente persona, fui su jefe y también su compañero de equipo y es desde ambas perspectivas que puedo contar que es un agrado aprender de él."
+      ]
+    }
+  ]
 }
