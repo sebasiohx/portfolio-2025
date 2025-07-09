@@ -47,5 +47,25 @@
         "Es una excelente persona, fui su jefe y también su compañero de equipo y es desde ambas perspectivas que puedo contar que es un agrado aprender de él."
       ]
     }
+  ],
+  "works": [
+    {
+      "title": "Trabajo 1",
+      "customer": "Cliente 1",
+      "descriptions": [
+        "Descripción del trabajo 1. Aquí se detalla el proyecto, las tecnologías utilizadas y el impacto que tuvo.",
+        "Este proyecto involucró el desarrollo de una aplicación web utilizando React y Node.js, enfocándose en la experiencia del usuario y la escalabilidad."
+      ],
+      "tools": [
+        "React",
+        "Node.js",
+        "CSS",
+        "javascript",
+        "HTML"
+      ],
+      "images": [],
+      "link": "https://example.com/work1",
+      "important": true
+    }
   ]
 }

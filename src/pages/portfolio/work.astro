@@ -1,10 +1,11 @@
 ---
 import Image from 'astro/components/Image.astro';
-import Layout from '../../layouts/Layout.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
 import Hero from '@components/Hero.astro';
 import Icon from '@components/Icon.astro';
 import trabajoDePrueba1 from '@images/trabajo-ejemplo-1.png';
 import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
+//import '@splidejs/splide/css';
 ---
 
 <script>
@@ -18,7 +19,7 @@ import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
       perMove: 1,
       autoplay: false,
       arrows: true,
-      pagination: false,
+      pagination: true,
       fixedHeight: '648px',
       gap: '2rem',
       breakpoints: {
@@ -32,7 +33,7 @@ import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
   });
 </script>
 
-<Layout title='SebaOlateH | Detail'>
+<MainLayout title='SebaOlateH | Detail'>
   <main class='mb-16 md:mb-24'>
     <Hero
       type='detail'
