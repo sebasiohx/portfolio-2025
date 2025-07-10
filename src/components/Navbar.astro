@@ -1,11 +1,12 @@
 ---
-import { iconPaths } from '@data/IconPaths';
+import { iconPaths } from '@utils/IconPaths';
+import type { IconName } from '@utils/IconPaths';
 import Icon from '@components/Icon.astro';
 
 
 interface Props {
   textLinks: Array<{ label: string; href: string }>;
-  iconsLinks: Array<{ label: string; href: string; icon: keyof typeof iconPaths }>;
+  iconsLinks: Array<{ label: string; href: string; icon: IconName }>;
   currentPath: string;
 }
 
@@ -111,14 +112,14 @@ const isActiveLink = (linkHref: string, URLPath: string) => {
     <span class="btn-theme__color-content">
       <span class='btn-theme__text'></span>
       <svg 
-        class='btn-theme__icon inline-block btn-theme__icon--1' 
+        class='btn-theme__icon btn-theme__icon--1' 
         xmlns='http://www.w3.org/2000/svg' 
         aria-hidden='true' 
         set:html={iconThemeDark[0]} 
         viewBox={iconThemeDark[1]}
       ></svg>
       <svg
-        class='btn-theme__icon inline-block btn-theme__icon--2' 
+        class='btn-theme__icon btn-theme__icon--2' 
         xmlns='http://www.w3.org/2000/svg' 
         aria-hidden='true' 
         set:html={iconThemeLight[0]} 
