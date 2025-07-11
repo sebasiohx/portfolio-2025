@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+src/pages/ejemplo.astro
+src/utils/formato-coleccion.coffee

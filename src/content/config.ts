@@ -11,6 +11,22 @@ const recommendationCollection = defineCollection({
     }),
 });
 
+const worksCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      customer: z.string(),
+      important: z.boolean().default(false),
+      heroImg: image(),
+      tools: z.array(z.string()),
+      imagesSlider: z.array(image()),
+      texts: z.array(z.string()),
+      postNumber: z.number(),
+    }),
+});
+
 export const collections = {
   recommendation: recommendationCollection,
+  works: worksCollection,
 }
