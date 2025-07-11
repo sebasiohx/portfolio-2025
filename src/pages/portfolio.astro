@@ -1,26 +1,13 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Image from 'astro/components/Image.astro';
 import Hero from '@components/Hero.astro';
-import trabajoDePrueba1 from '@images/trabajo-ejemplo-1.png';
-import trabajoDePrueba2 from '@images/trabajo-ejemplo-2.png';
----
+import CardWorkPost from '@components/CardWorkPost.astro';
+import { getCollection } from 'astro:content';
 
-<script>
-// Hacer que los elementos del catálogo tengan la mitad de su altura
-document.addEventListener('DOMContentLoaded', () => {
-  const elementosMitad = document.querySelectorAll('.catalog__figure');
-  
-  elementosMitad.forEach((elementoMitad) => {
-    if (elementoMitad instanceof HTMLElement) {
-      const alturaContenedor = elementoMitad.offsetHeight;
-      const mitadAltura = alturaContenedor / 3;
-      elementoMitad.style.height = mitadAltura + 'px';
-      console.log(elementoMitad.style.height);
-    }
-  });
-});
-</script>
+const works = (await getCollection('works')).sort((a, b) => (
+  b.data.postNumber - a.data.postNumber
+));
+---
 
 <MainLayout title='Portafolio'>
   <main>
@@ -33,227 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <div class='container mx-auto px-2 md:px-4'>
       <ul class='catalog py-16 md:py-24'>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba1}
-                alt='Imagen 1'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Sitio web institucional Escuela Militar</h3>
-                <!-- <span class="catalog__cross">+</span> -->
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba2}
-                alt='Imagen 2'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Trabajo de prueba 2</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba1}
-                alt='Imagen 1'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Policia de investigaciones (PDI)</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba2}
-                alt='Imagen 2'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Trabajo de prueba 2</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba1}
-                alt='Imagen 1'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Trabajo de prueba 1</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba2}
-                alt='Imagen 2'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Trabajo de prueba 2</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba1}
-                alt='Imagen 1'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Trabajo de prueba 1</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
-        <li class="catalog__item">
-          <figure class="catalog__figure">
-            <a class="catalog__link" href="/portfolio/work">
-              <Image
-                src={trabajoDePrueba2}
-                alt='Imagen 2'
-                class='catalog__image'
-              />
-              <figcaption class="catalog__caption">
-                <h3 class="catalog__title">Trabajo de prueba 2</h3>
-                <span class="catalog__cross catalog__cross--1"></span>
-                <span class="catalog__cross catalog__cross--2"></span>
-              </figcaption>
-            </a>
-          </figure>
-        </li>
+        {works.map((post) => <CardWorkPost work={post} />)}
       </ul>
     </div>
   </main>
-</Layout>
+</MainLayout>
 
-<style lang="scss">
+<style lang='scss'>
   .catalog {
     columns: 18vw 1; //18vw 4
     column-gap: 1rem;
 
-    &__item {
-      margin-bottom: 1rem;
-    }
-    &__figure {
-      overflow: hidden;
-      display: inline-block;
-      padding: 1px;
-      background-color: var(--color-main-1);
-      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-    }
-    &__link {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      font-family: var(--font-family-2);
-      font-size: 1rem;
-      color: var(--color-text);
-      display: flex;
-      flex-direction: row;
-      justify-content: start;
-      align-items: start;
-      transition: background-color 0.2s ease-in-out;
-      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-    }
-    &__image {}
-    &__caption {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, var(--color-bg) 25%, transparent 200%); //20%
-      padding: 3rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      opacity: 1;
-      transition: opacity 0.2s ease-in-out;
-    }
-    &__title {
-      font-family: var(--font-family-2);
-      font-size: 22px;
-      background-color: var(--color-bg);
-      padding: 2px 8px;
-      font-weight: bolder;
-      text-decoration: overline;
-      text-decoration-color: var(--color-main-1);
-      text-shadow: var(--color-main-1) 0px 0px 2px;
-    }
-    &__cross {
-      /*font-size: 50px;
-      font-weight: lighter;
-      color: var(--color-main-1);*/
-      width: 70px;
-      height: 2px;
-      display: block;
-      background-color: var(--color-main-1);
-      position: absolute;
-      bottom: 40%; // top: 50%
-
-      &--2{
-        transform: rotate(90deg);
-      }
-    }
-
     @media screen and (768px <= width < 1024px) {
       columns: 18vw 2;
-
-      &__caption {
-        background: linear-gradient(180deg, var(--color-bg) 10%, transparent 200%);
-      }
-    }
-    
-    @media screen and (width >= 1024px) and (hover: hover) {
-      &__caption {
-        opacity: 0;
-        &:hover {
-          opacity: 1;
-          transition: opacity 0.2s ease-in-out;
-        }
-      }
     }
     @media screen and (width >= 1024px) {
       columns: 18vw 3;
