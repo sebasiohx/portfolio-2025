@@ -24,7 +24,7 @@ const isActiveLink = (linkHref: string, URLPath: string) => {
   if (linkHref !== '/' && URLPath.startsWith(linkHref)) return true;
   
   // Caso especial: cuando estás en /ejemplo, el enlace /portfolio debe estar activo
-  if (URLPath == '/ejemplo' && linkHref === '/portfolio') return true;
+  //if (URLPath == '/ejemplo' && linkHref === '/portfolio') return true;
   
   return false;
 };
