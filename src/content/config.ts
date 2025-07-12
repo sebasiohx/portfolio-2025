@@ -17,7 +17,7 @@ const worksCollection = defineCollection({
     z.object({
       title: z.string(),
       customer: z.string(),
-      important: z.boolean().default(false),
+      isImportant: z.boolean().default(false),
       heroImg: image(),
       tools: z.array(z.string()),
       imagesSlider: z.array(image()),

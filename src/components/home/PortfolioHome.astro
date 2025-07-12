@@ -1,7 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Icon from '@components/Icon.astro';
-import Threads from '../jsx/Threads';
+import Threads from '@components/jsx/Threads';
+
+const works = (await getCollection('works'))
+  .filter((work) => work.data.isImportant === true)
+  .sort((a, b) => b.data.postNumber - a.data.postNumber);
 ---
+
 <script>
 	import { Splide } from '@splidejs/splide';
   import { Intersection } from '@splidejs/splide-extension-intersection';
@@ -122,51 +129,21 @@ import Threads from '../jsx/Threads';
             
 						<div class="splide__track">
 							<ul class="splide__list">
-								<!-- Slide 1 -->
-								<li class="splide__slide">
-                  <a class="splide__link" href="#">
-                    <span class="splide__active-screen">
-                      <Icon class='splide__icon hidden md:block' icon="zoom" size={60} color="var(--color-main-1)"/>
-                    </span>
-                    <img class="splide__img-main" src="https://picsum.photos/id/1018/1000/600" alt="Montañas">
-                  </a>
-								</li>
-								<!-- Slide 2 -->
-								<li class="splide__slide">
-                  <a class="splide__link" href="#">
-                    <span class="splide__active-screen">
-                      <Icon class='splide__icon hidden md:block' icon="zoom" size={60} color="var(--color-main-1)"/>
-                    </span>
-                    <img class="splide__img-main" src="https://picsum.photos/id/1015/1000/600" alt="Río y montañas">
-                  </a>
-								</li>
-								<!-- Slide 3 -->
-								<li class="splide__slide">
-                  <a class="splide__link" href="#">
-                    <span class="splide__active-screen">
-                      <Icon class='splide__icon hidden md:block' icon="zoom" size={60} color="var(--color-main-1)"/>
-                    </span>
-                    <img class="splide__img-main" src="https://picsum.photos/id/1019/1000/600" alt="Lago">
-                  </a>
-								</li>
-								<!-- Slide 4 -->
-								<li class="splide__slide">
-                  <a class="splide__link" href="#">
-                    <span class="splide__active-screen">
-                      <Icon class='splide__icon hidden md:block' icon="zoom" size={60} color="var(--color-main-1)"/>
-                    </span>
-                    <img class="splide__img-main" src="https://picsum.photos/id/1039/1000/600" alt="Bosque">
-                  </a>
-								</li>
-								<!-- Slide 5 -->
-								<li class="splide__slide">
-                  <a class="splide__link" href="#">
-                    <span class="splide__active-screen">
-                      <Icon class='splide__icon hidden md:block' icon="zoom" size={60} color="var(--color-main-1)"/>
-                    </span>
-                    <img class="splide__img-main" src="https://picsum.photos/id/1043/1000/600" alt="Campo">
-                  </a>
-								</li>
+                {works.map(( work ) => (
+                  <li class="splide__slide">
+                    <a class="splide__link" href={`/portfolio/${work.slug}`}>
+                      <span class="splide__active-screen">
+                        <Icon class='splide__icon hidden md:block' icon="zoom" size={60} color="var(--color-main-1)"/>
+                      </span>
+                      <Image
+                        src={work.data.heroImg}
+                        alt={work.data.title}
+                        class="splide__img-main" 
+                      />
+                    </a>
+                  </li>
+                ))}
+                
 							</ul>
 						</div>
 
@@ -189,37 +166,18 @@ import Threads from '../jsx/Threads';
 					<section id="thumbnail-slider-portfolio-home" class="splide thumbnail-slider">
 						<div class="splide__track">
 							<ul class="splide__list">
-								<!-- Las mismas imágenes que en el slider principal, pero como miniaturas -->
-								<li class="splide__slide">
-                  <span class="splide__client-screen">
-                    Escuela militar
-                  </span>
-									<img class="splide__img" src="https://picsum.photos/id/1018/200/200" alt="Montañas">
-								</li>
-								<li class="splide__slide">
-                  <span class="splide__client-screen">
-                    Policia de investigaciones (PDI)
-                  </span>
-									<img class="splide__img" src="https://picsum.photos/id/1015/200/200" alt="Río y montañas">
-								</li>
-								<li class="splide__slide">
-                  <span class="splide__client-screen">
-                    Mnisterio de energia
-                  </span>
-									<img class="splide__img" src="https://picsum.photos/id/1019/200/200" alt="Lago">
-								</li>
-								<li class="splide__slide">
-                  <span class="splide__client-screen">
-                    Escuela militar
-                  </span>
-									<img class="splide__img" src="https://picsum.photos/id/1039/200/200" alt="Bosque">
-								</li>
-								<li class="splide__slide">
-                  <span class="splide__client-screen">
-                    Policia de investigaciones (PDI)
-                  </span>
-									<img class="splide__img" src="https://picsum.photos/id/1043/200/200" alt="Campo">
-								</li>
+								{works.map((work) => (
+                  <li class="splide__slide">
+                    <span class="splide__client-screen">
+                      {work.data.customer}
+                    </span>
+                    <Image
+                      src={work.data.heroImg}
+                      alt={work.data.title}
+                      class="splide__img" 
+                    />
+                  </li>
+                ))}
 							</ul>
 						</div>
 					</section>
@@ -227,75 +185,20 @@ import Threads from '../jsx/Threads';
 					<!-- Sección de contenido (títulos y descripciones) -->
 					<section id="content-slider-portfolio-home" class="content-slider-portfolio">
             <div class="content-slide">
-              <!-- Contenido Slide 1 -->
-              <div class="content-slide__wrap" id="content-0">
-                <h4 class="content-slide__number">01</h4>
-                <div class="content-slide__text-wrap">
-                  <h3 class="content-slide__slide-title">Sitio web institucional</h3>
-                  <p class="content-slide__slide-description">Escuela Militar.</p>
+              {works.map((work, index) => (
+                <div class="content-slide__wrap" id={`content-${index}`}>
+                  <h4 class="content-slide__number">{`0${index+1}`}</h4>
+                  <div class="content-slide__text-wrap">
+                    <h3 class="content-slide__slide-title">{work.data.title}</h3>
+                    <p class="content-slide__slide-description">{work.data.customer}</p>
+                  </div>
+                  <a href={`/portfolio/${work.slug}`} class="content-slide__btn btn-main">
+                    <span class="content-slide__btn-content btn-main__content">
+                      Ver trabajo
+                    </span>
+                  </a>
                 </div>
-                <a href="#" class="content-slide__btn btn-main">
-                  <span class="content-slide__btn-content btn-main__content">
-                    Ver trabajo
-                  </span>
-                </a>
-              </div>
-              
-              <!-- Contenido Slide 2 -->
-              <div class="content-slide__wrap" id="content-1">
-                <h4 class="content-slide__number">02</h4>
-                <div class="content-slide__text-wrap">
-                  <h3 class="content-slide__slide-title">Policia de investigaciones (PDI)</h3>
-                  <p class="content-slide__slide-description">Escuela Militar.</p>
-                </div>
-                <a href="#" class="content-slide__btn btn-main">
-                  <span class="content-slide__btn-content btn-main__content">
-                    Ver trabajo
-                  </span>
-                </a>
-              </div>
-              
-              <!-- Contenido Slide 3 -->
-              <div class="content-slide__wrap" id="content-2">
-                <h4 class="content-slide__number">03</h4>
-                <div class="content-slide__text-wrap">
-                  <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-                  <p class="content-slide__slide-description">Escuela Militar.</p>
-                </div>
-                <a href="#" class="content-slide__btn btn-main">
-                  <span class="content-slide__btn-content btn-main__content">
-                    Ver trabajo
-                  </span>
-                </a>
-              </div>
-              
-              <!-- Contenido Slide 4 -->
-              <div class="content-slide__wrap" id="content-3">
-                <h4 class="content-slide__number">04</h4>
-                <div class="content-slide__text-wrap">
-                  <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-                  <p class="content-slide__slide-description">Escuela Militar.</p>
-                </div>
-                <a href="#" class="content-slide__btn btn-main">
-                  <span class="content-slide__btn-content btn-main__content">
-                    Ver trabajo
-                  </span>
-                </a>
-              </div>
-              
-              <!-- Contenido Slide 5 -->
-              <div class="content-slide__wrap" id="content-4">
-                <h4 class="content-slide__number">05</h4>
-                <div class="content-slide__text-wrap">
-                  <h3 class="content-slide__slide-title">Sitio web institucional Escuela Militar</h3>
-                  <p class="content-slide__slide-description">Escuela Militar.</p>
-                </div>
-                <a href="#" class="content-slide__btn btn-main">
-                  <span class="content-slide__btn-content btn-main__content">
-                    Ver trabajo
-                  </span>
-                </a>
-              </div>
+              ))}
             </div>
 					</section>
 				</div>
