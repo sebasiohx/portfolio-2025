@@ -1,0 +1,202 @@
+---
+import type { GetStaticPaths } from "astro";
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Hero from '@components/Hero.astro';
+import Icon from '@components/Icon.astro';
+import WorkLayout from 'src/layouts/WorkLayout.astro';
+//import '@splidejs/splide/css';
+
+export const getStaticPaths = (async () => {
+  const works = await getCollection('works');
+  
+  return works.map((post) => ({
+    params: {slug: post.slug},
+    props: {post: post}
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const frontmatter = post.data;
+---
+
+<script>
+  import Splide from '@splidejs/splide';
+
+  // Configuracion del slider Recomendaciones
+  document.addEventListener('DOMContentLoaded', () => {
+    const workSlider = new Splide('.slider-work-portfolio', {
+      type: 'loop',
+      perPage: 1,
+      perMove: 1,
+      autoplay: false,
+      arrows: true,
+      pagination: true,
+      fixedHeight: '648px',
+      width: '100%',
+      gap: '2rem',
+      breakpoints: {
+        768: {
+          fixedHeight: '582px',
+        }
+      }
+    });
+
+    workSlider.mount();
+  });
+</script>
+
+<WorkLayout title={frontmatter.title}>
+  <main class='mb-16'>
+    <Hero
+      type='detail'
+      title={frontmatter.title}
+      subtitle={frontmatter.customer}
+      align='left'
+    />
+
+    <div class='container mx-auto px-2 md:px-4'>
+      <hr class='work__hr' />
+      <section class='work grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div class='col-span-1 px-4 md:px-0'>
+          {frontmatter.texts.map(( text ) => (
+            <p class='work__text mb-6'>
+              {text}
+            </p>
+          ))}
+
+          <hr class='w-full xl:w-1/2 h-px bg-[var(--color-main-2-d1)] border-t-0 mb-4' />
+
+          <h4 class='work__subtitle'>Herramientas utilizadas</h4>
+          <ul class='work__tools'>
+            {frontmatter.tools.map(( tool ) => (
+              <li class='work__tool'>{tool}</li>
+            ))}
+          </ul>
+        </div>
+        <div class='col-span-1'>
+          <div class='splide slider-work-portfolio'>
+            <div class:list={['splide__arrows', {'hidden': frontmatter.imagesSlider.length < 2}]}>
+              <button
+                class='splide__arrow splide__arrow--prev'
+                title='pantalla anterior'
+              >
+                <Icon icon='arrowSlider' size={40} color='var(--color-bg)' />
+              </button>
+              <button
+                class='splide__arrow splide__arrow--next'
+                title='siguiente pantalla'
+              >
+                <Icon icon='arrowSlider' size={40} color='var(--color-bg)' />
+              </button>
+            </div>
+            <div class='splide__track'>
+              <ul class='splide__list'>
+                {frontmatter.imagesSlider.map(( img, index ) => (
+                  <li class='splide__slide'>
+                    <Image
+                      src={img}
+                      alt={`imagen ${index} - ${frontmatter.title}`}
+                      class='work__image'
+                      quality={'high'}
+                      loading={'eager'}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</WorkLayout>
+
+<style lang='scss'>
+  @reference "tailwindcss";
+
+  .work {
+    &__hr {
+      height: 1rem;
+      width: 100%;
+      border: none;
+      margin-bottom: 2rem;
+      background-image: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 10px,
+        var(--color-main-2-d2) 11px,
+        var(--color-main-2-d2) 20px
+      );
+      background-size: 56px 30px; /* Definimos el tamaño del patrón */
+      animation: deslizarX 4s linear infinite;
+    }
+    @keyframes deslizarX {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 56px 0;
+      }
+    }
+    &__subtitle {
+      font-size: var(--size-24px);
+      font-family: var(--font-family-3);
+    }
+    &__tools {
+      list-style-type: disclosure-closed;
+      padding-left: 1.4rem;
+
+    }
+    &__tool {
+      text-transform: uppercase;
+      &::marker{
+        color: var(--color-main-3);
+      }
+    }
+    &__img{
+      width: 100%;
+    }
+  }
+  .slider-work-portfolio.splide {
+    width: 100%;
+    
+    .splide__slide {
+      overflow-y: scroll;
+      cursor: grab;
+
+      img {
+        width: 100%;
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+    .splide__arrows {
+      .splide__arrow {
+        position: absolute;
+        z-index: 1;
+        padding: 8px 2px;
+        cursor: pointer;
+        background-color: var(--color-main-1-d1);
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: var(--color-main-1-l2);
+          transition: background-color 0.2s ease-in-out;
+        }
+        &--prev {
+          left: 1rem;
+          top: 50%;
+          transform: translateY(-50%) rotateY(180deg);
+        }
+        &--next {
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+</style>

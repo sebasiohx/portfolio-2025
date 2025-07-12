@@ -12,15 +12,15 @@ const frontmatter = work.data;
 
 <li class='catalog__item'>
   <figure class='catalog__figure'>
-    <a class='catalog__link' href={`#`}>
+    <a class='catalog__link' href={`/portfolio/${work.slug}`}>
       <Image
         src={frontmatter.heroImg}
         alt={'imagen ' + frontmatter.title}
-        class='catalog__image h-1/2'
+        class='catalog__image'
+        loading={'eager'}
       />
       <figcaption class='catalog__caption'>
         <h3 class='catalog__title'>{frontmatter.title}</h3>
-        <!-- <span>{frontmatter.postNumber}</span> -->
         <span class='catalog__cross catalog__cross--1'></span>
         <span class='catalog__cross catalog__cross--2'></span>
       </figcaption>

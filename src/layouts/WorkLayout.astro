@@ -45,7 +45,28 @@ const urlPath = Astro.url.pathname;
 		<!-- contenido -->
 		<slot />
 
+		<div class="text-center mb-16">
+			<a href="/portfolio" class="btn-main btn-portfolio">
+				<span class="btn-main__content">Ver más trabajos</span>
+			</a>
+		</div>
 		<Contact />
 		<Footer />
 	</body>
 </html>
+
+<style lang="scss">
+	.btn-portfolio {
+		background-color: var(--color-main-1);
+
+		.btn-main__content {
+			font-size: var(--size-20px);
+		}
+		&:hover {
+			.btn-main__content {
+				background-color: var(--color-main-1);
+				color: var(--color-bg);
+			}
+		}
+	}
+</style>

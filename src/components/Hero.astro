@@ -100,7 +100,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     </div>
     <div class='hero-detail__heading'>
       <div class:list={['container mx-auto px-2 md:px-4 h-full', `text-${align}`]}>
-        <a class="hero-detail__breadcrumb" href="/portfolio/">
+        <a class="hero-detail__breadcrumb" href="/portfolio">
           <Icon icon='arrowLeft' size={16} />
           <span>Portafolio</span>
         </a>
@@ -456,7 +456,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     &__subtitle {
       font-family: var(--font-family-3);
       font-size: var(--size-26px);
-      margin-block: 3rem 1rem;
+      margin-block: 2rem 1rem;
       text-transform: uppercase;
       text-shadow: 0 0 2px #e19a86, 0 0 1.5px #854535, 0 0 1.5px #5c150c;
     }
