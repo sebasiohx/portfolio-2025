@@ -194,6 +194,14 @@ code {
     background-position: 40% 0%;
   }
 }
+@keyframes deslizarY {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -254px;
+  }
+}
 
 /* Utilities */
 .ejemplpo-bg-gradiente-repeat{

@@ -32,7 +32,7 @@ const frontmatter = post.data;
       autoplay: false,
       arrows: true,
       pagination: true,
-      fixedHeight: '648px',
+      fixedHeight: '594px',
       width: '100%',
       gap: '2rem',
       breakpoints: {
@@ -126,8 +126,7 @@ const frontmatter = post.data;
         var(--color-main-2-d2) 11px,
         var(--color-main-2-d2) 20px
       );
-      background-size: 56px 30px; /* Definimos el tamaño del patrón */
-      animation: deslizarX 4s linear infinite;
+      background-size: 56px 30px;
     }
     @keyframes deslizarX {
       0% {
@@ -177,11 +176,11 @@ const frontmatter = post.data;
         z-index: 1;
         padding: 8px 2px;
         cursor: pointer;
-        background-color: var(--color-main-1-d1);
+        background-color: var(--color-main-1-d2);
         transition: background-color 0.3s ease-in-out;
 
         &:hover {
-          background-color: var(--color-main-1-l2);
+          background-color: var(--color-main-1);
           transition: background-color 0.2s ease-in-out;
         }
         &--prev {

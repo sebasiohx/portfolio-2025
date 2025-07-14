@@ -19,7 +19,6 @@ const works = (await getCollection('works'))
 			type: 'loop',
 			perPage: 1,
 			perMove: 1,
-			gap: '1rem',
 			pagination: false,
 			interval: 3500,
 			pauseOnHover: true,
@@ -220,6 +219,7 @@ const works = (await getCollection('works'))
             </article>
             <article class="console-section-3__text-2 hidden">
               <p>[Conexión interrumpida]</p>
+              <p>[Reconectando<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span> ]</p>
             </article>
           </div>
         </div>
@@ -368,7 +368,6 @@ const works = (await getCollection('works'))
 
   .portfolio-slider{
     position: relative;
-    //width: 80%;
     margin-inline: auto;
     &__title{
       font-family: var(--font-family-3);
@@ -436,6 +435,7 @@ const works = (await getCollection('works'))
           width: 10%;
           background-color: rgba(var(--color-bg-rgb), .8);
           position: relative;
+          cursor: wait;
         }
       }
     }
@@ -461,7 +461,7 @@ const works = (await getCollection('works'))
       position: relative;
       z-index: 2;
       display: inline-block;
-      border: 1px solid var(--color-bg);
+      border: 1px solid var(--color-main-1-d3);
       transition: background-color 0.3s ease-in-out;
 
       &::before{
@@ -505,8 +505,9 @@ const works = (await getCollection('works'))
       position: absolute;
       width: 100%;
       height: 100%;
-      display: grid;
-      place-items: center;
+      display: flex;
+      justify-content: center;
+      padding-top: 11rem;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
@@ -515,7 +516,6 @@ const works = (await getCollection('works'))
     }
     .splide__img-main{
       width: 100%;
-      height: 400px;
       object-fit: cover;
     }
     .splide__track{
@@ -527,11 +527,11 @@ const works = (await getCollection('works'))
         z-index: 1;
         padding: 8px 2px;
         cursor: pointer;
-        background-color: var(--color-main-1-d1);
+        background-color: var(--color-main-1-d2);
         transition: background-color 0.3s ease-in-out;
 
         &:hover{
-          background-color: var(--color-main-1-l2);
+          background-color: var(--color-main-1);
           transition: background-color 0.2s ease-in-out;
         }
         &--prev{
@@ -565,6 +565,7 @@ const works = (await getCollection('works'))
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
       width: 42px;
       height: 38px;
+      cursor: pointer;
       .splide__toggle__pause, .splide__toggle__play{
         vertical-align: middle;
       }
@@ -659,7 +660,7 @@ const works = (await getCollection('works'))
       place-items: center;
       font-family: var(--font-family-2);
       font-size: .8rem;
-      background-color: rgba(var(--color-bg-rgb), .4);
+      background-color: rgba(var(--color-bg-rgb), .8);
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
