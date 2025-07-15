@@ -7,7 +7,7 @@ import Icon from '@components/Icon.astro';
 import experienciaImg from '@images/reunion-nerv.jpg';
 import habilidadesImg from '@images/base-nerv.jpg';
 
-const medidaRuler:number = 49;
+const medidaRuler:number = 50;
 ---
 
 <section class='description'>
@@ -26,41 +26,41 @@ const medidaRuler:number = 49;
     <div
       class='warning-slider'
       style='
-      --width: 110px;
+      --width: 150px;
       --height: 40px;
       --quantity: 6;
     '
     >
       <div class='warning-slider__list'>
         <div class='warning-slider__item' style='--position: 1'>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='hidden! lg:inline-block!'/>
           <p class='warning-slider__text'>WARNING</p>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='hidden! lg:inline-block!'/>
         </div>
         <div class='warning-slider__item' style='--position: 2'>
-          <i class='warning-slider__icon fa fa-warning hidden! lg:inline-block!'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='inline-block'/>
           <p class='warning-slider__text'>警告</p>
-          <i class='warning-slider__icon fa fa-warning hidden! lg:inline-block!'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='inline-block'/>
         </div>
         <div class='warning-slider__item' style='--position: 3'>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='hidden! lg:inline-block!'/>
           <p class='warning-slider__text'>WARNING</p>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='hidden! lg:inline-block!'/>
         </div>
         <div class='warning-slider__item' style='--position: 4'>
-          <i class='warning-slider__icon fa fa-warning hidden! lg:inline-block!'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='inline-block'/>
           <p class='warning-slider__text'>警告</p>
-          <i class='warning-slider__icon fa fa-warning hidden! lg:inline-block!'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='inline-block'/>
         </div>
         <div class='warning-slider__item' style='--position: 5'>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='hidden! lg:inline-block!'/>
           <p class='warning-slider__text'>WARNING</p>
-          <i class='warning-slider__icon fa fa-warning'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='hidden! lg:inline-block!'/>
         </div>
         <div class='warning-slider__item' style='--position: 6'>
-          <i class='warning-slider__icon fa fa-warning hidden! lg:inline-block!'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='inline-block'/>
           <p class='warning-slider__text'>警告</p>
-          <i class='warning-slider__icon fa fa-warning hidden! lg:inline-block!'></i>
+          <Icon icon='warning' size={18} color='var(--color-main-2)' class='inline-block'/>
         </div>
       </div>
     </div>
@@ -263,6 +263,7 @@ const medidaRuler:number = 49;
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: .5rem;
         animation: autoRun 10s linear infinite;
         transition: filter 0.5s;
         animation-delay: calc(
@@ -273,8 +274,8 @@ const medidaRuler:number = 49;
         font-size: 1.3rem;
         font-weight: bold;
         font-family: var(--font-family-2);
-        margin-left: 1rem;
-        margin-right: 1rem;
+        //margin-left: 1rem;
+        //margin-right: 1rem;
       }
 
       @keyframes autoRun {

@@ -216,6 +216,7 @@ code {
   text-transform: uppercase;
   font-weight: bold;
   text-shadow: 0 0 2px #e19a86,0 0 1.5px #854535,0 0 1.5px #5c150c;
+  white-space: break-spaces;
 }
 
 .btn-main{

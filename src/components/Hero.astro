@@ -57,6 +57,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
             class='hero-home__img'
             alt='foto Sebastian Olate'
             loading='eager'
+            height={500}
           />
         </figure>
       </article>
@@ -292,9 +293,9 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     @media screen and (width >= 1536px) {
       height: 94vh;
       &__img-container {
-        height: 540px;
-        width: 360px;
-        transform: translate(-.9vw, 1.8vw);
+        height: 500px;
+        width: 356px;
+        transform: translate(-18px, 28px);
       }
     }
 
@@ -457,7 +458,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
     &__subtitle {
       font-family: var(--font-family-3);
       font-size: var(--size-26px);
-      margin-block: 2rem 1rem;
+      margin-top: 4.5rem;
       text-transform: uppercase;
       text-shadow: 0 0 2px #e19a86, 0 0 1.5px #854535, 0 0 1.5px #5c150c;
     }
@@ -474,6 +475,7 @@ const { type, title, tagline, subtitle, align = 'center' } = Astro.props;
       }
       &__subtitle {
         font-size: var(--size-32px);
+        margin-top: 3rem;
       }
     }
     @media screen and (width >= 1024px) {

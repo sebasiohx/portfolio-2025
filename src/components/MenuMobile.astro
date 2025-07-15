@@ -273,8 +273,6 @@ const { textLinks, iconsLinks, currentPath } = Astro.props;
     transform: translateX(100%);
     transition: all 250ms;
     background-color: color-mix(in srgb, var(--color-bg) 30%, transparent 100%);
-    /* Glassmorphism */
-    -webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
 
     &.open {
@@ -301,7 +299,7 @@ const { textLinks, iconsLinks, currentPath } = Astro.props;
     &__link {
       text-align: right;
       padding: 20px;
-      border-bottom: 2px solid var(--color-main-1);
+      border-bottom: 2px solid var(--color-main-2);
       position: relative;
       font-size: var(--size-16px);
       text-transform: uppercase;
@@ -315,21 +313,21 @@ const { textLinks, iconsLinks, currentPath } = Astro.props;
         display: block;
         width: 15px;
         height: 15px;
-        background-color: var(--color-main-1);
+        background-color: var(--color-main-2);
         clip-path: polygon(66% 0, 100% 0, 100% 100%, 0% 100%);
       }
 
       &.active {
         background-color: color-mix(
           in srgb,
-          var(--color-main-2) 20%,
+          var(--color-main-1) 20%,
           transparent 100%
         );
-        border-bottom-color: var(--color-main-2);
-        box-shadow: var(--color-main-2) 1px 0px 1px;
+        border-bottom-color: var(--color-main-1);
+        box-shadow: var(--color-main-1) 1px 0px 1px;
 
         &::after {
-          background-color: var(--color-main-2);
+          background-color: var(--color-main-1);
         }
       }
     }

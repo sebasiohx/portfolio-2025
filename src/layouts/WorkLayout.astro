@@ -38,7 +38,6 @@ const urlPath = Astro.url.pathname;
         },
       ]}
     />
-		<script src="https://kit.fontawesome.com/a236ea0636.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<Header currentPath={urlPath} />
@@ -64,9 +63,13 @@ const urlPath = Astro.url.pathname;
 		}
 		&:hover {
 			.btn-main__content {
-				background-color: var(--color-main-1);
+				background: linear-gradient(0deg, var(--color-main-1-d3) 0%, var(--color-main-1) 20%);
 				color: var(--color-bg);
 			}
+		}
+
+		@media screen and (width >= 768px) {
+			width: 18rem;
 		}
 	}
 </style>
