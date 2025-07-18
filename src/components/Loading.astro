@@ -3,7 +3,8 @@
 ---
 
 <script>
-  const loadingScreen = document.querySelector('#loadingScreen') as HTMLElement,
+  const hasVisited = sessionStorage.getItem('hasVisited'),
+  loadingScreen = document.querySelector('#loadingScreen') as HTMLElement,
   loadingCounter = document.querySelector('.load-box__counter') as HTMLElement,
   loadingProgess = document.querySelector('.load-box__progress') as HTMLElement;
 
@@ -11,7 +12,7 @@
     let progress: number = 0;
 
     let progressInterval = setInterval(() => {
-      progress += Math.random() * 30;
+      progress += Math.random() * 25;
       if (progress > 100) progress = 100;
 
       loadingCounter.textContent = `${Math.round(progress)}%`;
@@ -25,20 +26,32 @@
     }, 200);
   }
 
-  let hideLoading = () => {
+  const hideLoading = () => {
     loadingScreen?.classList.add('hidden');
+
+    sessionStorage.setItem('hasVisited', 'true');
 
     setTimeout(() => {
       loadingScreen.style.display = 'none';
     }, 500);
   }
+  
+  // Verificar si es la primera visita en esta sesión
+  if (hasVisited) {
+    loadingScreen.style.display = 'none';
+  } else {
+    showLoadingScreen();
+  }
 
-  showLoadingScreen();
-
+  // Asegurar que el loading se oculte cuando la página esté completamente cargada
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      hideLoading();     
-    }, 1100)
+    if (!hasVisited) {
+      setTimeout(() => {
+        if (!loadingScreen.classList.contains('hidden')) {
+          hideLoading();
+        }
+      }, 1100)
+    }
   });
 </script>
 
@@ -168,7 +181,7 @@
     &__progress {
       background-color: var(--color-main-2);
       display: block;
-      width: 100%;
+      width: 0%;
       height: 100%;
     }
 
