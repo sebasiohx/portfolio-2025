@@ -10,9 +10,25 @@ const { work } = Astro.props;
 const frontmatter = work.data;
 ---
 
+<script>
+  const cards = document.querySelectorAll('.catalog__figure');
+
+  window.addEventListener('load', () => {
+    cards.forEach((card) => {
+      let realImg = card.querySelector('.catalog__image') as HTMLElement;
+      let skeletonImg = card.querySelector('.skeleton__img') as HTMLElement;
+
+      skeletonImg?.classList.add('hidden');
+
+      realImg?.classList.add('loaded');
+    });
+  });
+</script>
+
 <li class='catalog__item'>
   <figure class='catalog__figure'>
     <a class='catalog__link' href={`/portfolio/${work.slug}`}>
+      <div class='skeleton skeleton__img'></div>
       <Image
         src={frontmatter.heroImg}
         alt={'imagen ' + frontmatter.title}
@@ -29,6 +45,30 @@ const frontmatter = work.data;
 </li>
 
 <style lang='scss'>
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-main-1) 25%, var(--color-main-1-d2) 50%, var(--color-main-1) 75%);
+    background-size: 200% 100%;
+    animation: loadingSkeleton 1000ms infinite;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+  }
+
+  @keyframes loadingSkeleton {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
   .catalog {
     &__item {
       margin-bottom: 1rem;
@@ -70,11 +110,18 @@ const frontmatter = work.data;
       );
     }
     &__image {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      &.loaded {
+        opacity: 1;
+      }
     }
     &__caption {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1;
       width: 100%;
       height: 100%;
       background: linear-gradient(180deg, var(--color-bg) 0%, transparent 110%);
@@ -111,13 +158,9 @@ const frontmatter = work.data;
       }
     }
 
-    @media screen and (768px <= width < 1024px) {
+    @media screen and (width >= 768px) {
       &__caption {
-        background: linear-gradient(
-          180deg,
-          var(--color-bg) 10%,
-          transparent 200%
-        );
+        background: linear-gradient(180deg, var(--color-bg) 10%, transparent 200%);
       }
       &__link {
         max-height: 450px;
