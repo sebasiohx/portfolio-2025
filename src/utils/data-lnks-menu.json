@@ -1,8 +1,7 @@
 {
   "textLinks": [
     { "label": "Home", "href": "/" },
-    { "label": "Portafolio", "href": "/portfolio" },
-    { "label": "Acerca de mi", "href": "/about" }
+    { "label": "Portafolio", "href": "/portfolio" }
   ],
   "iconsLinks": [
     {"label": "LinkedIn", "href": "https://www.linkedin.com/in/sebastianolateh/", "icon": "linkedin"},

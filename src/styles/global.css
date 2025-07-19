@@ -113,7 +113,6 @@ html {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-size: var(--font-size);
-  /* font-family: var(--font-family-2); */
 }
 code {
   font-family:

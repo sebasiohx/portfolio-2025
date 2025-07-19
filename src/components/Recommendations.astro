@@ -14,7 +14,7 @@ const recommendations = await getCollection('recommendation');
   document.addEventListener('DOMContentLoaded', () => {
     const recommendationSlider = new Splide('#slider-recommendations', {
       type: 'loop',
-      autoplay: false, //true
+      autoplay: false,
       perPage: 1,
       perMove: 1,
       pagination: false,
@@ -49,7 +49,7 @@ const recommendations = await getCollection('recommendation');
       });
     });
 
-    // Escuchar cambios de slide para actualizar paginación
+    // Escuchar cambios de slides para actualizar paginación
     recommendationSlider.on('moved', function (newIndex, prevIndex) {
       updatePaginationDots(newIndex);
     });
@@ -148,7 +148,6 @@ const recommendations = await getCollection('recommendation');
     .pagination-dot {
       width: 1rem;
       height: 1rem;
-      //border-radius: 50%;
       background-color: var(--color-main-1-d1);
       border: 2px solid var(--color-main-2);
       cursor: pointer;
@@ -208,7 +207,6 @@ const recommendations = await getCollection('recommendation');
       display: inline-block;
       width: 84px;
       height: 74px;
-      //background-color: var(--color-main-1);
       clip-path: polygon(
         0% 0%,
         calc(100% - 10px) 0,

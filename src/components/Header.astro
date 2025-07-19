@@ -1,8 +1,14 @@
 ---
 import Navbar from '@components/Navbar.astro';
 import MenuMobile from "@components/MenuMobile.astro";
-import type { IconName } from '@utils/IconPaths';
 import data from '@utils/data-lnks-menu.json';
+import type { IconName } from '@utils/IconPaths';
+
+/* textLinks = [
+  { "label": "Home", "href": "/" },
+  { "label": "Portafolio", "href": "/portfolio" },
+  { "label": "Acerca de mi", "href": "/about" }
+] */
 
 interface Props {
   currentPath: string;
@@ -15,10 +21,10 @@ interface IconLink {
   href: string; 
   icon: IconName;
 }
-/** Menu items */
+/* Menu items */
 const textLinks: { label: string; href: string }[] = data.textLinks;
 
-/** Menu icons */
+/* Menu icons */
 const iconsLinks: IconLink[] = data.iconsLinks.map((link) => ({
   ...link,
   icon: link.icon as IconName
@@ -135,8 +141,6 @@ const iconsLinks: IconLink[] = data.iconsLinks.map((link) => ({
       position: absolute;
       width: 100%;
       height: 100%;
-      /* Glassmorphism */
-      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       z-index: -1;
       border-bottom: 2px solid var(--color-main-1);
@@ -379,7 +383,6 @@ const iconsLinks: IconLink[] = data.iconsLinks.map((link) => ({
       }
       &--big {
         &::before {
-          //width: 0%;
           transition: 300ms;
         }
         &::after {

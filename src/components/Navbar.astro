@@ -20,7 +20,7 @@ const isActiveLink = (linkHref: string, URLPath: string) => {
   // Coincidencia exacta
   if (URLPath === linkHref) return true;
   
-  // Para rutas que no sean la home
+  // Para rutas que no sean la del home
   if (linkHref !== '/' && URLPath.startsWith(linkHref)) return true;
   
   // Caso especial: cuando estás en /ejemplo, el enlace /portfolio debe estar activo
@@ -128,7 +128,7 @@ const isActiveLink = (linkHref: string, URLPath: string) => {
     </span>
   </button>
 </nav>
-<!-- Navbar links -->
+
 <style lang='scss'>
   .navbar{
     .nav-items{
@@ -266,12 +266,10 @@ const isActiveLink = (linkHref: string, URLPath: string) => {
               transition: all 250ms;
 
               &.corner-1{
-                //transform: translate(-10px,-5px);
                 border-top: 1px solid var(--color-main-3);
                 border-left: 1px solid var(--color-main-3);
               }
               &.corner-2{
-                //transform: translate(10px,5px);
                 border-bottom: 1px solid var(--color-main-3);
                 border-right: 1px solid var(--color-main-3);
               }
