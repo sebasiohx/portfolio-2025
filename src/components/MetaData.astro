@@ -1,0 +1,49 @@
+---
+import { AstroFont } from "astro-font";
+import { siteConfig } from '../config/site-config';
+
+interface Props {
+  titlePage: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  titlePage, 
+  image, 
+  description = siteConfig.description, 
+} = Astro.props;
+---
+
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/favicon-solate-2025.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#66ff66" />
+
+<!-- SEO -->
+<meta name="description" content={description} />
+<meta name="author" content={'Sebastian Olate Huenuñir'}/>
+<meta name="keywords" content={siteConfig.keywords.join(', ')} />
+
+<!-- OG Metatags -->
+<meta property="og:title" content={titlePage} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+
+<title>{siteConfig.title} | {titlePage}</title>
+
+<AstroFont
+  config={[
+    {
+      src: [],
+      name: "Share Tech Mono",
+      // Google Fonts URL
+      googleFontsURL: 'https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap',
+      preload: true,
+      display: "swap",
+      selector: ".monotype",
+      fallback: "monospace",
+    },
+  ]}
+/>

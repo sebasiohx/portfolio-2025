@@ -53,6 +53,12 @@ const isActiveLink = (linkHref: string, URLPath: string) => {
       document.documentElement.setAttribute('data-theme', nextTheme);
       localStorage.setItem('theme', nextTheme);
       updateButton(nextTheme);
+
+      // Obtener el valor de una variable CSS
+      const rootStyles = getComputedStyle(document.documentElement);
+      const colorTheme = rootStyles.getPropertyValue('--color-main-1').trim();
+      // Aplicarlo al theme-color
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', colorTheme);
     };
 
     switchTheme.addEventListener('click', toggleTheme);

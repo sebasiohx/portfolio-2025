@@ -48,7 +48,8 @@ const works = (await getCollection('works'))
 		// Configuracion del slider Thumbnail
 		const thumbnailSlider = new Splide('#thumbnail-slider-portfolio-home', {
 			rewind: true,
-			focus: 'center',gap: 10,
+			focus: 'center',
+      gap: 10,
 			pagination: false,
 			arrows: false,
 			isNavigation: true,
@@ -323,6 +324,9 @@ const works = (await getCollection('works'))
       background-size: calc(80px/4.667) 80px,80px calc(80px/4.667);
 
       &:has(.btn-main:hover){
+        background-image: repeating-linear-gradient(135deg, transparent, transparent 10px, var(--color-main-1-d4) 11px, var(--color-main-1-d4) 20px);
+        background-size: 56px 254px;
+        animation: deslizarY 10s linear infinite;
         .triangle{
           visibility: visible;
         }
