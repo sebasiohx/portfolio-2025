@@ -1,54 +1,112 @@
-# Astro Starter Kit: Basics
+# Portafolio web 2025
 
-```sh
-npm create astro@latest -- --template basics
+Un portafolio web moderno desarrollado con **Astro**, **React** y **TypeScript**. Este proyecto utiliza las últimas tecnologías web para crear una experiencia rápida y atractiva.
+
+## 🚀 Tecnologías utilizadas
+
+- **[Astro](https://astro.build/)** - Framework web moderno y rápido
+- **[React](https://react.dev/)** - Biblioteca para interfaces de usuario
+- **[TypeScript](https://www.typescriptlang.org/)** - JavaScript con tipado estático
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
+- **[Sass](https://sass-lang.com/)** - Preprocesador CSS
+- **[MDX](https://mdxjs.com/)** - Markdown con componentes JSX
+
+## 📁 Estructura del proyecto
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
 ├── public/
 │   └── favicon.svg
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/
+│   │   └── images/     # Imágenes del proyecto
+│   ├── components/     # Componentes reutilizables
+│   ├── config/         # Archivo ts con los datos del sitio web
+│   ├── content/        # Coleccion de contenidos con los trabajos
+│   ├── layouts/        # Plantillas de página
+│   ├── pages/          # Páginas del sitio
+│   ├── styles/         # Archivos de estilos
+│   └── utils/          # Data y funciones de utilidad
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Comandos disponibles
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Todos los comandos se ejecutan desde la raíz del proyecto usando la terminal:
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Comando | Acción |
+|---------|--------|
+| `npm install` | Instala todas las dependencias del proyecto |
+| `npm run dev` | Inicia el servidor de desarrollo en `localhost:4321` |
+| `npm run start` | Alias para `npm run dev` |
+| `npm run build` | Construye el sitio para producción en `./dist/` |
+| `npm run preview` | Previsualiza la construcción localmente antes del despliegue |
+| `npm run astro` | Ejecuta comandos CLI de Astro |
+| `npm run astro -- --help` | Muestra ayuda para los comandos de Astro CLI |
+| `npm run dev -- --host` | Inicia un servidor de desarrollo el cual será accesible desde otros dispositivos en tu red local |
 
-## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+## 🔧 Configuración
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### TypeScript
+El proyecto está configurado con TypeScript estricto y utiliza alias de rutas para una mejor organización:
 
-## 👀 Want to learn more?
+- `@images/*` → `./src/assets/images/*`
+- `@styles/*` → `./src/styles/*`
+- `@components/*` → `./src/components/*`
+- `@utils/*` → `./src/utils/*`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Características principales
+- **Renderizado estático** para máximo rendimiento
+- **Componentes React** integrados con Astro
+- **Estilos con Tailwind CSS** y Sass
+- **Tipado completo** con TypeScript
+- **Optimización automática** de imágenes y assets
+
+## 🚀 Desarrollo
+
+1. **Clona el repositorio**
+```bash
+git clone https://github.com/sebasiohx/portfolio-2025.git
+cd portfolio-2025
+```
+
+2. **Instala las dependencias**
+```bash
+npm install
+```
+
+3. **Inicia el servidor de desarrollo**
+```bash
+npm run dev
+```
+
+4. **Abre tu navegador** y ve a `http://localhost:4321`
+
+## 📦 Construcción para producción
+
+Para crear una versión optimizada para producción:
+
+```bash
+npm run build
+```
+
+Los archivos se generarán en el directorio `./dist/` listos para ser desplegados en cualquier servidor web.
+
+## 📱 Características del portafolio
+
+- Diseño responsivo y moderno
+- Carga rápida y optimización SEO
+- Animaciones y transiciones suaves
+- Compatibilidad con dispositivos móviles
+- Código limpio y mantenible
+
+---
+
+©2025 Sebastián Olate Huenuñir.
+
+Desarrollado en Chile con Astro y mucho CSS.
+
+Diseño inspirado en la serie Neon Genesis Evangelion (新世紀エヴァンゲリオン)
