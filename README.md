@@ -107,6 +107,6 @@ Los archivos se generarán en el directorio `./dist/` listos para ser desplegado
 
 ©2025 Sebastián Olate Huenuñir.
 
-Desarrollado en Chile con Astro y mucho CSS.
+Desarrollado en Chile con [Astro](https://astro.build/) y mucho CSS.
 
-Diseño inspirado en la serie Neon Genesis Evangelion (新世紀エヴァンゲリオン)
+Diseño inspirado en la serie [Neon Genesis Evangelion](https://es.wikipedia.org/wiki/Neon_Genesis_Evangelion) (新世紀エヴァンゲリオン)
