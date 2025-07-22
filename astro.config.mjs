@@ -13,6 +13,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://github.com/sebasiohx',
-  base: '/portfolio-2025',
   output: 'static'
 });

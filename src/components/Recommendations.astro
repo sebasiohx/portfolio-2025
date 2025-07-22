@@ -50,7 +50,7 @@ const recommendations = await getCollection('recommendation');
     });
 
     // Escuchar cambios de slides para actualizar paginación
-    recommendationSlider.on('moved', function (newIndex, prevIndex) {
+    recommendationSlider.on('moved', function (newIndex) {
       updatePaginationDots(newIndex);
     });
 
